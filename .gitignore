@@ -8,9 +8,6 @@
 # ide
 .idea/
 
-# testing
-/coverage
-
 # production
 /build
 
