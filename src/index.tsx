@@ -10,7 +10,10 @@ import 'leaflet/dist/leaflet.css';
 
 let DefaultIcon = LIcon({
     iconUrl: icon,
-    shadowUrl: iconShadow
+    shadowUrl: iconShadow,
+    iconSize: [25, 41],
+    iconAnchor: [10, 41],
+    popupAnchor: [2, -40],
 });
 
 LMarker.prototype.options.icon = DefaultIcon;

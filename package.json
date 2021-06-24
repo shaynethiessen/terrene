@@ -60,12 +60,12 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test:dependencies": "yarn depcheck --ignores=depcheck,typescript"
+    "test:dependencies": "yarn depcheck --ignores=depcheck,typescript",
+    "test:types": "yarn tsc"
   },
   "eslintConfig": {
     "extends": [
-      "react-app",
-      "react-app/jest"
+      "react-app"
     ]
   },
   "browserslist": {
