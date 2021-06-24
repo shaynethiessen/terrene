@@ -2,6 +2,7 @@ import React from 'react';
 import {MapContainer, Marker, Popup, TileLayer} from '@monsonjeremy/react-leaflet'
 import {MainMenu} from "./MainMenu";
 import {historicSites} from './SampleDB';
+import {Image} from "semantic-ui-react";
 
 function App() {
     return (
@@ -17,6 +18,9 @@ function App() {
                         <Marker position={{lat: site.lat, lng: site.lng}}>
                             <Popup>
                                 {site.name}
+                                <Image>
+
+                                </Image>
                             </Popup>
                         </Marker>
                     );
