@@ -1,9 +1,5 @@
 # This runs the following tests on every branch push except to "master" or "develop"
-#   - lint check
-#   - typescript check
-#   - build check
-#   - run tests
-#   - check for db schema changes
+#   - check for unneeded packages
 
 name: Test Workflow
 on:
@@ -11,11 +7,10 @@ on:
     branches-ignore:
       - master
       - develop
-  workflow_dispatch:
 
 jobs:
-  installdeps:
-    name: Install dependencies
+  test:
+    name: Test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -33,51 +28,13 @@ jobs:
           path: |
             node_modules
             */*/node_modules
-          key: ${{ runner.os }}-nm-${{ hashFiles('yarn.lock') }}
+          key: ${{ runner.os }}-nm-${{ hashFiles('**/yarn.lock') }}
 
       - name: Install dependencies
         if: steps.cache.outputs.cache-hit != 'true'
         run: |
-          yarn global add lerna
-          yarn lerna bootstrap
-          bash ./tools/check_git_status.sh
-
-  build:
-    needs: installdeps
-    name: Build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Setup node 14.14
-        uses: actions/setup-node@v2-beta
-        with:
-          node-version: "14.14"
-
-      - name: node_modules cache
-        uses: actions/cache@v2
-        id: cache
-        with:
-          path: |
-            node_modules
-            */*/node_modules
-          key: ${{ runner.os }}-nm-${{ hashFiles('yarn.lock') }}
-
-      - name: Run build
-        run: |
-          yarn build
+          yarn
 
       - name: Run depcheck
         run: |
           yarn depcheck
-
-      - name: Store build artifacts
-        uses: actions/upload-artifact@v2
-        with:
-          name: test-dist
-          retention-days: 1
-          path: |
-            **/dist
-            **/build
-            !node_modules/**
