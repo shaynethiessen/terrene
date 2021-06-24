@@ -1,5 +1,5 @@
 # This runs the following tests on every branch push except to "master" or "develop"
-#   - check for unneeded packages
+#   - check for unused Dependencies
 
 name: Test Workflow
 on:
@@ -35,6 +35,6 @@ jobs:
         run: |
           yarn
 
-      - name: Run depcheck
+      - name: Test Dependencies
         run: |
-          yarn depcheck
+          yarn test:dependencies
