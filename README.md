@@ -1,6 +1,12 @@
 # Terrene
 ## Discover World History
 
+## Environment setup
+
+1. Clone repository
+2. Run `yarn`
+3. Run `yarn start`
+
 ## Available Scripts
 
 In the project directory, you can run:
