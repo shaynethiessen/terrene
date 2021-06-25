@@ -27,4 +27,4 @@ Uses depcheck to see if we have any unused dependencies.
 
 ### `test:types`
 
-Checks typescript
+Runs typescript to insure we don't have any undefined or mismatched types.
