@@ -1,6 +1,12 @@
 # Terrene
 ## Discover World History
 
+## Environment setup
+
+1. Clone repository
+2. Run `yarn`
+3. Run `yarn start`
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -20,3 +26,11 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
+
+### `test:dependencies`
+
+Uses depcheck to see if we have any unused dependencies.
+
+### `test:types`
+
+Runs typescript to insure we don't have any undefined or mismatched types.
