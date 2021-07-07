@@ -7,7 +7,7 @@ We appreciate your effort to improve Terrene by submitting a bug report. Before 
 
 1. Check whether the bug you face hasn't been already reported. Duplicate reports take us time, that we could be used to fix other bugs or make improvements.
 
-2. If you got some error, please describe what happened and add an error message. Reports like "I get an error when I clicked on some link" are useless.
+2. If you got an error, please describe what happened. Reports like "I get an error when I clicked on some link" are not very helpful. In order to fix any issues encountered, we need details.
 
 3. Provide easy steps to reproduce.
 
