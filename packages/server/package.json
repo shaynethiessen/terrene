@@ -1,5 +1,6 @@
 {
   "name": "terrene-server",
+  "license": "GPL-3.0-or-later",
   "version": "0.1.0",
   "dependencies": {
     "express": "^4.17.1"
