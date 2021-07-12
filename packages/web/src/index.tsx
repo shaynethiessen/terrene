@@ -23,10 +23,7 @@ LMarker.prototype.options.icon = DefaultIcon;
 
 ReactDOM.render(
 	<React.StrictMode>
-		{() => {
-			d('Successfully started web!');
-			return <App />;
-		}}
+		<App />
 	</React.StrictMode>,
 	document.getElementById('root'),
 );
