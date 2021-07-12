@@ -13,6 +13,7 @@
     "bfj": "^7.0.2",
     "case-sensitive-paths-webpack-plugin": "2.4.0",
     "css-loader": "5.2.6",
+    "debug": "^4.3.2",
     "dotenv": "10.0.0",
     "dotenv-expand": "5.1.0",
     "eslint": "^7.29.0",

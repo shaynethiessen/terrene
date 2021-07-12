@@ -3,6 +3,7 @@
   "license": "GPL-3.0-or-later",
   "version": "0.1.0",
   "dependencies": {
+    "debug": "^4.3.2",
     "express": "^4.17.1"
   },
   "scripts": {
