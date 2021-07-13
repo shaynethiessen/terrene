@@ -32,14 +32,26 @@ jobs:
         run: |
           yarn
 
-      - name: Test Dependencies
+      - name: Test Dependencies - Server
         run: |
-          yarn test:dependencies
+          yarn test:dependencies:server
 
-      - name: Test Lint
+      - name: Test Dependencies - Web
         run: |
-          yarn test:lint
+          yarn test:dependencies:web
 
-      - name: Test Types
+      - name: Test Lint - Server
         run: |
-          yarn test:types
+          yarn test:lint:server
+
+      - name: Test Lint - Web
+        run: |
+          yarn test:lint:web
+
+      - name: Test Types - Server
+        run: |
+          yarn test:types:server
+
+      - name: Test Types - Web
+        run: |
+          yarn test:types:web
