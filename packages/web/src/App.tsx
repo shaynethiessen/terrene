@@ -9,20 +9,24 @@ import type {HistoricSite} from './Types';
 const d = debug('web.src.app');
 
 function App() {
+	const [firstLoad, setFirstLoad] = useState<boolean>(true);
 	const [historicSites, setHistoricSites] = useState<HistoricSite[]>();
 
 	useEffect(() => {
-		fetch(`http://localhost:3001/historic-sites`, {
-			method: 'GET',
-			headers: {
-				'Content-type': 'application/json',
-			},
-			body: JSON.stringify(''),
-		})
-			.then(response => response.json())
-			.then(data => setHistoricSites(data))
-			.catch(error => d('Request failed', error));
-	});
+		if (firstLoad) {
+			fetch(`http://localhost:3001/historic-sites`, {
+				method: 'POST',
+				headers: {
+					'Content-type': 'application/json',
+				},
+				body: JSON.stringify(''),
+			})
+				.then(response => response.json())
+				.then(data => setHistoricSites(data))
+				.catch(error => d('Request failed', error));
+			setFirstLoad(false);
+		}
+	}, [firstLoad]);
 
 	if (!historicSites) return <div>Loading...</div>;
 
