@@ -1,7 +1,7 @@
 export interface HistoricSite {
 	id: number;
-	lat: number;
-	lng: number;
+	latitude: number;
+	longitude: number;
 	name: string;
 	slug: string;
 }

@@ -3,8 +3,8 @@ import {MapContainer, Marker, Popup, TileLayer} from '@monsonjeremy/react-leafle
 import {Image} from 'semantic-ui-react';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import debug from 'debug';
+import type {HistoricSite} from 'terrene-types';
 import {MainMenu} from './MainMenu';
-import type {HistoricSite} from './Types';
 
 const d = debug('web.src.app');
 
@@ -43,7 +43,7 @@ function App() {
 							/>
 							{historicSites.map(site => {
 								return (
-									<Marker position={{lat: site.lat, lng: site.lng}} key={site.id}>
+									<Marker position={{lat: site.latitude, lng: site.longitude}} key={site.id}>
 										<Popup>
 											{site.name}
 											<Image />

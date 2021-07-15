@@ -1,0 +1,27 @@
+{
+  "name": "terrene-types",
+  "license": "GPL-3.0-or-later",
+  "version": "0.1.0",
+  "main": "./src/index.ts",
+  "types": "./build/index.d.ts",
+  "dependencies": {
+    "eslint-config-airbnb-typescript": "^12.3.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react": "^7.24.0",
+    "eslint-plugin-react-hooks": "^4.2.0"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.28.1",
+    "@typescript-eslint/parser": "^4.28.1"
+  },
+  "scripts": {
+    "build": "tsc --build ./",
+    "fix:lint": "eslint --cache --fix --ext ts,js,tsx src",
+    "test:dependencies": "yarn depcheck --ignores=depcheck,typescript",
+    "test:lint": "eslint --cache --ext ts,js,tsx src",
+    "test:types": "yarn tsc"
+  }
+}

@@ -24,6 +24,7 @@
     "pretty": true,
     "declaration": true,
     "importsNotUsedAsValues": "error",
+    "baseUrl": "."
   },
   "include": [
     "src"
