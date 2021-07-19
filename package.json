@@ -41,10 +41,13 @@
     "fix:lint:server": "yarn --cwd packages/server/ fix:lint",
     "fix:lint:web": "yarn --cwd packages/web/ fix:lint",
     "test:dependencies:server": "yarn --cwd packages/server/ test:dependencies",
+    "test:dependencies:types": "yarn --cwd packages/types/ test:dependencies",
     "test:dependencies:web": "yarn --cwd packages/web/ test:dependencies",
     "test:lint:server": "yarn --cwd packages/server/ test:lint",
+    "test:lint:types": "yarn --cwd packages/types/ test:lint",
     "test:lint:web": "yarn --cwd packages/web/ test:lint",
     "test:types:server": "yarn --cwd packages/server/ test:types",
+    "test:types:types": "yarn --cwd packages/types/ test:types",
     "test:types:web": "yarn --cwd packages/web/ test:types"
   }
 }
