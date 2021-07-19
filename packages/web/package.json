@@ -52,6 +52,7 @@
     "semantic-ui-react": "^2.0.3",
     "semver": "7.3.5",
     "style-loader": "2.0.0",
+    "terrene-types": "file:../types",
     "terser-webpack-plugin": "4.2.3",
     "ts-pnp": "1.2.0",
     "url-loader": "4.1.1",

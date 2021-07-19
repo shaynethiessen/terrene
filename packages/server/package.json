@@ -13,7 +13,8 @@
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.2.0",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "terrene-types": "file:../types"
   },
   "scripts": {
     "start": "nodemon src/index.ts",

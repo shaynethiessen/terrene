@@ -31,7 +31,7 @@ You will also see any lint errors in the console.
 
 Builds the server for production to the `build` folder.\
 
-The build is minified and the filenames include the hashes.\
+The build is minified, and the filenames include the hashes.\
 Your server is ready to be deployed!
 
 ### `yarn build:web`
@@ -42,18 +42,18 @@ It correctly bundles React in production mode and optimizes the build for the be
 The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
-### `yarn fix:lint:server` or `yarn fix:lint:web`
+### `yarn fix:lint:server` or  `yarn fix:lint:types` or `yarn fix:lint:web`
 
 Attempts to automatically fix all linting issues.
 
-### `yarn test:dependencies:server` or `yarn test:dependencies:web`
+### `yarn test:dependencies:server` or `yarn test:dependencies:types` or `yarn test:dependencies:web`
 
 Uses depcheck to see if we have any unused dependencies.
 
-### `yarn test:lint:server` or `yarn test:lint:web`
+### `yarn test:lint:server` or `yarn test:lint:types` or `yarn test:lint:web`
 
 Runs lint to ensure all lint rules are passed.
 
-### `yarn test:types:server` or `yarn test:types:web`
+### `yarn test:types:server` or `yarn test:types:types` or `yarn test:types:web`
 
 Runs typescript to ensure we don't have any undefined or mismatched types.
