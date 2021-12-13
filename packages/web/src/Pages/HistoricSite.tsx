@@ -25,5 +25,11 @@ export function HistoricSite() {
 
 	if (!historicSiteInfo) return <div>Loading...</div>;
 
-	return <ContentWrapper title={historicSiteInfo.name} content={historicSiteInfo.content} />;
+	return (
+		<ContentWrapper
+			title={historicSiteInfo.name}
+			content={historicSiteInfo.content}
+			attribution="source: uneseco.org, licensed under CC-BY-SA IGO 3.0"
+		/>
+	);
 }
