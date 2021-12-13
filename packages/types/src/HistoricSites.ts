@@ -4,4 +4,5 @@ export interface HistoricSite {
 	longitude: number;
 	name: string;
 	slug: string;
+	content: string;
 }

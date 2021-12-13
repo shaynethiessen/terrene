@@ -18,7 +18,7 @@ export function Home() {
 				headers: {
 					'Content-type': 'application/json',
 				},
-				body: JSON.stringify(''),
+				body: JSON.stringify({}),
 			})
 				.then(response => response.json())
 				.then(data => setHistoricSites(data))
