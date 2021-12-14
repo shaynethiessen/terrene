@@ -2,14 +2,14 @@ import React, {useEffect, useState} from 'react';
 import {MapContainer, Marker, Popup, TileLayer} from '@monsonjeremy/react-leaflet';
 import {Image} from 'semantic-ui-react';
 import {Link} from 'react-router-dom';
-import type {HistoricSite} from 'terrene-types';
+import type {HistoricSiteType} from 'terrene-types';
 import debug from 'debug';
 
 const d = debug('web.src.app.home');
 
 export function Home() {
 	const [firstLoad, setFirstLoad] = useState<boolean>(true);
-	const [historicSites, setHistoricSites] = useState<HistoricSite[]>();
+	const [historicSites, setHistoricSites] = useState<HistoricSiteType[]>();
 
 	useEffect(() => {
 		if (firstLoad) {

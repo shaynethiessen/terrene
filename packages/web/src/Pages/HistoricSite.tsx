@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom';
-import type {HistoricSite as HistoricSiteType} from 'terrene-types';
+import type {HistoricSiteType} from 'terrene-types';
 import debug from 'debug';
 import {ContentWrapper} from '../Layout';
 
@@ -25,11 +25,5 @@ export function HistoricSite() {
 
 	if (!historicSiteInfo) return <div>Loading...</div>;
 
-	return (
-		<ContentWrapper
-			title={historicSiteInfo.name}
-			content={historicSiteInfo.content}
-			attribution="source: uneseco.org, licensed under CC-BY-SA IGO 3.0"
-		/>
-	);
+	return <ContentWrapper title={historicSiteInfo.name} content={historicSiteInfo.content} attribution={historicSiteInfo.attribution} />;
 }
