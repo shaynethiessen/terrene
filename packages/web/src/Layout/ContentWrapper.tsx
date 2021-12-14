@@ -4,6 +4,7 @@ import {Grid, Header} from 'semantic-ui-react';
 interface Props {
 	title: string;
 	content: string;
+	attribution?: string;
 }
 
 export function ContentWrapper(props: Props) {
@@ -17,6 +18,11 @@ export function ContentWrapper(props: Props) {
 			<Grid.Row>
 				<Grid.Column>{props.content}</Grid.Column>
 			</Grid.Row>
+			{props.attribution && (
+				<Grid.Row>
+					<Grid.Column>{props.attribution}</Grid.Column>
+				</Grid.Row>
+			)}
 		</Grid>
 	);
 }

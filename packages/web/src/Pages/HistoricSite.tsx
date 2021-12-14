@@ -1,6 +1,29 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import {useParams} from 'react-router-dom';
+import type {HistoricSiteType} from 'terrene-types';
+import debug from 'debug';
 import {ContentWrapper} from '../Layout';
 
+const d = debug('web.src.app.historicSite');
+
 export function HistoricSite() {
-	return <ContentWrapper title="This feature is not yet available." content="It's coming soon" />;
+	const {slug} = useParams<{slug: string}>();
+	const [historicSiteInfo, setHistoricSiteInfo] = useState<HistoricSiteType>();
+
+	useEffect(() => {
+		fetch(`http://localhost:3001/historic-site`, {
+			method: 'POST',
+			headers: {
+				'Content-type': 'application/json',
+			},
+			body: JSON.stringify({slug}),
+		})
+			.then(response => response.json())
+			.then(data => setHistoricSiteInfo(data))
+			.catch(error => d('Request failed', error));
+	}, [slug]);
+
+	if (!historicSiteInfo) return <div>Loading...</div>;
+
+	return <ContentWrapper title={historicSiteInfo.name} content={historicSiteInfo.content} attribution={historicSiteInfo.attribution} />;
 }
