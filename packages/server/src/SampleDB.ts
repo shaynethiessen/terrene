@@ -41,4 +41,24 @@ export const historicSites: HistoricSiteType[] = [
 			'The property is located on the northern edge of the semi-arid Great Plains of North America, on the border between Canada and the United States of America. The Milk River Valley dominates the topography of this cultural landscape, which is characterized by a concentration of pillars or hoodoos – columns of rock sculpted by erosion into spectacular shapes. The Blackfoot Confederacy (Siksikáíítsitapi) left engravings and paintings on the sandstone walls of the Milk River Valley, bearing testimony to messages from Sacred Beings. Dated in situ archaeological remains cover a period between ca. 4,500 BP - 3,500 years BP and the Contact Period. This landscape is considered sacred to the Blackfoot people, and their centuries-old traditions are perpetuated through ceremonies and in enduring respect for the places',
 		attribution: 'source: uneseco.org, licensed under CC-BY-SA IGO 3.0',
 	},
+	{
+		id: 5,
+		latitude: -33.85861,
+		longitude: 151.214167,
+		name: 'Sydney Opera House',
+		slug: 'sydney-opera-house',
+		content:
+			'Inaugurated in 1973, the Sydney Opera House is a great architectural work of the 20th century that brings together multiple strands of creativity and innovation in both architectural form and structural design. A great urban sculpture set in a remarkable waterscape, at the tip of a peninsula projecting into Sydney Harbour, the building has had an enduring influence on architecture. The Sydney Opera House comprises three groups of interlocking vaulted ‘shells’ which roof two main performance halls and a restaurant. These shell-structures are set upon a vast platform and are surrounded by terrace areas that function as pedestrian concourses. In 1957, when the project of the Sydney Opera House was awarded by an international jury to Danish architect Jørn Utzon, it marked a radically new approach to construction.',
+		attribution: 'source: uneseco.org, licensed under CC-BY-SA IGO 3.0',
+	},
+	{
+		id: 6,
+		latitude: 50.846667,
+		longitude: 4.3525,
+		name: 'La Grand-Place, Brussels',
+		slug: 'la-grand-place-brussels',
+		content:
+			'La Grand-Place in Brussels is a remarkably homogeneous body of public and private buildings, dating mainly from the late 17th century. The architecture provides a vivid illustration of the level of social and cultural life of the period in this important political and commercial centre.',
+		attribution: 'source: uneseco.org, licensed under CC-BY-SA IGO 3.0',
+	},
 ];
