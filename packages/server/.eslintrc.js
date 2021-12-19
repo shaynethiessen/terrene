@@ -99,6 +99,14 @@ module.exports = {
 		// React Hooks
 		'react-hooks/rules-of-hooks': 'error',
 		'react-hooks/exhaustive-deps': 'warn',
+
+		// Prettier
+		'prettier/prettier': [
+			"error",
+			{
+				"endOfLine": "auto"
+			},
+		],
 	},
 	ignorePatterns: ['*.js']
 };
