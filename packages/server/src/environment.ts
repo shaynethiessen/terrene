@@ -1,3 +1,7 @@
+import {config} from 'dotenv';
+
+config();
+
 export const environment = {
 	serverPort: process.env.SERVER_PORT,
 	dbUsername: process.env.DB_USERNAME,
