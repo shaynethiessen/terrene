@@ -4,6 +4,7 @@ import type {HistoricSiteType} from 'terrene-types';
 import debug from 'debug';
 import {ContentWrapper} from '../Layout';
 import {server} from '../server';
+import {InformationSidebar} from '../Layout/InformationSidebar';
 
 const d = debug('web.src.app.historicSite');
 
@@ -17,5 +18,12 @@ export function HistoricSite() {
 
 	if (!historicSiteInfo) return <div>Loading...</div>;
 
-	return <ContentWrapper title={historicSiteInfo.name} content={historicSiteInfo.content} attribution={historicSiteInfo.attribution} />;
+	return (
+		<ContentWrapper
+			title={historicSiteInfo.name}
+			content={historicSiteInfo.content}
+			attribution={historicSiteInfo.attribution}
+			sidebar={<InformationSidebar latitude={historicSiteInfo.latitude} longitude={historicSiteInfo.longitude} />}
+		/>
+	);
 }
