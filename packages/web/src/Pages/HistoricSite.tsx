@@ -3,6 +3,8 @@ import {useParams} from 'react-router-dom';
 import type {HistoricSiteType} from 'terrene-types';
 import debug from 'debug';
 import {ContentWrapper} from '../Layout';
+import {server} from '../server';
+import {InformationSidebar} from '../Layout/InformationSidebar';
 
 const d = debug('web.src.app.historicSite');
 
@@ -11,19 +13,17 @@ export function HistoricSite() {
 	const [historicSiteInfo, setHistoricSiteInfo] = useState<HistoricSiteType>();
 
 	useEffect(() => {
-		fetch(`http://localhost:3001/historic-site`, {
-			method: 'POST',
-			headers: {
-				'Content-type': 'application/json',
-			},
-			body: JSON.stringify({slug}),
-		})
-			.then(response => response.json())
-			.then(data => setHistoricSiteInfo(data))
-			.catch(error => d('Request failed', error));
+		server.fetch('historic-site', {slug}).then(data => setHistoricSiteInfo(data));
 	}, [slug]);
 
 	if (!historicSiteInfo) return <div>Loading...</div>;
 
-	return <ContentWrapper title={historicSiteInfo.name} content={historicSiteInfo.content} attribution={historicSiteInfo.attribution} />;
+	return (
+		<ContentWrapper
+			title={historicSiteInfo.name}
+			content={historicSiteInfo.content}
+			attribution={historicSiteInfo.attribution}
+			sidebar={<InformationSidebar latitude={historicSiteInfo.latitude} longitude={historicSiteInfo.longitude} />}
+		/>
+	);
 }

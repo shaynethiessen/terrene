@@ -1,18 +1,18 @@
 import express from 'express';
 import cors from 'cors';
-
 import debug from 'debug';
 import {historicSites} from './SampleDB';
+import {environment} from './environment';
 
-const d = debug('app.server');
+const d = debug('terrene.server');
+
 const app = express();
-const PORT = 3001;
 
 app.use(cors());
 app.use(express.json());
 
-app.listen(PORT, () => {
-	d(`⚡️[server]: Server is running at https://localhost:${PORT}`);
+app.listen(environment.serverPort, () => {
+	d(`⚡️[server]: Server is running at https://localhost:${environment.serverPort}`);
 });
 
 app.get('/', (req, res) => res.send('Express + TypeScript Server'));

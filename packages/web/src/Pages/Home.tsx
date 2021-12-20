@@ -4,6 +4,7 @@ import {Image} from 'semantic-ui-react';
 import {Link} from 'react-router-dom';
 import type {HistoricSiteType} from 'terrene-types';
 import debug from 'debug';
+import {server} from '../server';
 
 const d = debug('web.src.app.home');
 
@@ -13,16 +14,7 @@ export function Home() {
 
 	useEffect(() => {
 		if (firstLoad) {
-			fetch(`http://localhost:3001/historic-sites`, {
-				method: 'POST',
-				headers: {
-					'Content-type': 'application/json',
-				},
-				body: JSON.stringify({}),
-			})
-				.then(response => response.json())
-				.then(data => setHistoricSites(data))
-				.catch(error => d('Request failed', error));
+			server.fetch('historic-sites').then(data => setHistoricSites(data));
 			setFirstLoad(false);
 		}
 	}, [firstLoad]);
