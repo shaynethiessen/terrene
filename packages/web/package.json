@@ -9,13 +9,13 @@
     "@typescript-eslint/eslint-plugin": "^4.28.1",
     "@typescript-eslint/parser": "^4.28.1",
     "babel-eslint": "^10.1.0",
-    "babel-loader": "8.2.2",
+    "babel-loader": "8.2.3",
     "babel-plugin-named-asset-import": "^0.3.7",
-    "babel-preset-react-app": "^10.0.0",
+    "babel-preset-react-app": "^10.0.1",
     "bfj": "^7.0.2",
     "case-sensitive-paths-webpack-plugin": "2.4.0",
     "css-loader": "5.2.6",
-    "debug": "^4.3.2",
+    "debug": "^4.3.3",
     "dotenv": "10.0.0",
     "dotenv-expand": "5.1.0",
     "eslint": "^7.29.0",
@@ -51,9 +51,8 @@
     "resolve": "1.20.0",
     "resolve-url-loader": "^3.1.2",
     "semantic-ui-css": "^2.4.1",
-    "semantic-ui-react": "^2.0.3",
+    "semantic-ui-react": "^2.0.4",
     "semver": "7.3.5",
-    "serve": "^13.0.2",
     "style-loader": "2.0.0",
     "terrene-types": "file:../types",
     "terser-webpack-plugin": "4.2.3",
@@ -66,10 +65,13 @@
   },
   "scripts": {
     "start": "node scripts/start.js",
-    "build": "node scripts/build.js && serve -s build",
+    "build": "node scripts/build.js",
     "fix:lint": "eslint --cache --fix --ext ts,js,tsx src",
     "test:dependencies": "yarn depcheck --ignores=depcheck,typescript",
     "test:lint": "eslint --cache --ext ts,js,tsx src",
     "test:types": "yarn tsc"
+  },
+  "engines": {
+    "node": "16.13"
   }
 }
