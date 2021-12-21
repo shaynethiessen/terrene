@@ -5,7 +5,7 @@
   "dependencies": {
     "@types/cors": "^2.8.12",
     "cors": "^2.8.5",
-    "debug": "^4.3.2",
+    "debug": "^4.3.3",
     "dotenv": "^10.0.0",
     "eslint-config-airbnb-typescript": "^12.3.1",
     "eslint-config-prettier": "^8.3.0",
@@ -14,8 +14,8 @@
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.2.0",
-    "express": "^4.17.1",
-    "nodemon": "^2.0.12",
+    "express": "^4.17.2",
+    "nodemon": "^2.0.15",
     "terrene-types": "file:../types"
   },
   "scripts": {
