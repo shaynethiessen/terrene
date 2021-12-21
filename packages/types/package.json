@@ -21,5 +21,8 @@
     "test:dependencies": "yarn depcheck --ignores=depcheck,typescript",
     "test:lint": "eslint --cache --ext ts,js,tsx src",
     "test:types": "yarn tsc"
+  },
+  "engines": {
+    "node": "16.13"
   }
 }

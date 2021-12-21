@@ -49,5 +49,8 @@
     "test:types:server": "yarn --cwd packages/server/ test:types",
     "test:types:types": "yarn --cwd packages/types/ test:types",
     "test:types:web": "yarn --cwd packages/web/ test:types"
+  },
+  "engines": {
+    "node": "16.13"
   }
 }
