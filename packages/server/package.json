@@ -19,7 +19,7 @@
   },
   "scripts": {
     "start": "nodemon src/index.ts",
-    "build": "tsc --build ./ && node ./build/index.js",
+    "build": "tsc --build ./",
     "fix:lint": "eslint --cache --fix --ext ts,js,tsx src",
     "test:dependencies": "yarn depcheck --ignores=depcheck,typescript",
     "test:lint": "eslint --cache --ext ts,js,tsx src",

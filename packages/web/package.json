@@ -53,7 +53,6 @@
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^2.0.3",
     "semver": "7.3.5",
-    "serve": "^13.0.2",
     "style-loader": "2.0.0",
     "terrene-types": "file:../types",
     "terser-webpack-plugin": "4.2.3",
@@ -66,7 +65,7 @@
   },
   "scripts": {
     "start": "node scripts/start.js",
-    "build": "node scripts/build.js && serve -s build",
+    "build": "node scripts/build.js",
     "fix:lint": "eslint --cache --fix --ext ts,js,tsx src",
     "test:dependencies": "yarn depcheck --ignores=depcheck,typescript",
     "test:lint": "eslint --cache --ext ts,js,tsx src",
