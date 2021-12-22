@@ -23,7 +23,15 @@ export function HistoricSite() {
 			title={historicSiteInfo.name}
 			content={historicSiteInfo.content}
 			attribution={historicSiteInfo.attribution}
-			sidebar={<InformationSidebar latitude={historicSiteInfo.latitude} longitude={historicSiteInfo.longitude} />}
+			sidebar={
+				<InformationSidebar
+					latitude={historicSiteInfo.latitude}
+					longitude={historicSiteInfo.longitude}
+					activePeriodStart={historicSiteInfo.activePeriodStart}
+					activePeriodEnd={historicSiteInfo.activePeriodEnd}
+					designations={historicSiteInfo.designations}
+				/>
+			}
 		/>
 	);
 }

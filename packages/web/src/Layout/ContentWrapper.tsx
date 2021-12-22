@@ -12,7 +12,7 @@ export function ContentWrapper(props: Props) {
 	return (
 		<Grid padded stackable>
 			<Grid.Row>
-				<Grid.Column width={props.sidebar ? 14 : 16}>
+				<Grid.Column width={props.sidebar ? 13 : 16}>
 					<Grid padded>
 						<Grid.Row>
 							<Grid.Column>
@@ -30,7 +30,7 @@ export function ContentWrapper(props: Props) {
 					</Grid>
 				</Grid.Column>
 				{props.sidebar && (
-					<Grid.Column width={2}>
+					<Grid.Column width={3}>
 						<Grid padded>
 							<Grid.Row>
 								<Grid.Column>{props.sidebar}</Grid.Column>
