@@ -38,6 +38,8 @@
     "start:web": "yarn --cwd packages/web/ start",
     "build:server": "yarn --cwd packages/server/ build",
     "build:web": "yarn --cwd packages/web/ build",
+    "docker:build:web": "yarn build:web && docker build -t terrene-web:1.0.0 -f docker/web/web.dockerfile .",
+    "docker:push:web": "docker tag terrene-web terrene.ca:5000/terrene-web && docker push terrene.ca:5000/terrene-web",
     "fix:lint:server": "yarn --cwd packages/server/ fix:lint",
     "fix:lint:web": "yarn --cwd packages/web/ fix:lint",
     "test:dependencies:server": "yarn --cwd packages/server/ test:dependencies",
