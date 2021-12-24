@@ -3,8 +3,8 @@ import cors from 'cors';
 import debug from 'debug';
 import {MikroORM} from '@mikro-orm/core';
 import {environment} from './core/environment';
-import {Actions} from './core/Actions';
-import {Entities} from './core/Entities';
+import {Actions} from './Actions';
+import {Entities} from './Entities';
 
 const d = debug('terrene.server');
 

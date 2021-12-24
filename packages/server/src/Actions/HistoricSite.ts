@@ -1,4 +1,4 @@
-import {historicSites} from '../../SampleDB';
+import {historicSites} from '../SampleDB';
 
 export const HistoricSite = {
 	path: 'historic-site',
