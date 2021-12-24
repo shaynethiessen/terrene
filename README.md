@@ -4,10 +4,13 @@
 ## Environment setup
 
 1. Clone repository
-2. Navigate to project root directory
-3. Run `yarn`
-4. Run `yarn start:server`
-5. Run `yarn start:web`
+2. Copy packages/server/env.default to packages/server/.env and update config.
+3. Navigate to project root directory
+4. Run `yarn`
+5. Run `yarn build:types`
+6. Run `yarn database:create`
+7. Run `yarn start:server`
+8. Run `yarn start:web`
 
 ## Available Scripts
 
