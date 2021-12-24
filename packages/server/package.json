@@ -39,5 +39,11 @@
   },
   "engines": {
     "node": "16.13"
+  },
+  "mikro-orm": {
+    "useTsNode": true,
+    "configPaths": [
+      "./mikroorm.ts"
+    ]
   }
 }

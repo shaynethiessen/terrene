@@ -4,16 +4,11 @@ import debug from 'debug';
 import {MikroORM} from '@mikro-orm/core';
 import {environment} from './core/environment';
 import {Actions} from './Actions';
-import {Entities} from './Entities';
+import {mikroOrmConfig} from './core/mikro-orm.config';
 
 const d = debug('terrene.server');
 
-MikroORM.init({
-	entities: Entities,
-	dbName: 'my-db-name',
-	type: 'postgresql', // one of `mongo` | `mysql` | `mariadb` | `postgresql` | `sqlite`
-	clientUrl: `postgres://${environment.dbUsername}:${environment.dbPassword}@${environment.dbDomain}:${environment.dbPort}/:${environment.dbName}`,
-}).then(orm => {
+MikroORM.init(mikroOrmConfig()).then(orm => {
 	d(orm.em);
 	const express = Express();
 
