@@ -1,26 +1,36 @@
-import express from 'express';
+import Express from 'express';
 import cors from 'cors';
 import debug from 'debug';
+import {MikroORM} from '@mikro-orm/core';
 import {environment} from './core/environment';
 import {Actions} from './core/Actions';
+import {Entities} from './core/Entities';
 
 const d = debug('terrene.server');
 
-const app = express();
+MikroORM.init({
+	entities: Entities,
+	dbName: 'my-db-name',
+	type: 'postgresql', // one of `mongo` | `mysql` | `mariadb` | `postgresql` | `sqlite`
+	clientUrl: `postgres://${environment.dbUsername}:${environment.dbPassword}@${environment.dbDomain}:${environment.dbPort}/:${environment.dbName}`,
+}).then(orm => {
+	d(orm.em);
+	const express = Express();
 
-app.use(cors());
-app.use(express.json());
+	express.use(cors());
+	express.use(Express.json());
 
-app.listen(environment.serverPort, () => {
-	d(`⚡️[server]: Server is running at https://localhost:${environment.serverPort}`);
-});
-
-app.get('/', (req, res) => res.send('Express + TypeScript Server'));
-
-Actions.map(action => {
-	app.post(`/${action.path}`, (req, res) => {
-		res.send(action.action({...req.body})).status(200);
+	express.listen(environment.serverPort, () => {
+		d(`⚡️[server]: Server is running at https://localhost:${environment.serverPort}`);
 	});
 
-	return true;
+	express.get('/', (req, res) => res.send('Express + TypeScript Server'));
+
+	Actions.map(action => {
+		express.post(`/${action.path}`, (req, res) => {
+			res.send(action.action({...req.body})).status(200);
+		});
+
+		return true;
+	});
 });

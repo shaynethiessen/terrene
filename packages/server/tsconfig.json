@@ -9,7 +9,6 @@
     "noImplicitAny": true,
     "allowJs": false,
     "skipLibCheck": true,
-    "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
@@ -25,7 +24,10 @@
     "declaration": true,
     "importsNotUsedAsValues": "error",
     "outDir": "build",
-    "baseUrl": "."
+    "baseUrl": ".",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "esModuleInterop": true
   },
   "include": [
     "src"
