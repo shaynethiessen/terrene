@@ -1,8 +1,8 @@
 import express from 'express';
 import cors from 'cors';
 import debug from 'debug';
-import {historicSites} from './SampleDB';
-import {environment} from './environment';
+import {environment} from './core/environment';
+import {Actions} from './core/Actions';
 
 const d = debug('terrene.server');
 
@@ -17,10 +17,10 @@ app.listen(environment.serverPort, () => {
 
 app.get('/', (req, res) => res.send('Express + TypeScript Server'));
 
-app.post('/historic-sites', (req, res) => {
-	res.send(historicSites).status(200);
-});
+Actions.map(action => {
+	app.post(`/${action.path}`, (req, res) => {
+		res.send(action.action({...req.body})).status(200);
+	});
 
-app.post('/historic-site', (req, res) => {
-	res.send(historicSites.find(historicSite => historicSite.slug === req.body.slug)).status(200);
+	return true;
 });
