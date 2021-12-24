@@ -1,26 +1,31 @@
-import express from 'express';
+import Express from 'express';
 import cors from 'cors';
 import debug from 'debug';
-import {historicSites} from './SampleDB';
-import {environment} from './environment';
+import {MikroORM} from '@mikro-orm/core';
+import {environment} from './core/environment';
+import {Actions} from './Actions';
+import {mikroOrmConfig} from './core/mikro-orm.config';
 
 const d = debug('terrene.server');
 
-const app = express();
+MikroORM.init(mikroOrmConfig()).then(orm => {
+	d(orm.em);
+	const express = Express();
 
-app.use(cors());
-app.use(express.json());
+	express.use(cors());
+	express.use(Express.json());
 
-app.listen(environment.serverPort, () => {
-	d(`⚡️[server]: Server is running at https://localhost:${environment.serverPort}`);
-});
+	express.listen(environment.serverPort, () => {
+		d(`⚡️[server]: Server is running at https://localhost:${environment.serverPort}`);
+	});
 
-app.get('/', (req, res) => res.send('Express + TypeScript Server'));
+	express.get('/', (req, res) => res.send('Express + TypeScript Server'));
 
-app.post('/historic-sites', (req, res) => {
-	res.send(historicSites).status(200);
-});
+	Actions.map(action => {
+		express.post(`/${action.path}`, (req, res) => {
+			res.send(action.action({...req.body})).status(200);
+		});
 
-app.post('/historic-site', (req, res) => {
-	res.send(historicSites.find(historicSite => historicSite.slug === req.body.slug)).status(200);
+		return true;
+	});
 });

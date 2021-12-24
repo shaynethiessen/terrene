@@ -4,7 +4,7 @@ import {Image} from 'semantic-ui-react';
 import {Link} from 'react-router-dom';
 import type {HistoricSiteType} from 'terrene-types';
 import debug from 'debug';
-import {server} from '../server';
+import {server} from '../core/server';
 
 const d = debug('web.src.app.home');
 
