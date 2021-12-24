@@ -27,13 +27,15 @@
     "start": "nodemon src/index.ts",
     "build": "tsc --build ./",
     "fix:lint": "eslint --cache --fix --ext ts,js,tsx src",
+    "orm": "mikro-orm",
     "test:dependencies": "yarn depcheck --ignores=depcheck,typescript",
     "test:lint": "eslint --cache --ext ts,js,tsx src",
     "test:types": "yarn tsc"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^4.28.1",
-    "@typescript-eslint/parser": "^4.28.1"
+    "@typescript-eslint/parser": "^4.28.1",
+    "@mikro-orm/cli": "^4.5.9"
   },
   "engines": {
     "node": "16.13"
