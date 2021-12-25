@@ -21,7 +21,7 @@ export function HistoricSite() {
 	return (
 		<ContentWrapper
 			title={historicSiteInfo.name}
-			content={historicSiteInfo.content}
+			content={<>historicSiteInfo.content</>}
 			attribution={historicSiteInfo.attribution}
 			sidebar={
 				<InformationSidebar

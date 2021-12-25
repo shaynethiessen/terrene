@@ -18,6 +18,7 @@ RUN yarn install --prod && \
 # Add built code
 ADD packages/types/build/ /app/packages/types
 ADD packages/server/build/ /app/packages/server
+ADD packages/types/build/ /app/packages/server/node_modules/terrene-types/build
 
 ADD docker/server/docker_command.sh /app
 RUN chmod +x docker_command.sh
