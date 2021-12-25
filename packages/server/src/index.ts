@@ -9,7 +9,6 @@ import {mikroOrmConfig} from './core/mikro-orm.config';
 const d = debug('terrene.server');
 
 MikroORM.init(mikroOrmConfig()).then(orm => {
-	d(orm.em);
 	const express = Express();
 
 	express.use(cors());
@@ -21,9 +20,9 @@ MikroORM.init(mikroOrmConfig()).then(orm => {
 
 	express.get('/', (req, res) => res.send('Express + TypeScript Server'));
 
-	Actions.map(action => {
+	Actions.map(async action => {
 		express.post(`/${action.path}`, (req, res) => {
-			res.send(action.action({...req.body})).status(200);
+			action.action({...req.body}, orm.em).then(value => res.send(value).status(200));
 		});
 
 		return true;
