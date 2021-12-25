@@ -19,7 +19,7 @@ export class Designation {
 	@Property({type: 'text'})
 	officialName: string;
 
-	constructor(type: DesignationTypeEnum, year: number, officialName: string) {
+	constructor({type, year, officialName}: {type: DesignationTypeEnum; year: number; officialName: string}) {
 		this.type = type;
 		this.year = year;
 		this.officialName = officialName;
