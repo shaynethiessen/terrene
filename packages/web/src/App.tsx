@@ -1,13 +1,14 @@
 import React from 'react';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import debug from 'debug';
-import {Footer, MainMenu} from './Layout';
+import {Footer, MainMenu, ScrollToTop} from './Layout';
 import {Pages} from './Pages';
 
 const d = debug('web.src.app.historicSite');
 function App() {
 	return (
 		<BrowserRouter>
+			<ScrollToTop />
 			<div style={{height: 'calc(100% - 40px)'}}>
 				<MainMenu />
 				<Switch>
