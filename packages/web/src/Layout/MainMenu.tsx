@@ -9,7 +9,7 @@ export function MainMenu() {
 	return (
 		<Menu inverted attached>
 			<Menu.Item name="logo">
-				<img src={logo} alt="Logo" style={{paddingRight: '0.6em'}} />
+				<img src={logo} alt="Logo" />
 			</Menu.Item>
 			<Menu.Item name="home" active={pathname === '/'}>
 				<Link to="/">Home</Link>
