@@ -1,14 +1,14 @@
 import React from 'react';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import debug from 'debug';
-import {MainMenu} from './Layout';
+import {Footer, MainMenu} from './Layout';
 import {Pages} from './Pages';
 
 const d = debug('web.src.app.historicSite');
 function App() {
 	return (
 		<BrowserRouter>
-			<div style={{height: 'calc(100% - 47px)'}}>
+			<div style={{height: 'calc(100% - 40px)'}}>
 				<MainMenu />
 				<Switch>
 					{Pages.map(page => {
@@ -20,6 +20,7 @@ function App() {
 						);
 					})}
 				</Switch>
+				<Footer />
 			</div>
 		</BrowserRouter>
 	);
