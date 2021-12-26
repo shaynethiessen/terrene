@@ -7,7 +7,7 @@ import {server} from '../../core/server';
 
 const d = debug('web.src.app.historicSite');
 
-export function HistoricSite() {
+export function Content() {
 	const {slug} = useParams<{slug: string}>();
 	const [historicSiteInfo, setHistoricSiteInfo] = useState<HistoricSiteType>();
 

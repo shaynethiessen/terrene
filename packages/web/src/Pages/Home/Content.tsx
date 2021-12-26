@@ -8,7 +8,7 @@ import {server} from '../../core/server';
 
 const d = debug('web.src.app.home');
 
-export function Home() {
+export function Content() {
 	const [firstLoad, setFirstLoad] = useState<boolean>(true);
 	const [historicSites, setHistoricSites] = useState<HistoricSiteType[]>();
 

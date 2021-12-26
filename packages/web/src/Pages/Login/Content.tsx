@@ -2,7 +2,7 @@ import React from 'react';
 import {Button, Grid, Icon, Input} from 'semantic-ui-react';
 import {ContentWrapper} from '../../Layout';
 
-export function Login() {
+export function Content() {
 	return (
 		<ContentWrapper
 			title="Login"
@@ -10,7 +10,7 @@ export function Login() {
 				<Grid>
 					<Grid.Row>
 						<Grid.Column>
-							<Input iconPosition="left" placeholder="Email" label="Email">
+							<Input iconPosition="left" placeholder="Email">
 								<Icon name="mail" />
 								<input />
 							</Input>
@@ -18,7 +18,7 @@ export function Login() {
 					</Grid.Row>
 					<Grid.Row>
 						<Grid.Column>
-							<Input iconPosition="left" placeholder="Password" label="Password">
+							<Input iconPosition="left" placeholder="Password">
 								<Icon name="eye" />
 								<input />
 							</Input>

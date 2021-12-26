@@ -1,26 +1,24 @@
 import React from 'react';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import debug from 'debug';
 import {MainMenu} from './Layout';
-import {Home, HistoricSite, Error, Login} from './Pages';
+import {Pages} from './Pages';
 
+const d = debug('web.src.app.historicSite');
 function App() {
 	return (
 		<BrowserRouter>
 			<div style={{height: 'calc(100% - 47px)'}}>
 				<MainMenu />
 				<Switch>
-					<Route exact path="/">
-						<Home />
-					</Route>
-					<Route exact={false} path="/historic-site/:slug">
-						<HistoricSite />
-					</Route>
-					<Route exact={false} path="/login/">
-						<Login />
-					</Route>
-					<Route>
-						<Error />
-					</Route>
+					{Pages.map(page => {
+						const {exact, route, name, Content} = page;
+						return (
+							<Route exact={exact} path={`/${route}`} key={name}>
+								<Content />
+							</Route>
+						);
+					})}
 				</Switch>
 			</div>
 		</BrowserRouter>
