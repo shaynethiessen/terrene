@@ -8,7 +8,7 @@ const d = debug('web.src.app.historicSite');
 function App() {
 	return (
 		<BrowserRouter>
-			<div style={{height: 'calc(100% - 47px)'}}>
+			<div style={{height: 'calc(100% - 40px)'}}>
 				<MainMenu />
 				<Switch>
 					{Pages.map(page => {
