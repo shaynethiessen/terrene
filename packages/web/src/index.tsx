@@ -21,9 +21,4 @@ const DefaultIcon = LIcon({
 
 LMarker.prototype.options.icon = DefaultIcon;
 
-ReactDOM.render(
-	<React.StrictMode>
-		<App />
-	</React.StrictMode>,
-	document.getElementById('root'),
-);
+ReactDOM.render(<App />, document.getElementById('root'));

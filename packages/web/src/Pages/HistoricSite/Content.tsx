@@ -2,13 +2,12 @@ import React, {useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom';
 import type {HistoricSiteType} from 'terrene-types';
 import debug from 'debug';
-import {ContentWrapper} from '../Layout';
-import {server} from '../core/server';
-import {InformationSidebar} from '../Layout/InformationSidebar';
+import {ContentWrapper, InformationSidebar} from '../../Layout';
+import {server} from '../../core/server';
 
 const d = debug('web.src.app.historicSite');
 
-export function HistoricSite() {
+export function Content() {
 	const {slug} = useParams<{slug: string}>();
 	const [historicSiteInfo, setHistoricSiteInfo] = useState<HistoricSiteType>();
 
@@ -21,7 +20,7 @@ export function HistoricSite() {
 	return (
 		<ContentWrapper
 			title={historicSiteInfo.name}
-			content={historicSiteInfo.content}
+			content={<>historicSiteInfo.content</>}
 			attribution={historicSiteInfo.attribution}
 			sidebar={
 				<InformationSidebar

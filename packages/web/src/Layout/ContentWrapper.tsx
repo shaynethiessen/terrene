@@ -4,7 +4,7 @@ import {Grid, Header} from 'semantic-ui-react';
 interface Props {
 	title: string;
 	sidebar?: JSX.Element;
-	content: string;
+	content: JSX.Element;
 	attribution?: string;
 }
 

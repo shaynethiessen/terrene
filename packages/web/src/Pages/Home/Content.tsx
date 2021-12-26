@@ -4,11 +4,11 @@ import {Image} from 'semantic-ui-react';
 import {Link} from 'react-router-dom';
 import type {HistoricSiteType} from 'terrene-types';
 import debug from 'debug';
-import {server} from '../core/server';
+import {server} from '../../core/server';
 
 const d = debug('web.src.app.home');
 
-export function Home() {
+export function Content() {
 	const [firstLoad, setFirstLoad] = useState<boolean>(true);
 	const [historicSites, setHistoricSites] = useState<HistoricSiteType[]>();
 
