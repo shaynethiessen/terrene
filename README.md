@@ -30,6 +30,12 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
+### `yarn build:migrations`
+
+Runs migrations to update database setup. Migrations are ran/tested against copies of our production server. Depending on your configuration, they may or may not work.
+
+For development purposes we recommend running `yarn database:create` to create a clean database.
+
 ### `yarn build:server`
 
 Builds the server for production to the `build` folder.\
@@ -45,18 +51,18 @@ It correctly bundles React in production mode and optimizes the build for the be
 The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
-### `yarn fix:lint:server` or  `yarn fix:lint:types` or `yarn fix:lint:web`
+### `yarn fix:lint:%package%`
 
 Attempts to automatically fix all linting issues.
 
-### `yarn test:dependencies:server` or `yarn test:dependencies:types` or `yarn test:dependencies:web`
+### `yarn test:%package%`
 
 Uses depcheck to see if we have any unused dependencies.
 
-### `yarn test:lint:server` or `yarn test:lint:types` or `yarn test:lint:web`
+### `yarn test:lint:%package%`
 
 Runs lint to ensure all lint rules are passed.
 
-### `yarn test:types:server` or `yarn test:types:types` or `yarn test:types:web`
+### `yarn test:types:%package%`
 
 Runs typescript to ensure we don't have any undefined or mismatched types.
