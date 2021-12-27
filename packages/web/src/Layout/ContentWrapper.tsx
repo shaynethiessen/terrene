@@ -1,5 +1,6 @@
 import React from 'react';
 import {Grid, Header} from 'semantic-ui-react';
+import {ToastContainer} from 'react-toastify';
 
 interface Props {
 	title: string;
@@ -11,6 +12,7 @@ interface Props {
 export function ContentWrapper(props: Props) {
 	return (
 		<Grid padded stackable>
+			<ToastContainer pauseOnFocusLoss={false} />
 			<Grid.Row>
 				<Grid.Column width={props.sidebar ? 13 : 16}>
 					<Grid padded>
