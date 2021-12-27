@@ -30,10 +30,6 @@ jobs:
           yarn
 
       # Dependencies
-      - name: Test Dependencies - Migrations
-        run: |
-          yarn test:dependencies:migrations
-
       - name: Test Dependencies - Server
         run: |
           yarn test:dependencies:server
@@ -47,10 +43,6 @@ jobs:
           yarn test:dependencies:web
 
       # Lint
-      - name: Test Lint - Migrations
-        run: |
-          yarn test:lint:migrations
-
       - name: Test Lint - Server
         run: |
           yarn test:lint:server
@@ -64,10 +56,6 @@ jobs:
           yarn test:lint:web
 
       # Types
-      - name: Test Types - Migrations
-        run: |
-          yarn test:types:migrations
-
       - name: Test Types - Server
         run: |
           yarn test:types:server
