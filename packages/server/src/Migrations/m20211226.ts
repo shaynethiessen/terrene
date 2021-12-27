@@ -1,9 +1,10 @@
 export const m20211226 = {
 	name: 'm20211226',
 	action: [
-		`create table "migration" ("id" uuid not null, "name" varchar(255) not null, "index" int4 not null, "date" timestamptz(0) not null, "success" bool not null);`,
-		`alter table "migration" add constraint "migration_pkey" primary key ("id");`,
-
-		`alter table "migration" add constraint "migration_index_unique" unique ("index");`,
+		`create table "member" ("id" uuid not null, "version" int4 not null default 1, "name" text not null, "email" text not null, "phone" text null, "service_id" uuid null);`,
+		`alter table "member" add constraint "member_pkey" primary key ("id");`,
+		`alter table "member" add constraint "member_email_unique" unique ("email");`,
+		`alter table "member" add constraint "member_service_id_unique" unique ("service_id");`,
+		`alter table "member" add constraint "member_service_id_foreign" foreign key ("service_id") references "service" ("id") on update cascade on delete set null;`,
 	],
 };

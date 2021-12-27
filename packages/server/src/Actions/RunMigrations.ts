@@ -1,15 +1,18 @@
 import type {EntityManager} from '@mikro-orm/core';
 import {Migrations} from '../Migrations';
 import {Migration} from '../Entities/Migration';
+import {environment} from '../core/environment';
 
 export const RunMigrations = {
-	path: 'migrations',
+	path: 'run-migrations',
 	action: async (unused: unknown, em: EntityManager) => {
+		// environment variable must be set, before we will run migrations -STT
+		if (!environment.migrations) return false;
 		const sqlConnection = em.getConnection();
 
 		Migrations.map(async (migration, index) => {
-			const exists = em.find(Migration, {name: migration.name});
-			if (!exists) {
+			const duplicateMigration = await em.find(Migration, {name: migration.name});
+			if (duplicateMigration.length === 0) {
 				migration.action.map(action => {
 					sqlConnection.execute(action);
 

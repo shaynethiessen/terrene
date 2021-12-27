@@ -12,7 +12,9 @@ export function Content() {
 	const [historicSiteInfo, setHistoricSiteInfo] = useState<HistoricSiteType>();
 
 	useEffect(() => {
-		server.fetch('historic-site', {slug}).then(data => setHistoricSiteInfo(data));
+		server.fetch('historic-site', {slug}).then(data => {
+			setHistoricSiteInfo(data);
+		});
 	}, [slug]);
 
 	if (!historicSiteInfo) return <div>Loading...</div>;
