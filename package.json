@@ -34,7 +34,6 @@
     ]
   },
   "scripts": {
-    "start:migrations": "yarn --cwd packages/migrations/ start",
     "start:server": "yarn --cwd packages/server/ start",
     "start:web": "yarn --cwd packages/web/ start",
     "build:server": "yarn --cwd packages/server/ build",
@@ -46,19 +45,15 @@
     "docker:build:web": "yarn build:types && yarn build:web && docker build -t terrene-web -f docker/web/web.dockerfile .",
     "docker:push:server": "docker tag terrene-server registry.terrene.ca/terrene-server && docker push registry.terrene.ca/terrene-server",
     "docker:push:web": "docker tag terrene-web registry.terrene.ca/terrene-web && docker push registry.terrene.ca/terrene-web",
-    "fix:lint:migrations": "yarn --cwd packages/migrations/ fix:lint",
     "fix:lint:server": "yarn --cwd packages/server/ fix:lint",
     "fix:lint:types": "yarn --cwd packages/types/ fix:lint",
     "fix:lint:web": "yarn --cwd packages/web/ fix:lint",
-    "test:dependencies:migrations": "yarn --cwd packages/migrations/ test:dependencies",
     "test:dependencies:server": "yarn --cwd packages/server/ test:dependencies",
     "test:dependencies:types": "yarn --cwd packages/types/ test:dependencies",
     "test:dependencies:web": "yarn --cwd packages/web/ test:dependencies",
-    "test:lint:migrations": "yarn --cwd packages/migrations/ test:lint",
     "test:lint:server": "yarn --cwd packages/server/ test:lint",
     "test:lint:types": "yarn --cwd packages/types/ test:lint",
     "test:lint:web": "yarn --cwd packages/web/ test:lint",
-    "test:types:migrations": "yarn --cwd packages/migrations/ test:types",
     "test:types:server": "yarn --cwd packages/server/ test:types",
     "test:types:types": "yarn --cwd packages/types/ test:types",
     "test:types:web": "yarn --cwd packages/web/ test:types"
