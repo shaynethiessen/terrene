@@ -28,7 +28,7 @@ export function Content() {
 				toast.success('Historic site submitted!');
 			});
 		}
-	}, [runMigration, submit]);
+	}, [runMigration, submit, historicSiteData]);
 
 	return (
 		<ContentWrapper
