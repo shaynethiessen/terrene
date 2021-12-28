@@ -19,12 +19,10 @@ export function Content() {
 
 	if (!historicSiteInfo) return <div>Loading...</div>;
 
-	d(historicSiteInfo, slug);
-
 	return (
 		<ContentWrapper
 			title={historicSiteInfo.name}
-			content={<>historicSiteInfo.content</>}
+			content={<>{historicSiteInfo.content}</>}
 			attribution={historicSiteInfo.attribution}
 			sidebar={
 				<InformationSidebar
