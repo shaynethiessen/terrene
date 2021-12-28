@@ -14,7 +14,7 @@ export function Content() {
 
 	useEffect(() => {
 		if (firstLoad) {
-			server.fetch('historic-sites').then(data => setHistoricSites(data));
+			server.fetch('historic-site/find').then(data => setHistoricSites(data));
 			setFirstLoad(false);
 		}
 	}, [firstLoad]);

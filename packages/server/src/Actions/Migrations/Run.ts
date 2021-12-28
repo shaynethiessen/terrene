@@ -1,13 +1,13 @@
 import type {EntityManager} from '@mikro-orm/core';
-import {Migrations} from '../Migrations';
-import {Migration} from '../Entities/Migration';
-import {environment} from '../core/environment';
+import {Migrations} from '../../Migrations';
+import {Migration} from '../../Entities/Migration';
+import {environment} from '../../core/environment';
 
-export const RunMigrations = {
-	path: 'run-migrations',
+export const Run = {
+	path: 'migrations/run',
 	action: async (unused: unknown, em: EntityManager) => {
 		// environment variable must be set, before we will run migrations -STT
-		if (!environment.migrations) return false;
+		if (!environment.admin) return false;
 		const sqlConnection = em.getConnection();
 
 		Migrations.map(async (migration, index) => {

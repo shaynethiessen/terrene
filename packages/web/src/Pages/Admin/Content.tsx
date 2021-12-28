@@ -8,7 +8,7 @@ export function Content() {
 	const [runMigration, setRunMigration] = useState(false);
 	useEffect(() => {
 		if (runMigration) {
-			server.fetch('run-migrations').then(() => {
+			server.fetch('migrations/run').then(() => {
 				setRunMigration(false);
 				toast.success('Migration started!');
 			});
