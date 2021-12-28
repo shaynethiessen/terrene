@@ -1,17 +1,17 @@
 import React from 'react';
-import type {Designation} from 'terrene-types';
+import type {DesignationType} from 'terrene-types';
 import {Card} from 'semantic-ui-react';
 
 interface Props {
 	longitude: number;
 	latitude: number;
 	activePeriodStart: number;
-	activePeriodEnd: number | null;
-	designations: Designation[];
+	activePeriodEnd?: number | null;
+	designations: DesignationType[];
 }
 
-function formatYear(date: number | null) {
-	if (date === null) {
+function formatYear(date?: number | null) {
+	if (!date) {
 		return 'Present';
 	}
 	if (date < 0) {

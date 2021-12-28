@@ -4,7 +4,9 @@ export enum DesignationTypeEnum {
 	UnescoWorldHeritageSite = 'UNESCO World Heritage Site',
 }
 
-export type Designation = {
+export type DesignationType = {
+	id: string;
+	version: number;
 	officialName: string;
 	year: number;
 	type: DesignationTypeEnum;
@@ -19,6 +21,25 @@ export type HistoricSiteType = {
 	content: string;
 	attribution: string;
 	activePeriodStart: number;
-	activePeriodEnd: number | null;
-	designations: Designation[];
+	activePeriodEnd?: number | null;
+	designations: DesignationType[];
+};
+
+export type DesignationTypeForm = {
+	key: number;
+	officialName?: string;
+	year?: number;
+	type?: DesignationTypeEnum;
+};
+
+export type HistoricSiteTypeForm = {
+	latitude?: number;
+	longitude?: number;
+	name?: string;
+	slug?: string;
+	content?: string;
+	attribution?: string;
+	activePeriodStart?: number;
+	activePeriodEnd?: number | null;
+	designations?: DesignationTypeForm[];
 };

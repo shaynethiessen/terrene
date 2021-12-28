@@ -4,7 +4,6 @@ import {Divider, Grid, Header} from 'semantic-ui-react';
 import logo from './logo.png';
 
 export function Footer() {
-	// todo enable footer options once we add about/donate/team/members/pages -STT
 	return (
 		<Grid padded columns={3}>
 			<Grid.Row>
