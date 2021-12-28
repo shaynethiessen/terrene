@@ -1,4 +1,4 @@
-import {Collection, Entity, ManyToMany, PrimaryKey, Property} from '@mikro-orm/core';
+import {Collection, Entity, ManyToMany, PrimaryKey, Property, Unique} from '@mikro-orm/core';
 import {v4} from 'uuid';
 import {Designation} from './Designation';
 
@@ -20,6 +20,7 @@ export class HistoricSite {
 	name: string;
 
 	@Property({type: 'text', unique: true})
+	@Unique()
 	slug: string;
 
 	@Property({type: 'text'})

@@ -1,5 +1,6 @@
 import type {EntityManager} from '@mikro-orm/core';
 import type {HistoricSiteType} from 'terrene-types';
+import slugify from 'slugify';
 import {HistoricSite} from '../../Entities/HistoricSite';
 import {environment} from '../../core/environment';
 import {Designation} from '../../Entities/Designation';
@@ -17,7 +18,9 @@ export const Add = {
 			return newDesignation;
 		});
 
-		const historicSite = new HistoricSite({...data, designations});
+		const slug = slugify(data.name, {lower: true, strict: true});
+
+		const historicSite = new HistoricSite({...data, designations, slug});
 
 		await em.persist(historicSite);
 
