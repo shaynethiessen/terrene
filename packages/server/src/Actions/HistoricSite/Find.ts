@@ -1,7 +1,7 @@
 import type {EntityManager} from '@mikro-orm/core';
-import {HistoricSite} from '../Entities/HistoricSite';
+import {HistoricSite} from '../../Entities/HistoricSite';
 
-export const HistoricSites = {
-	path: 'historic-sites',
+export const Find = {
+	path: 'historic-site/find',
 	action: async (unused: unknown, em: EntityManager) => em.find(HistoricSite, {}),
 };

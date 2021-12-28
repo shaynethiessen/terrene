@@ -35,7 +35,7 @@ export class HistoricSite {
 	activePeriodEnd?: number | null;
 
 	@ManyToMany(() => Designation)
-	designations? = new Collection<Designation>(this);
+	designations = new Collection<Designation>(this);
 
 	constructor({
 		latitude,
@@ -55,7 +55,7 @@ export class HistoricSite {
 		content: string;
 		attribution: string;
 		activePeriodStart: number;
-		activePeriodEnd: number | null;
+		activePeriodEnd?: number | null;
 		designations: Designation[];
 	}) {
 		this.latitude = latitude;

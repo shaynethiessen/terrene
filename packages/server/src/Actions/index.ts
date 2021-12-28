@@ -1,5 +1,4 @@
 import {HistoricSite} from './HistoricSite';
-import {HistoricSites} from './HistoricSites';
-import {RunMigrations} from './RunMigrations';
+import {Migrations} from './Migrations';
 
-export const Actions = [HistoricSite, HistoricSites, RunMigrations];
+export const Actions = [...HistoricSite, ...Migrations];

@@ -3,6 +3,6 @@ import type {Page} from '../index';
 
 export const HistoricSite: Page = {
 	name: 'Historic Site',
-	route: 'historic-site',
+	route: 'historic-site/:slug',
 	Content,
 };

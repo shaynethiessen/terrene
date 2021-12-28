@@ -12,7 +12,7 @@ export function Content() {
 	const [historicSiteInfo, setHistoricSiteInfo] = useState<HistoricSiteType>();
 
 	useEffect(() => {
-		server.fetch('historic-site', {slug}).then(data => {
+		server.fetch('historic-site/find-one', {slug}).then(data => {
 			setHistoricSiteInfo(data);
 		});
 	}, [slug]);
@@ -22,7 +22,7 @@ export function Content() {
 	return (
 		<ContentWrapper
 			title={historicSiteInfo.name}
-			content={<>historicSiteInfo.content</>}
+			content={<>{historicSiteInfo.content}</>}
 			attribution={historicSiteInfo.attribution}
 			sidebar={
 				<InformationSidebar
