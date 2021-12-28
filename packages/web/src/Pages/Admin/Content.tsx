@@ -38,6 +38,7 @@ export function Content() {
 					<Form.Group widths="equal">
 						<Form.Input
 							label="Name"
+							placeholder="Writing-on-Stone / Áísínai’pi"
 							required
 							onChange={event => {
 								setHistoricSiteData({...historicSiteData, name: event.currentTarget.value});
@@ -47,6 +48,7 @@ export function Content() {
 					<Form.Group widths="equal">
 						<Form.Input
 							label="Latitude"
+							placeholder="49.081944"
 							required
 							type="number"
 							onChange={event => {
@@ -55,6 +57,7 @@ export function Content() {
 						/>
 						<Form.Input
 							label="Longitude"
+							placeholder="-111.616944"
 							required
 							type="number"
 							onChange={event => {
@@ -63,6 +66,7 @@ export function Content() {
 						/>
 						<Form.Input
 							label="Slug"
+							placeholder="writing-on-stone-aisinai-pi"
 							required
 							onChange={event => {
 								setHistoricSiteData({...historicSiteData, slug: event.currentTarget.value});
@@ -81,13 +85,15 @@ export function Content() {
 					<Form.Group widths="equal">
 						<Form.Input
 							label="Attribution"
+							placeholder="Source: www.unesco.org, License: CC-BY-SA IGO 3.0"
 							required
 							onChange={event => {
 								setHistoricSiteData({...historicSiteData, attribution: event.currentTarget.value});
 							}}
 						/>
 						<Form.Input
-							label="Active Period Start (year)"
+							label="Active Period Start"
+							placeholder="-2550"
 							required
 							type="number"
 							onChange={event => {
@@ -95,7 +101,8 @@ export function Content() {
 							}}
 						/>
 						<Form.Input
-							label="Active Period End (year)"
+							label="Active Period End"
+							placeholder="1918"
 							type="number"
 							onChange={event => {
 								setHistoricSiteData({...historicSiteData, activePeriodEnd: parseInt(event.currentTarget.value, 10)});
@@ -107,6 +114,7 @@ export function Content() {
 							<Form.Group widths="equal" key={designation.key}>
 								<Form.Input
 									label="Official Name"
+									placeholder="Writing-on-Stone / Áísínai’pi"
 									required
 									onChange={event => {
 										const {designations} = historicSiteData;
@@ -145,6 +153,7 @@ export function Content() {
 
 								<Form.Input
 									label="Year"
+									placeholder="2019"
 									required
 									type="number"
 									onChange={event => {
