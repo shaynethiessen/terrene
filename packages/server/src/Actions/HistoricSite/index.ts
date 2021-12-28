@@ -1,4 +1,5 @@
 import {FindOne} from './FindOne';
 import {Find} from './Find';
+import {Add} from './Add';
 
-export const HistoricSite = [Find, FindOne];
+export const HistoricSite = [Add, Find, FindOne];

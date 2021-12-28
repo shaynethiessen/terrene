@@ -10,6 +10,7 @@ import {server} from '../../core/server';
 const d = debug('web.src.server');
 
 export function Content() {
+	const [submit, setSubmit] = useState(false);
 	const [runMigration, setRunMigration] = useState(false);
 	const [historicSiteData, setHistoricSiteData] = useState<HistoricSiteTypeForm>();
 	const [key, setKey] = useState(0);
@@ -21,7 +22,13 @@ export function Content() {
 				toast.success('Migration started!');
 			});
 		}
-	}, [runMigration]);
+		if (submit) {
+			server.fetch('historic-site/add', historicSiteData).then(() => {
+				setSubmit(false);
+				toast.success('Historic site submitted!');
+			});
+		}
+	}, [runMigration, submit]);
 
 	return (
 		<ContentWrapper
@@ -194,7 +201,7 @@ export function Content() {
 						</Button>
 					</Form.Group>
 					<Form.Group widths="equal">
-						<Button positive onClick={() => d(historicSiteData)}>
+						<Button positive onClick={() => setSubmit(true)}>
 							Submit
 						</Button>
 					</Form.Group>

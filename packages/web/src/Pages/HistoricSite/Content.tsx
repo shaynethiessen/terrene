@@ -19,6 +19,8 @@ export function Content() {
 
 	if (!historicSiteInfo) return <div>Loading...</div>;
 
+	d(historicSiteInfo, slug);
+
 	return (
 		<ContentWrapper
 			title={historicSiteInfo.name}
