@@ -27,15 +27,16 @@ export function ContentWrapper(props: Props) {
 						</Grid.Row>
 						{props.source && (
 							<Grid.Row>
-								<Grid.Column>
+								<Grid.Column style={{fontStyle: 'italic'}}>
 									This work is licensed under{' '}
 									<Link to={{pathname: 'https://creativecommons.org/licenses/by-sa/3.0/'}} target="_blank">
-										Creative Commons Attribution-ShareAlike 3.0
+										Creative Commons Attribution-ShareAlike 3.0 Unported
 									</Link>{' '}
-									and is a derivative from{' '}
+									license and is a derivative from{' '}
 									<Link to={{pathname: props.source}} target="_blank">
 										wikipedia.org
 									</Link>
+									.
 								</Grid.Column>
 							</Grid.Row>
 						)}
