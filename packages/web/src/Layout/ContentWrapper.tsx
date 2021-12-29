@@ -1,5 +1,5 @@
 import React from 'react';
-import {Grid, Header} from 'semantic-ui-react';
+import {Grid, Header, Image, Modal} from 'semantic-ui-react';
 import {ToastContainer} from 'react-toastify';
 import {Link} from 'react-router-dom';
 
@@ -8,6 +8,7 @@ interface Props {
 	sidebar?: JSX.Element;
 	content: JSX.Element;
 	source?: string;
+	featuredImage?: string;
 }
 
 export function ContentWrapper(props: Props) {
@@ -23,7 +24,17 @@ export function ContentWrapper(props: Props) {
 							</Grid.Column>
 						</Grid.Row>
 						<Grid.Row>
-							<Grid.Column>{props.content}</Grid.Column>
+							<Grid.Column>
+								{props.featuredImage && (
+									<Modal closeIcon trigger={<Image style={{cursor: 'pointer'}} size="large" floated="left" src={props.featuredImage} />}>
+										<Modal.Header>{props.title}</Modal.Header>
+										<Modal.Content image>
+											<Image src={props.featuredImage} />
+										</Modal.Content>
+									</Modal>
+								)}
+								{props.content}
+							</Grid.Column>
 						</Grid.Row>
 						{props.source && (
 							<Grid.Row>
