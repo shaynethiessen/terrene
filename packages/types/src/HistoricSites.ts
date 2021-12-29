@@ -19,7 +19,7 @@ export type HistoricSiteType = {
 	name: string;
 	slug: string;
 	content: string;
-	attribution: string;
+	source: string;
 	activePeriodStart: number;
 	activePeriodEnd?: number | null;
 	designations: DesignationType[];
@@ -38,7 +38,7 @@ export type HistoricSiteTypeForm = {
 	name?: string;
 	slug?: string;
 	content?: string;
-	attribution?: string;
+	source?: string;
 	activePeriodStart?: number;
 	activePeriodEnd?: number | null;
 	designations?: DesignationTypeForm[];

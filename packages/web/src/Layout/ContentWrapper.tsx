@@ -1,12 +1,13 @@
 import React from 'react';
 import {Grid, Header} from 'semantic-ui-react';
 import {ToastContainer} from 'react-toastify';
+import {Link} from 'react-router-dom';
 
 interface Props {
 	title: string;
 	sidebar?: JSX.Element;
 	content: JSX.Element;
-	attribution?: string;
+	source?: string;
 }
 
 export function ContentWrapper(props: Props) {
@@ -24,9 +25,18 @@ export function ContentWrapper(props: Props) {
 						<Grid.Row>
 							<Grid.Column>{props.content}</Grid.Column>
 						</Grid.Row>
-						{props.attribution && (
+						{props.source && (
 							<Grid.Row>
-								<Grid.Column>{props.attribution}</Grid.Column>
+								<Grid.Column>
+									This work is licensed under{' '}
+									<Link to={{pathname: 'https://creativecommons.org/licenses/by-sa/3.0/'}} target="_blank">
+										Creative Commons Attribution-ShareAlike 3.0
+									</Link>{' '}
+									and is a derivative from{' '}
+									<Link to={{pathname: props.source}} target="_blank">
+										wikipedia.org
+									</Link>
+								</Grid.Column>
 							</Grid.Row>
 						)}
 					</Grid>

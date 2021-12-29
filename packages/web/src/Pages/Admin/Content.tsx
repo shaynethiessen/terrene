@@ -27,7 +27,7 @@ export function Content() {
 			const badFields: string[] = [];
 			if (!historicSiteData?.content) badFields.push('Content');
 			if (!historicSiteData?.name) badFields.push('Name');
-			if (!historicSiteData?.attribution) badFields.push('Attribution');
+			if (!historicSiteData?.source) badFields.push('Source');
 			if (!historicSiteData?.activePeriodStart) badFields.push('Active Period Start');
 			if (!historicSiteData?.latitude) badFields.push('Latitude');
 			if (!historicSiteData?.longitude) badFields.push('Longitude');
@@ -107,11 +107,11 @@ export function Content() {
 					</Form.Group>
 					<Form.Group widths="equal">
 						<Form.Input
-							label="Attribution"
-							placeholder="Source: www.unesco.org, License: CC-BY-SA IGO 3.0"
+							label="Source"
+							placeholder="https://en.wikipedia.org/wiki/Writing-on-Stone_Provincial_Park"
 							required
 							onChange={event => {
-								setHistoricSiteData({...historicSiteData, attribution: event.currentTarget.value});
+								setHistoricSiteData({...historicSiteData, source: event.currentTarget.value});
 							}}
 						/>
 						<Form.Input

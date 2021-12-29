@@ -27,7 +27,7 @@ export class HistoricSite {
 	content: string;
 
 	@Property({type: 'text'})
-	attribution: string;
+	source: string;
 
 	@Property({type: 'number'})
 	activePeriodStart: number;
@@ -44,7 +44,7 @@ export class HistoricSite {
 		name,
 		slug,
 		content,
-		attribution,
+		source,
 		activePeriodStart,
 		activePeriodEnd,
 		designations,
@@ -54,7 +54,7 @@ export class HistoricSite {
 		name: string;
 		slug: string;
 		content: string;
-		attribution: string;
+		source: string;
 		activePeriodStart: number;
 		activePeriodEnd?: number | null;
 		designations: Designation[];
@@ -64,7 +64,7 @@ export class HistoricSite {
 		this.name = name;
 		this.slug = slug;
 		this.content = content;
-		this.attribution = attribution;
+		this.source = source;
 		this.activePeriodStart = activePeriodStart;
 		this.activePeriodEnd = activePeriodEnd;
 		if (designations) this.designations?.set(designations);
