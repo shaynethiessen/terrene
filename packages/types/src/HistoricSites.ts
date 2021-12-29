@@ -20,6 +20,7 @@ export type HistoricSiteType = {
 	slug: string;
 	content: string;
 	source: string;
+	featuredImage?: string | null;
 	activePeriodStart: number;
 	activePeriodEnd?: number | null;
 	designations: DesignationType[];

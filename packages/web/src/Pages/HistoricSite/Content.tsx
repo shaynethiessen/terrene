@@ -24,6 +24,7 @@ export function Content() {
 			title={historicSiteInfo.name}
 			content={<p style={{whiteSpace: 'pre-line'}}>{historicSiteInfo.content}</p>}
 			source={historicSiteInfo.source}
+			featuredImage={historicSiteInfo.featuredImage}
 			sidebar={
 				<InformationSidebar
 					latitude={historicSiteInfo.latitude}

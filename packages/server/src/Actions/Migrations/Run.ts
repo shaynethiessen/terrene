@@ -26,10 +26,10 @@ export const Run = {
 				});
 
 				em.persist(mig);
-
-				await em.flush();
 			}
 		});
+
+		await em.flush();
 
 		return true;
 	},

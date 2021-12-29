@@ -2,13 +2,14 @@ import React from 'react';
 import {Grid, Header, Image, Modal} from 'semantic-ui-react';
 import {ToastContainer} from 'react-toastify';
 import {Link} from 'react-router-dom';
+import {environment} from '../core/environment';
 
 interface Props {
 	title: string;
 	sidebar?: JSX.Element;
 	content: JSX.Element;
-	source?: string;
-	featuredImage?: string;
+	source?: string | null;
+	featuredImage?: string | null;
 }
 
 export function ContentWrapper(props: Props) {
@@ -26,10 +27,15 @@ export function ContentWrapper(props: Props) {
 						<Grid.Row>
 							<Grid.Column>
 								{props.featuredImage && (
-									<Modal closeIcon trigger={<Image style={{cursor: 'pointer'}} size="large" floated="left" src={props.featuredImage} />}>
+									<Modal
+										closeIcon
+										trigger={
+											<Image style={{cursor: 'pointer'}} size="large" floated="left" src={`${environment.serverURL}/${props.featuredImage}`} />
+										}
+									>
 										<Modal.Header>{props.title}</Modal.Header>
 										<Modal.Content image>
-											<Image src={props.featuredImage} />
+											<Image src={`${environment.serverURL}/${props.featuredImage}`} />
 										</Modal.Content>
 									</Modal>
 								)}
