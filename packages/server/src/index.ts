@@ -20,7 +20,6 @@ MikroORM.init(mikroOrmConfig()).then(orm => {
 		d(`⚡️[server]: Server is running at https://localhost:${environment.serverPort}`);
 	});
 
-
 	express.get('/', (req, res) => res.send('Express + TypeScript Server'));
 
 	Actions.map(async action => {
