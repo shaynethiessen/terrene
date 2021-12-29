@@ -13,13 +13,17 @@ export class Member {
 	version = 1;
 
 	@Property({type: 'text'})
-	name: string;
+	firstName: string;
+
+	@Property({type: 'text'})
+	lastName: string;
 
 	@Property({type: 'text', unique: true})
 	email: string;
 
-	constructor({name, email}: {name: string; email: string}) {
-		this.name = name;
+	constructor({firstName, lastName, email}: {firstName: string; lastName: string, email: string}) {
+		this.firstName = firstName;
+		this.lastName = lastName;
 		this.email = email;
 	}
 }

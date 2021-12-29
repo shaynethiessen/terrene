@@ -9,15 +9,13 @@ import {server} from '../../core/server';
 const d = debug('web.src.app.home');
 
 export function Content() {
-	const [firstLoad, setFirstLoad] = useState<boolean>(true);
 	const [historicSites, setHistoricSites] = useState<HistoricSiteType[]>();
 
 	useEffect(() => {
-		if (firstLoad) {
-			server.fetch('historic-site/find').then(data => setHistoricSites(data));
-			setFirstLoad(false);
+		if (!historicSites) {
+			server.fetch('historic-site/find').then(response => setHistoricSites(response.data));
 		}
-	}, [firstLoad]);
+	}, [historicSites]);
 
 	if (!historicSites) return <div>Loading...</div>;
 

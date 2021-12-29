@@ -4,12 +4,16 @@ import {toast} from 'react-toastify';
 import type {HistoricSiteTypeForm} from 'terrene-types';
 import debug from 'debug';
 import {DesignationTypeEnum} from 'terrene-types';
+import {useHistory, useParams} from 'react-router-dom';
 import {ContentWrapper} from '../../Layout';
 import {server} from '../../core/server';
 
 const d = debug('web.src.server');
 
 export function Content() {
+	const {push} = useHistory();
+	const {memberId} = useParams<{memberId: string}>();
+	const [memberInfo, setMemberInfo] = useState<string>();
 	const [submit, setSubmit] = useState(false);
 	const [errors, setErrors] = useState<string[]>();
 	const [runMigration, setRunMigration] = useState(false);
@@ -17,6 +21,14 @@ export function Content() {
 	const [key, setKey] = useState(0);
 
 	useEffect(() => {
+		if (!memberInfo) {
+			server
+				.fetch('member/authenticate', {memberId})
+				.then(response => {
+					setMemberInfo(response.data);
+				})
+				.catch(() => push('/404'));
+		}
 		if (runMigration) {
 			server.fetch('migrations/run').then(() => {
 				setRunMigration(false);
@@ -49,7 +61,7 @@ export function Content() {
 				setSubmit(false);
 			}
 		}
-	}, [runMigration, submit, historicSiteData]);
+	}, [runMigration, submit, historicSiteData, memberInfo]);
 
 	return (
 		<ContentWrapper
