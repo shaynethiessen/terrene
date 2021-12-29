@@ -42,7 +42,6 @@ export function Content() {
 				server.fetch('historic-site/add', historicSiteData).then(() => {
 					setSubmit(false);
 					setErrors(undefined);
-					setHistoricSiteData(undefined);
 					toast.success('Historic site submitted!');
 				});
 			} else {

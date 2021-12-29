@@ -22,7 +22,7 @@ export function Content() {
 	return (
 		<ContentWrapper
 			title={historicSiteInfo.name}
-			content={<>{historicSiteInfo.content}</>}
+			content={<p style={{whiteSpace: 'pre-line'}}>{historicSiteInfo.content}</p>}
 			attribution={historicSiteInfo.attribution}
 			sidebar={
 				<InformationSidebar
