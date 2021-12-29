@@ -14,6 +14,8 @@ MikroORM.init(mikroOrmConfig()).then(orm => {
 	express.use(cors());
 	express.use(Express.json());
 
+	express.use(Express.static('assets'));
+
 	express.listen(environment.serverPort, () => {
 		d(`⚡️[server]: Server is running at https://localhost:${environment.serverPort}`);
 	});
