@@ -29,6 +29,9 @@ export class HistoricSite {
 	@Property({type: 'text'})
 	source: string;
 
+	@Property({type: 'text', nullable: true})
+	featuredImage?: string | null;
+
 	@Property({type: 'number'})
 	activePeriodStart: number;
 
@@ -45,6 +48,7 @@ export class HistoricSite {
 		slug,
 		content,
 		source,
+		featuredImage,
 		activePeriodStart,
 		activePeriodEnd,
 		designations,
@@ -55,6 +59,7 @@ export class HistoricSite {
 		slug: string;
 		content: string;
 		source: string;
+		featuredImage?: string | null;
 		activePeriodStart: number;
 		activePeriodEnd?: number | null;
 		designations: Designation[];
@@ -65,6 +70,7 @@ export class HistoricSite {
 		this.slug = slug;
 		this.content = content;
 		this.source = source;
+		this.featuredImage = featuredImage;
 		this.activePeriodStart = activePeriodStart;
 		this.activePeriodEnd = activePeriodEnd;
 		if (designations) this.designations?.set(designations);
