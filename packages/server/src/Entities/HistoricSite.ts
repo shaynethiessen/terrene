@@ -1,4 +1,4 @@
-import {Collection, Entity, ManyToMany, PrimaryKey, Property} from '@mikro-orm/core';
+import {Collection, Entity, ManyToMany, PrimaryKey, Property, Unique} from '@mikro-orm/core';
 import {v4} from 'uuid';
 import {Designation} from './Designation';
 
@@ -20,13 +20,14 @@ export class HistoricSite {
 	name: string;
 
 	@Property({type: 'text', unique: true})
+	@Unique()
 	slug: string;
 
 	@Property({type: 'text'})
 	content: string;
 
 	@Property({type: 'text'})
-	attribution: string;
+	source: string;
 
 	@Property({type: 'number'})
 	activePeriodStart: number;
@@ -43,7 +44,7 @@ export class HistoricSite {
 		name,
 		slug,
 		content,
-		attribution,
+		source,
 		activePeriodStart,
 		activePeriodEnd,
 		designations,
@@ -53,7 +54,7 @@ export class HistoricSite {
 		name: string;
 		slug: string;
 		content: string;
-		attribution: string;
+		source: string;
 		activePeriodStart: number;
 		activePeriodEnd?: number | null;
 		designations: Designation[];
@@ -63,7 +64,7 @@ export class HistoricSite {
 		this.name = name;
 		this.slug = slug;
 		this.content = content;
-		this.attribution = attribution;
+		this.source = source;
 		this.activePeriodStart = activePeriodStart;
 		this.activePeriodEnd = activePeriodEnd;
 		if (designations) this.designations?.set(designations);

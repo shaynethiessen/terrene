@@ -22,8 +22,8 @@ export function Content() {
 	return (
 		<ContentWrapper
 			title={historicSiteInfo.name}
-			content={<>{historicSiteInfo.content}</>}
-			attribution={historicSiteInfo.attribution}
+			content={<p style={{whiteSpace: 'pre-line'}}>{historicSiteInfo.content}</p>}
+			source={historicSiteInfo.source}
 			sidebar={
 				<InformationSidebar
 					latitude={historicSiteInfo.latitude}

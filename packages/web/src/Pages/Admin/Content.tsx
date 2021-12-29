@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Button, Form} from 'semantic-ui-react';
+import {Button, Form, List, Message} from 'semantic-ui-react';
 import {toast} from 'react-toastify';
 import type {HistoricSiteTypeForm} from 'terrene-types';
 import debug from 'debug';
@@ -11,6 +11,7 @@ const d = debug('web.src.server');
 
 export function Content() {
 	const [submit, setSubmit] = useState(false);
+	const [errors, setErrors] = useState<string[]>();
 	const [runMigration, setRunMigration] = useState(false);
 	const [historicSiteData, setHistoricSiteData] = useState<HistoricSiteTypeForm>();
 	const [key, setKey] = useState(0);
@@ -23,10 +24,30 @@ export function Content() {
 			});
 		}
 		if (submit) {
-			server.fetch('historic-site/add', historicSiteData).then(() => {
-				setSubmit(false);
-				toast.success('Historic site submitted!');
+			const badFields: string[] = [];
+			if (!historicSiteData?.content) badFields.push('Content');
+			if (!historicSiteData?.name) badFields.push('Name');
+			if (!historicSiteData?.source) badFields.push('Source');
+			if (!historicSiteData?.activePeriodStart) badFields.push('Active Period Start');
+			if (!historicSiteData?.latitude) badFields.push('Latitude');
+			if (!historicSiteData?.longitude) badFields.push('Longitude');
+			if (!historicSiteData?.designations) badFields.push('Designations');
+			historicSiteData?.designations?.forEach(designation => {
+				if (!designation.type) badFields.push('Type');
+				if (!designation?.year) badFields.push('Year');
+				if (!designation?.officialName) badFields.push('Official Name');
 			});
+
+			if (badFields.length === 0) {
+				server.fetch('historic-site/add', historicSiteData).then(() => {
+					setSubmit(false);
+					setErrors(undefined);
+					toast.success('Historic site submitted!');
+				});
+			} else {
+				setErrors(badFields);
+				setSubmit(false);
+			}
 		}
 	}, [runMigration, submit, historicSiteData]);
 
@@ -35,6 +56,16 @@ export function Content() {
 			title="Admin"
 			content={
 				<Form>
+					{errors && (
+						<Message negative>
+							The Following Fields need to be completed:{' '}
+							<List bulleted>
+								{errors.map(error => {
+									return <List.Item key={error}>{error}</List.Item>;
+								})}
+							</List>
+						</Message>
+					)}
 					<Form.Group widths="equal">
 						<Form.Input
 							label="Name"
@@ -64,14 +95,6 @@ export function Content() {
 								setHistoricSiteData({...historicSiteData, longitude: parseFloat(event.currentTarget.value)});
 							}}
 						/>
-						<Form.Input
-							label="Slug"
-							placeholder="writing-on-stone-aisinai-pi"
-							required
-							onChange={event => {
-								setHistoricSiteData({...historicSiteData, slug: event.currentTarget.value});
-							}}
-						/>
 					</Form.Group>
 					<Form.Group widths="equal">
 						<Form.TextArea
@@ -84,11 +107,11 @@ export function Content() {
 					</Form.Group>
 					<Form.Group widths="equal">
 						<Form.Input
-							label="Attribution"
-							placeholder="Source: www.unesco.org, License: CC-BY-SA IGO 3.0"
+							label="Source"
+							placeholder="https://en.wikipedia.org/wiki/Writing-on-Stone_Provincial_Park"
 							required
 							onChange={event => {
-								setHistoricSiteData({...historicSiteData, attribution: event.currentTarget.value});
+								setHistoricSiteData({...historicSiteData, source: event.currentTarget.value});
 							}}
 						/>
 						<Form.Input
@@ -167,9 +190,6 @@ export function Content() {
 								<Form.Input label="Action">
 									<Button
 										onClick={event => {
-											d(designation.officialName);
-											d(historicSiteData.designations);
-											d(historicSiteData.designations?.filter(i => i.officialName !== designation.officialName));
 											if (historicSiteData?.designations) {
 												const {designations} = historicSiteData;
 												designations.splice(index, 1);

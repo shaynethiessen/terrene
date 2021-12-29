@@ -1,4 +1,4 @@
-import {Entity, PrimaryKey, Property, Unique} from '@mikro-orm/core';
+import {Entity, PrimaryKey, Property} from '@mikro-orm/core';
 import debug from 'debug';
 import {v4} from 'uuid';
 
@@ -15,8 +15,7 @@ export class Member {
 	@Property({type: 'text'})
 	name: string;
 
-	@Property({type: 'text'})
-	@Unique()
+	@Property({type: 'text', unique: true})
 	email: string;
 
 	constructor({name, email}: {name: string; email: string}) {
