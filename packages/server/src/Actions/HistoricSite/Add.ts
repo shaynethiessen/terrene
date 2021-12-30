@@ -9,23 +9,21 @@ export const Add = {
 	path: 'historic-site/add',
 	action: async (data: HistoricSiteType, em: EntityManager) => {
 		// environment variable must be set, before we will run migrations -STT
-		if (!environment.admin) return false;
+		if (environment.admin) {
+			const designations = data.designations.map(designation => {
+				const newDesignation = new Designation(designation);
+				em.persist(newDesignation);
 
-		const designations = data.designations.map(designation => {
-			const newDesignation = new Designation(designation);
-			em.persist(newDesignation);
+				return newDesignation;
+			});
 
-			return newDesignation;
-		});
+			const slug = slugify(data.name, {lower: true, strict: true});
 
-		const slug = slugify(data.name, {lower: true, strict: true});
+			const historicSite = new HistoricSite({...data, designations, slug});
 
-		const historicSite = new HistoricSite({...data, designations, slug});
+			await em.persist(historicSite);
 
-		await em.persist(historicSite);
-
-		await em.flush();
-
-		return true;
+			await em.flush();
+		}
 	},
 };

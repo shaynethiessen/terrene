@@ -2,7 +2,7 @@ import React from 'react';
 import {Grid, Header, Image, Modal} from 'semantic-ui-react';
 import {ToastContainer} from 'react-toastify';
 import {Link} from 'react-router-dom';
-import {environment} from '../core/environment';
+import {getImage} from '../lib/getImage';
 
 interface Props {
 	title: string;
@@ -29,13 +29,11 @@ export function ContentWrapper(props: Props) {
 								{props.featuredImage && (
 									<Modal
 										closeIcon
-										trigger={
-											<Image style={{cursor: 'pointer'}} size="large" floated="left" src={`${environment.serverURL}/${props.featuredImage}`} />
-										}
+										trigger={<Image style={{cursor: 'pointer'}} size="large" floated="left" src={getImage(props.featuredImage).thumb} />}
 									>
 										<Modal.Header>{props.title}</Modal.Header>
 										<Modal.Content image>
-											<Image src={`${environment.serverURL}/${props.featuredImage}`} />
+											<Image src={getImage(props.featuredImage).large} />
 										</Modal.Content>
 									</Modal>
 								)}

@@ -21,7 +21,10 @@ export class Member {
 	@Property({type: 'text', unique: true})
 	email: string;
 
-	constructor({firstName, lastName, email}: {firstName: string; lastName: string, email: string}) {
+	@Property({type: 'date'})
+	joined = new Date();
+
+	constructor({firstName, lastName, email}: {firstName: string; lastName: string; email: string}) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;

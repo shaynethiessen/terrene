@@ -61,7 +61,7 @@ export function Content() {
 				setSubmit(false);
 			}
 		}
-	}, [runMigration, submit, historicSiteData, memberInfo]);
+	}, [runMigration, submit, historicSiteData, memberInfo, memberId, push]);
 
 	return (
 		<ContentWrapper
