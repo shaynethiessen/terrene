@@ -2,35 +2,36 @@ import type {EntityManager} from '@mikro-orm/core';
 import {Migrations} from '../../Migrations';
 import {Migration} from '../../Entities/Migration';
 import {environment} from '../../core/environment';
+import {Member} from '../../Entities/Member';
 
 export const Run = {
 	path: 'migrations/run',
-	action: async (unused: unknown, em: EntityManager) => {
-		// environment variable must be set, before we will run migrations -STT
-		if (!environment.admin) return false;
-		const sqlConnection = em.getConnection();
+	action: async ({memberId}: {memberId: string}, em: EntityManager) => {
+		const member = await em.findOne(Member, {id: memberId});
 
-		Migrations.map(async (migration, index) => {
-			const duplicateMigration = await em.find(Migration, {name: migration.name});
-			if (duplicateMigration.length === 0) {
-				migration.action.map(action => {
-					sqlConnection.execute(action);
+		if (environment.admin && member) {
+			const sqlConnection = em.getConnection();
 
-					return true;
-				});
+			Migrations.map(async (migration, index) => {
+				const duplicateMigration = await em.find(Migration, {name: migration.name});
+				if (duplicateMigration.length === 0) {
+					migration.action.map(action => {
+						sqlConnection.execute(action);
 
-				const mig = new Migration({
-					name: migration.name,
-					success: true,
-					index,
-				});
+						return true;
+					});
 
-				em.persist(mig);
-			}
-		});
+					const mig = new Migration({
+						name: migration.name,
+						success: true,
+						index,
+					});
 
-		await em.flush();
+					em.persist(mig);
+				}
+			});
 
-		return true;
+			await em.flush();
+		}
 	},
 };

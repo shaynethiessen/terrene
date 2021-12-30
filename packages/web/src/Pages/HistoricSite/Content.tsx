@@ -12,8 +12,8 @@ export function Content() {
 	const [historicSiteInfo, setHistoricSiteInfo] = useState<HistoricSiteType>();
 
 	useEffect(() => {
-		server.fetch('historic-site/find-one', {slug}).then(data => {
-			setHistoricSiteInfo(data);
+		server.fetch('historic-site/find-one', {slug}).then(response => {
+			setHistoricSiteInfo(response.data);
 		});
 	}, [slug]);
 

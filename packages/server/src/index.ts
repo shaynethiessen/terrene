@@ -24,7 +24,10 @@ MikroORM.init(mikroOrmConfig()).then(orm => {
 
 	Actions.map(async action => {
 		express.post(`/${action.path}`, (req, res) => {
-			action.action({...req.body}, orm.em).then(value => res.send(value).status(200));
+			action
+				.action({...req.body}, orm.em)
+				.then(value => res.status(200).send(value))
+				.catch(() => res.status(500).send());
 		});
 
 		return true;

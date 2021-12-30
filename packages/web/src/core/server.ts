@@ -12,7 +12,7 @@ export const server = {
 			},
 			body: JSON.stringify(body),
 		});
-
-		return response.json();
+		const data = await response.json();
+		return {data, status: response.status};
 	},
 };

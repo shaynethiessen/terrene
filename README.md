@@ -8,7 +8,7 @@
 3. Navigate to project root directory
 4. Run `yarn`
 5. Run `yarn build:types`
-6. Run `yarn database:create`
+6. Run `yarn db:create`
 7. Run `yarn start:server`
 8. Run `yarn start:web`
 
@@ -34,7 +34,7 @@ You will also see any lint errors in the console.
 
 Runs migrations to update database setup. Migrations are ran/tested against copies of our production server. Depending on your configuration, they may or may not work.
 
-For development purposes we recommend running `yarn database:create` to create a clean database.
+For development purposes we recommend running `yarn db:create` to create a clean database.
 
 ### `yarn build:server`
 
