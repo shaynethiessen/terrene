@@ -26,6 +26,20 @@ export type HistoricSiteType = {
 	designations: DesignationType[];
 };
 
+export type HistoricSiteTypeAdd = {
+	latitude: number;
+	longitude: number;
+	name: string;
+	slug: string;
+	content: string;
+	source: string;
+	featuredImage?: string | null;
+	activePeriodStart: number;
+	activePeriodEnd?: number | null;
+	designations: DesignationType[];
+	memberId: string;
+};
+
 export type DesignationTypeForm = {
 	key: number;
 	officialName?: string;

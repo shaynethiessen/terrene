@@ -29,12 +29,18 @@ export function Content() {
 				})
 				.catch(() => push('/404'));
 		}
+	}, [memberInfo, memberId, push]);
+
+	useEffect(() => {
 		if (runMigration) {
-			server.fetch('migrations/run').then(() => {
+			server.fetch('migrations/run', {memberId}).then(() => {
 				setRunMigration(false);
 				toast.success('Migration started!');
 			});
 		}
+	}, [runMigration, memberId]);
+
+	useEffect(() => {
 		if (submit) {
 			const badFields: string[] = [];
 			if (!historicSiteData?.content) badFields.push('Content');
@@ -51,7 +57,7 @@ export function Content() {
 			});
 
 			if (badFields.length === 0) {
-				server.fetch('historic-site/add', historicSiteData).then(() => {
+				server.fetch('historic-site/add', {...historicSiteData, memberId}).then(() => {
 					setSubmit(false);
 					setErrors(undefined);
 					toast.success('Historic site submitted!');
@@ -61,7 +67,7 @@ export function Content() {
 				setSubmit(false);
 			}
 		}
-	}, [runMigration, submit, historicSiteData, memberInfo, memberId, push]);
+	}, [submit, historicSiteData, memberId]);
 
 	return (
 		<ContentWrapper
