@@ -24,7 +24,7 @@ export function HistoricSiteMarkers() {
 			setZoom(5);
 			setUserLocationEnabled(true);
 		});
-	}, [navigator.geolocation]);
+	});
 
 	useEffect(() => {
 		if (!historicSites) {
