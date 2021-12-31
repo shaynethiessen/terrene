@@ -24,3 +24,5 @@ To submit your code, fork the Terrene repository, create a new branch on your fo
 In the PR template, please describe the change, including the motivation/context, test coverage, and any other relevant information.
 
 A core reviewer will review your PR in around one business day and provide feedback on any changes it requires to be approved. Once approved and all the tests pass, the reviewer will click the Squash and merge button in Github.
+
+As a thank you to those who contribute code to this project, we will display your name and GitHub avatar on the team page of our website (https://terrene.ca/company/team)
