@@ -1,6 +1,9 @@
 import React from 'react';
 import {Header, List} from 'semantic-ui-react';
+import debug from 'debug';
 import {ContentWrapper} from '../../Layout';
+
+const d = debug('web.src.server');
 
 export function Content() {
 	return (
