@@ -6,6 +6,7 @@ import {Login} from './Login';
 import {PrivacyPolicy} from './PrivacyPolicy';
 import {TermsAndConditions} from './TermsAndConditions';
 import {Admin} from './Admin';
+import {Team} from './Team';
 
 export type Page = {
 	name: string;
@@ -15,4 +16,4 @@ export type Page = {
 };
 
 // Error page needs to always be last on this list. -STT
-export const Pages: Page[] = [Admin, Home, HistoricSite, Login, PrivacyPolicy, TermsAndConditions, Error];
+export const Pages: Page[] = [Admin, Home, HistoricSite, Login, PrivacyPolicy, Team, TermsAndConditions, Error];

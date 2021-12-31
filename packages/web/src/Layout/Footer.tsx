@@ -19,36 +19,36 @@ export function Footer() {
 					</Header>
 				</Grid.Column>
 			</Grid.Row>
-			{/* <Grid.Row> */}
-			{/*	<Grid.Column> */}
-			{/*		<Header as="h3">Company</Header> */}
-			{/*		<Link to="/about"> */}
-			{/*			<Header as="h4" color="grey"> */}
-			{/*				About */}
-			{/*			</Header> */}
-			{/*		</Link> */}
-			{/*		<br /> */}
-			{/*		<Link to="/donate"> */}
-			{/*			<Header as="h4" color="grey"> */}
-			{/*				Donate */}
-			{/*			</Header> */}
-			{/*		</Link> */}
-			{/*		<br /> */}
-			{/*		<Link to="/team"> */}
-			{/*			<Header as="h4" color="grey"> */}
-			{/*				Team */}
-			{/*			</Header> */}
-			{/*		</Link> */}
-			{/*	</Grid.Column> */}
-			{/*	<Grid.Column> */}
-			{/*		<Header as="h3">Community</Header> */}
-			{/*		<Link to="/members"> */}
-			{/*			<Header as="h4" color="grey"> */}
-			{/*				Members */}
-			{/*			</Header> */}
-			{/*		</Link> */}
-			{/*	</Grid.Column> */}
-			{/* </Grid.Row> */}
+			<Grid.Row>
+				<Grid.Column>
+					<Header as="h3">Company</Header>
+					{/*		<Link to="/company/about"> */}
+					{/*			<Header as="h4" color="grey"> */}
+					{/*				About */}
+					{/*			</Header> */}
+					{/*		</Link> */}
+					{/*		<br /> */}
+					{/*		<Link to="/company/donate"> */}
+					{/*			<Header as="h4" color="grey"> */}
+					{/*				Donate */}
+					{/*			</Header> */}
+					{/*		</Link> */}
+					{/*		<br /> */}
+					<Link to="/company/team">
+						<Header as="h4" color="grey">
+							Team
+						</Header>
+					</Link>
+				</Grid.Column>
+				{/*	<Grid.Column> */}
+				{/*		<Header as="h3">Community</Header> */}
+				{/*		<Link to="/community/members"> */}
+				{/*			<Header as="h4" color="grey"> */}
+				{/*				Members */}
+				{/*			</Header> */}
+				{/*		</Link> */}
+				{/*	</Grid.Column> */}
+			</Grid.Row>
 			<Divider />
 			<Grid.Row>
 				<Grid.Column>
