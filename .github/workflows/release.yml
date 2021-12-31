@@ -41,7 +41,7 @@ jobs:
       - name: Force installation of types package
         if: steps.cache.outputs.cache-hit != 'true'
         run: |
-          yarn -- force
+          yarn --force
 
       # Build
       - name: Build Docker - Web
