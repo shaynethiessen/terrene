@@ -20,14 +20,12 @@ export function Content() {
 		}
 	}, [memberInfo]);
 
-	if (!memberInfo) return <div>Loading...</div>;
-
 	return (
 		<ContentWrapper
 			title="Team"
 			content={
 				<Card.Group>
-					{memberInfo.map(member => {
+					{memberInfo?.map(member => {
 						return (
 							<Card key={member.id}>
 								<Image src={member.role === 'President' ? placeHolderImageMale : placeHolderImageFemale} wrapped ui={false} />
