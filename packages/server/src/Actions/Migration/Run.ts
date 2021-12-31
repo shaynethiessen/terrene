@@ -6,8 +6,8 @@ import {Member} from '../../Entities/Member';
 
 export const Run = {
 	path: 'migrations/run',
-	action: async ({memberId}: {memberId: string}, em: EntityManager) => {
-		const member = await em.findOne(Member, {id: memberId});
+	action: async (params: unknown, authorization: string, em: EntityManager): Promise<void> => {
+		const member = await em.findOne(Member, {id: authorization});
 
 		if (environment.admin && member) {
 			const sqlConnection = em.getConnection();

@@ -17,15 +17,15 @@ MikroORM.init(mikroOrmConfig()).then(orm => {
 	express.use(Express.static('assets'));
 
 	express.listen(environment.serverPort, () => {
-		d(`⚡️[server]: Server is running at https://localhost:${environment.serverPort}`);
+		d(`⚡️[server]: Server is running at ${environment.dbDomain}:${environment.serverPort}`);
 	});
 
-	express.get('/', (req, res) => res.send('Express + TypeScript Server'));
+	express.get('/', (req, res) => res.send('Terrene Server'));
 
 	Actions.map(async action => {
 		express.post(`/${action.path}`, (req, res) => {
 			action
-				.action({...req.body}, orm.em)
+				.action(req.body.params, req.body.authorization, orm.em)
 				.then(value => res.status(200).send(value))
 				.catch(() => res.status(500).send());
 		});

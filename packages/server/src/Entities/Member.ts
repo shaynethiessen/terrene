@@ -1,7 +1,7 @@
 import {Entity, Enum, PrimaryKey, Property} from '@mikro-orm/core';
 import debug from 'debug';
 import {v4} from 'uuid';
-import {RolesEnum} from 'terrene-types';
+import {MemberRoleEnum} from 'terrene-types';
 
 const d = debug('terrene.server.users.entities.User');
 
@@ -22,13 +22,13 @@ export class Member {
 	@Property({type: 'text', unique: true})
 	email: string;
 
-	@Enum({items: () => RolesEnum, type: 'text'})
-	role: RolesEnum;
+	@Enum({items: () => MemberRoleEnum, type: 'text'})
+	role: MemberRoleEnum;
 
 	@Property({type: 'date'})
 	joined = new Date();
 
-	constructor({firstName, lastName, email, role}: {firstName: string; lastName: string; email: string; role: RolesEnum}) {
+	constructor({firstName, lastName, email, role}: {firstName: string; lastName: string; email: string; role: MemberRoleEnum}) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;

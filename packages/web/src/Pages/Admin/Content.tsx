@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {Button, Form, List, Message} from 'semantic-ui-react';
 import {toast} from 'react-toastify';
-import type {HistoricSiteTypeForm} from 'terrene-types';
 import debug from 'debug';
 import {DesignationTypeEnum} from 'terrene-types';
 import {useHistory, useParams} from 'react-router-dom';
@@ -10,6 +9,25 @@ import {server} from '../../core/server';
 
 const d = debug('web.src.server');
 
+type HistoricSiteForm = {
+	latitude?: number;
+	longitude?: number;
+	name?: string;
+	slug?: string;
+	content?: string;
+	source?: string;
+	activePeriodStart?: number;
+	activePeriodEnd?: number | null;
+	designations?: DesignationForm[];
+};
+
+export type DesignationForm = {
+	key: number;
+	officialName?: string;
+	year?: number;
+	type?: DesignationTypeEnum;
+};
+
 export function Content() {
 	const {push} = useHistory();
 	const {memberId} = useParams<{memberId: string}>();
@@ -17,13 +35,13 @@ export function Content() {
 	const [submit, setSubmit] = useState(false);
 	const [errors, setErrors] = useState<string[]>();
 	const [runMigration, setRunMigration] = useState(false);
-	const [historicSiteData, setHistoricSiteData] = useState<HistoricSiteTypeForm>();
+	const [historicSiteData, setHistoricSiteData] = useState<HistoricSiteForm>();
 	const [key, setKey] = useState(0);
 
 	useEffect(() => {
 		if (!memberInfo) {
 			server
-				.fetch('member/authenticate', {memberId})
+				.fetch('member/authenticate', {}, memberId)
 				.then(response => {
 					setMemberInfo(response.data);
 				})
@@ -33,7 +51,7 @@ export function Content() {
 
 	useEffect(() => {
 		if (runMigration) {
-			server.fetch('migrations/run', {memberId}).then(() => {
+			server.fetch('migrations/run', {}, memberId).then(() => {
 				setRunMigration(false);
 				toast.success('Migration started!');
 			});
@@ -57,7 +75,7 @@ export function Content() {
 			});
 
 			if (badFields.length === 0) {
-				server.fetch('historic-site/add', {...historicSiteData, memberId}).then(() => {
+				server.fetch('historic-site/add', historicSiteData, memberId).then(() => {
 					setSubmit(false);
 					setErrors(undefined);
 					toast.success('Historic site submitted!');

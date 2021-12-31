@@ -1,15 +1,14 @@
-export enum RolesEnum {
+export enum MemberRoleEnum {
 	President = 'President',
 	Secretary = 'Secretary',
 	Member = 'Member',
 }
 
-export type MemberType = {
-	id: number;
-	name: string;
+export type MemberEntity = {
+	id: string;
+	version: number;
 	firstName: string;
 	lastName: string;
-	email: string;
+	role: MemberRoleEnum;
 	joined: Date;
-	role: RolesEnum;
 };
