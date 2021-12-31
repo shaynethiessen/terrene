@@ -36,7 +36,7 @@ jobs:
       # Build Types
       - name: Build Docker - Types
         run: |
-          yarn docker:build:types
+          yarn build:types
 
       - name: Force installation of types package
         if: steps.cache.outputs.cache-hit != 'true'
