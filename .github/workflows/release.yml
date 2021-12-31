@@ -33,6 +33,16 @@ jobs:
         run: |
           yarn
 
+      # Build Types
+      - name: Build Docker - Types
+        run: |
+          yarn docker:build:types
+
+      - name: Force installation of types package
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: |
+          yarn -- force
+
       # Build
       - name: Build Docker - Web
         run: |
