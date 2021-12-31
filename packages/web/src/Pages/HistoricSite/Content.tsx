@@ -17,22 +17,22 @@ export function Content() {
 		});
 	}, [slug]);
 
-	if (!historicSiteInfo) return <div>Loading...</div>;
-
 	return (
 		<ContentWrapper
-			title={historicSiteInfo.name}
-			content={<p style={{whiteSpace: 'pre-line'}}>{historicSiteInfo.content}</p>}
-			source={historicSiteInfo.source}
-			featuredImage={historicSiteInfo.featuredImage}
+			title={historicSiteInfo?.name || ''}
+			content={<p style={{whiteSpace: 'pre-line'}}>{historicSiteInfo?.content}</p>}
+			source={historicSiteInfo?.source}
+			featuredImage={historicSiteInfo?.featuredImage}
 			sidebar={
-				<InformationSidebar
-					latitude={historicSiteInfo.latitude}
-					longitude={historicSiteInfo.longitude}
-					activePeriodStart={historicSiteInfo.activePeriodStart}
-					activePeriodEnd={historicSiteInfo.activePeriodEnd}
-					designations={historicSiteInfo.designations}
-				/>
+				historicSiteInfo?.latitude ? (
+					<InformationSidebar
+						latitude={historicSiteInfo?.latitude}
+						longitude={historicSiteInfo?.longitude}
+						activePeriodStart={historicSiteInfo?.activePeriodStart}
+						activePeriodEnd={historicSiteInfo?.activePeriodEnd}
+						designations={historicSiteInfo?.designations}
+					/>
+				) : undefined
 			}
 		/>
 	);
