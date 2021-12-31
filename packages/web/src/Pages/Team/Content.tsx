@@ -1,10 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import {Card, Image} from 'semantic-ui-react';
 import type {MemberType} from 'terrene-types';
+import debug from 'debug';
 import {ContentWrapper} from '../../Layout';
 import {server} from '../../core/server';
 import placeHolderImageMale from './placeHolderImageMale.png';
 import placeHolderImageFemale from './placeHolderImageFemale.png';
+
+const d = debug('web.src.server');
 
 export function Content() {
 	const [memberInfo, setMemberInfo] = useState<MemberType[]>();
@@ -15,7 +18,7 @@ export function Content() {
 				setMemberInfo(response.data);
 			});
 		}
-	}, memberInfo);
+	}, [memberInfo]);
 
 	if (!memberInfo) return <div>Loading...</div>;
 
