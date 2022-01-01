@@ -9,5 +9,4 @@ export const environment = {
 	dbDomain: process.env.DB_DOMAIN,
 	dbServer: process.env.DB_SERVER,
 	dbPort: process.env.DB_PORT,
-	admin: process.env.ADMIN?.toLowerCase() === 'true',
 };

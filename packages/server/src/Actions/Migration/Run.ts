@@ -1,7 +1,6 @@
 import type {EntityManager} from '@mikro-orm/core';
 import {Migrations} from '../../Migrations';
 import {Migration} from '../../Entities/Migration';
-import {environment} from '../../core/environment';
 import {Member} from '../../Entities/Member';
 
 export const Run = {
@@ -9,7 +8,7 @@ export const Run = {
 	action: async (params: unknown, authorization: string, em: EntityManager): Promise<void> => {
 		const member = await em.findOne(Member, {id: authorization});
 
-		if (environment.admin && member) {
+		if (member) {
 			const sqlConnection = em.getConnection();
 
 			Migrations.map(async (migration, index) => {
