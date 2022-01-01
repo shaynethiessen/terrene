@@ -1,5 +1,11 @@
+import type {EntityManager} from '@mikro-orm/core';
 import {HistoricSite} from './HistoricSite';
 import {Member} from './Member';
-import {Migrations} from './Migrations';
+import {Migrations} from './Migration';
 
-export const Actions = [...HistoricSite, ...Member, ...Migrations];
+type Action = {
+	path: string;
+	action: (params: any, authorization: any, em: EntityManager) => Promise<unknown>;
+};
+
+export const Actions: Action[] = [...HistoricSite, ...Member, ...Migrations];

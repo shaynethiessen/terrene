@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {Marker, Popup, useMap} from '@monsonjeremy/react-leaflet';
 import {Link} from 'react-router-dom';
 import {Header, Image} from 'semantic-ui-react';
-import type {HistoricSiteType} from 'terrene-types';
+import type {HistoricSiteEntity} from 'terrene-types';
 import iconShadow from 'leaflet/dist/images/marker-shadow.png';
 import {icon as LIcon} from 'leaflet';
 import userIcon from './userIcon.png';
@@ -11,7 +11,7 @@ import {server} from '../../core/server';
 import {getImage} from '../../lib/getImage';
 
 export function HistoricSiteMarkers() {
-	const [historicSites, setHistoricSites] = useState<HistoricSiteType[]>();
+	const [historicSites, setHistoricSites] = useState<HistoricSiteEntity[]>();
 	const [lat, setLat] = useState(46);
 	const [lng, setLng] = useState(-70);
 	const [zoom, setZoom] = useState(3);

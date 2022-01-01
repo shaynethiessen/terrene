@@ -1,6 +1,7 @@
 import {Entity, PrimaryKey, Property, Unique} from '@mikro-orm/core';
 import debug from 'debug';
 import {v4} from 'uuid';
+import type {MigrationEntityConstructor} from 'terrene-types';
 
 const d = debug('tacs.domain.system.entities.Migration');
 
@@ -22,7 +23,7 @@ export class Migration {
 	@Property({type: 'boolean'})
 	success: boolean;
 
-	constructor({name, success, index}: {name: string; index: number; success: boolean}) {
+	constructor({name, success, index}: MigrationEntityConstructor) {
 		this.name = name;
 		this.success = success;
 		this.index = index;

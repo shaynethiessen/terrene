@@ -1,5 +1,5 @@
 import React from 'react';
-import type {DesignationType} from 'terrene-types';
+import type {DesignationEntity} from 'terrene-types';
 import {Card} from 'semantic-ui-react';
 
 interface Props {
@@ -7,7 +7,7 @@ interface Props {
 	latitude: number;
 	activePeriodStart: number;
 	activePeriodEnd?: number | null;
-	designations: DesignationType[];
+	designations: DesignationEntity[];
 }
 
 function formatYear(date?: number | null) {

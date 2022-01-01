@@ -1,6 +1,7 @@
 import {Entity, Enum, PrimaryKey, Property} from '@mikro-orm/core';
 import {v4} from 'uuid';
 import {DesignationTypeEnum} from 'terrene-types';
+import type {DesignationEntityConstructor} from 'terrene-types';
 
 @Entity()
 export class Designation {
@@ -19,7 +20,7 @@ export class Designation {
 	@Property({type: 'text'})
 	officialName: string;
 
-	constructor({type, year, officialName}: {type: DesignationTypeEnum; year: number; officialName: string}) {
+	constructor({type, year, officialName}: DesignationEntityConstructor) {
 		this.type = type;
 		this.year = year;
 		this.officialName = officialName;

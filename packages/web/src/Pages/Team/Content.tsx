@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {Card, Header, Image} from 'semantic-ui-react';
-import type {MemberType} from 'terrene-types';
+import type {MemberGetTeamReturn} from 'terrene-types';
 import debug from 'debug';
 import {ContentWrapper} from '../../Layout';
 import {server} from '../../core/server';
@@ -18,7 +18,7 @@ type CodeContributors = {
 };
 
 export function Content() {
-	const [memberInfo, setMemberInfo] = useState<MemberType[]>();
+	const [memberInfo, setMemberInfo] = useState<MemberGetTeamReturn>();
 	const [codeContributors, setCodeContributors] = useState<CodeContributors[]>();
 
 	useEffect(() => {
