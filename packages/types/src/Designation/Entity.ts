@@ -10,7 +10,7 @@ export type DesignationEntityConstructor = {
 	officialName: string;
 };
 
-export type DesignationEntity = DesignationEntityConstructor &{
+export type DesignationEntity = DesignationEntityConstructor & {
 	id: string;
 	version: number;
 };

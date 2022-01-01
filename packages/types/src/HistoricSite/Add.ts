@@ -1,3 +1,3 @@
-import type {HistoricSiteEntity} from './Entity';
+import type {HistoricSiteEntityConstructor} from './Entity';
 
-export type HistoricSiteAddParams = Omit<HistoricSiteEntity, 'id' | 'version'>;
+export type HistoricSiteAddParams = HistoricSiteEntityConstructor;
