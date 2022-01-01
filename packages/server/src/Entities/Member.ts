@@ -22,16 +22,20 @@ export class Member {
 	@Property({type: 'text', unique: true})
 	email: string;
 
+	@Property({type: 'text'})
+	password: string;
+
 	@Enum({items: () => MemberRoleEnum, type: 'text'})
 	role: MemberRoleEnum;
 
 	@Property({type: 'date'})
 	joined = new Date();
 
-	constructor({firstName, lastName, email, role}: MemberEntityConstructor) {
+	constructor({firstName, lastName, email, password, role}: MemberEntityConstructor) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
+		this.password = password;
 		this.role = role;
 	}
 }

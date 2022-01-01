@@ -5,8 +5,10 @@
   "dependencies": {
     "@mikro-orm/core": "^4.5.9",
     "@mikro-orm/postgresql": "^4.5.9",
+    "@types/bcryptjs": "^2.4.2",
     "@types/cors": "^2.8.12",
     "@types/uuid": "^8.3.3",
+    "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "debug": "^4.3.3",
     "dotenv": "^10.0.0",
