@@ -1,2 +1,2 @@
-export type {DesignationEntity} from './Entity';
+export type {DesignationEntity, DesignationEntityConstructor} from './Entity';
 export {DesignationTypeEnum} from './Entity';

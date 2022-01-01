@@ -1,5 +1,6 @@
 import {Collection, Entity, ManyToMany, PrimaryKey, Property, Unique} from '@mikro-orm/core';
 import {v4} from 'uuid';
+import type {HistoricSiteEntityConstructor} from 'terrene-types';
 import {Designation} from './Designation';
 
 @Entity()
@@ -52,18 +53,7 @@ export class HistoricSite {
 		activePeriodStart,
 		activePeriodEnd,
 		designations,
-	}: {
-		latitude: number;
-		longitude: number;
-		name: string;
-		slug: string;
-		content: string;
-		source: string;
-		featuredImage?: string | null;
-		activePeriodStart: number;
-		activePeriodEnd?: number | null;
-		designations: Designation[];
-	}) {
+	}: HistoricSiteEntityConstructor) {
 		this.latitude = latitude;
 		this.longitude = longitude;
 		this.name = name;

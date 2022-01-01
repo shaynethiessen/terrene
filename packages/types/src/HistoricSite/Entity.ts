@@ -1,8 +1,6 @@
 import type {DesignationEntity} from '../Designation';
 
-export type HistoricSiteEntity = {
-	id: string;
-	version: number;
+export type HistoricSiteEntityConstructor = {
 	latitude: number;
 	longitude: number;
 	name: string;
@@ -13,4 +11,9 @@ export type HistoricSiteEntity = {
 	activePeriodStart: number;
 	activePeriodEnd?: number | null;
 	designations: DesignationEntity[];
+};
+
+export type HistoricSiteEntity = HistoricSiteEntityConstructor & {
+	id: string;
+	version: number;
 };

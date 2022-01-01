@@ -4,10 +4,13 @@ export enum DesignationTypeEnum {
 	UnescoWorldHeritageSite = 'UNESCO World Heritage Site',
 }
 
-export type DesignationEntity = {
+export type DesignationEntityConstructor = {
+	type: DesignationTypeEnum;
+	year: number;
+	officialName: string;
+};
+
+export type DesignationEntity = DesignationEntityConstructor &{
 	id: string;
 	version: number;
-	officialName: string;
-	year: number;
-	type: DesignationTypeEnum;
 };

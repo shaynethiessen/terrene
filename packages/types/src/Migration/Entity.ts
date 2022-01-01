@@ -1,7 +1,9 @@
-export type MigrationEntity = {
-	id: string;
+export type MigrationEntityConstructor = {
 	name: string;
 	index: number;
-	date: Date;
 	success: boolean;
+};
+
+export type MigrationEntity = MigrationEntityConstructor & {
+	id: string;
 };

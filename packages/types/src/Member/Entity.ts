@@ -4,11 +4,14 @@ export enum MemberRoleEnum {
 	Member = 'Member',
 }
 
-export type MemberEntity = {
-	id: string;
-	version: number;
+export type MemberEntityConstructor = {
 	firstName: string;
 	lastName: string;
+	email: string;
 	role: MemberRoleEnum;
-	joined: Date;
+};
+
+export type MemberEntity = MemberEntityConstructor & {
+	id: string;
+	version: number;
 };

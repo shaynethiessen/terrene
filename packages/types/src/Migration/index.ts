@@ -1,1 +1,1 @@
-export type {MigrationEntity} from './Entity';
+export type {MigrationEntity, MigrationEntityConstructor} from './Entity';
