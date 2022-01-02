@@ -16,7 +16,6 @@ export type Page = {
 	name: string;
 	route: string;
 	Content: ComponentType;
-	exact?: boolean;
 };
 
 // Error page needs to always be last on this list. -STT

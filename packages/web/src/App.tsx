@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import debug from 'debug';
 import {Footer, MainMenu, ScrollToTop} from './Layout';
 import {Pages} from './Pages';
@@ -11,16 +11,12 @@ function App() {
 			<ScrollToTop />
 			<div style={{height: 'calc(100% - 40px)'}}>
 				<MainMenu />
-				<Switch>
+				<Routes>
 					{Pages.map(page => {
-						const {exact, route, name, Content} = page;
-						return (
-							<Route exact={exact} path={`/${route}`} key={name}>
-								<Content />
-							</Route>
-						);
+						const {route, name, Content} = page;
+						return <Route path={`/${route}`} key={name} element={<Content />} />;
 					})}
-				</Switch>
+				</Routes>
 				<Footer />
 			</div>
 		</BrowserRouter>
