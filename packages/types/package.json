@@ -5,12 +5,12 @@
   "main": "./build/index.js",
   "types": "./build/index.d.ts",
   "dependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.8.0",
-    "@typescript-eslint/parser": "^5.8.0",
+    "@typescript-eslint/eslint-plugin": "^5.8.1",
+    "@typescript-eslint/parser": "^5.8.1",
     "eslint-config-airbnb-typescript": "^16.1.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-react": "^7.27.1",
+    "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.3.0"
   },
   "scripts": {
