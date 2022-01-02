@@ -3,7 +3,7 @@
   "license": "GPL-3.0-or-later",
   "version": "0.1.0",
   "dependencies": {
-    "@babel/core": "7.14.6",
+    "@babel/core": "7.16.7",
     "@monsonjeremy/react-leaflet": "^3.2.2",
     "@pmmmwh/react-refresh-webpack-plugin": "0.4.3",
     "@types/react-toastify": "^4.1.0",
