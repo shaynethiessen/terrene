@@ -3,7 +3,7 @@ import {Button, Form, List, Message} from 'semantic-ui-react';
 import {toast} from 'react-toastify';
 import debug from 'debug';
 import {DesignationTypeEnum} from 'terrene-types';
-import {useHistory, useParams} from 'react-router-dom';
+import {useNavigate, useParams} from 'react-router-dom';
 import {ContentWrapper} from '../../Layout';
 import {server} from '../../core/server';
 
@@ -29,7 +29,7 @@ export type DesignationForm = {
 };
 
 export function Content() {
-	const {push} = useHistory();
+	const navigate = useNavigate();
 	const {memberId} = useParams<{memberId: string}>();
 	const [memberInfo, setMemberInfo] = useState<string>();
 	const [submit, setSubmit] = useState(false);
@@ -45,9 +45,9 @@ export function Content() {
 				.then(response => {
 					setMemberInfo(response.data);
 				})
-				.catch(() => push('/404'));
+				.catch(() => navigate('/404'));
 		}
-	}, [memberInfo, memberId, push]);
+	}, [memberInfo, memberId, navigate]);
 
 	useEffect(() => {
 		if (runMigration) {

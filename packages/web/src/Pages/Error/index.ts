@@ -3,6 +3,6 @@ import type {Page} from '../index';
 
 export const Error: Page = {
 	name: 'Error',
-	route: '',
+	route: '*',
 	Content,
 };

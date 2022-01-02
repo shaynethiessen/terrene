@@ -5,5 +5,4 @@ export const Home: Page = {
 	name: 'Home',
 	route: '',
 	Content,
-	exact: true,
 };

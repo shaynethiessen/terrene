@@ -2,14 +2,14 @@ import React, {useEffect, useState} from 'react';
 import {Button, Form, Icon} from 'semantic-ui-react';
 import debug from 'debug';
 import type {MemberLoginParams} from 'terrene-types';
-import {useHistory} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import {ContentWrapper} from '../../Layout';
 import {server} from '../../core/server';
 
 const d = debug('web.src.server');
 
 export function Content() {
-	const {push} = useHistory();
+	const navigate = useNavigate();
 	const [login, setLogin] = useState(false);
 	const [loginData, setLoginData] = useState<MemberLoginParams>({email: '', password: ''});
 
@@ -19,11 +19,11 @@ export function Content() {
 				.fetch('member/login', loginData)
 				.then(response => {
 					setLogin(false);
-					push(`admin/${response.data.id}`);
+					navigate(`admin/${response.data.id}`);
 				})
 				.catch(() => setLogin(false));
 		}
-	}, [login, loginData, push]);
+	}, [login, loginData, navigate]);
 
 	return (
 		<ContentWrapper
