@@ -1,5 +1,5 @@
 import React from 'react';
-import {MapContainer, TileLayer} from '@monsonjeremy/react-leaflet';
+import {MapContainer, TileLayer} from 'react-leaflet';
 import debug from 'debug';
 import {HistoricSiteMarkers} from './HistoricSiteMarkers';
 

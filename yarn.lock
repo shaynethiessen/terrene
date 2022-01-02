@@ -2152,18 +2152,6 @@
     "@mikro-orm/knex" "^4.5.10"
     pg "8.6.0"
 
-"@monsonjeremy/react-leaflet-core@1.1.1":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@monsonjeremy/react-leaflet-core/-/react-leaflet-core-1.1.1.tgz#123aaf1f500214c0585967c5efd9f43453846220"
-  integrity sha512-7FeQIoSUjapFkBMQlrIn1yztKGP3tAnNkfUl6UQ2rdToPU9MAETxgn2VnoCd6B4L+ntTyjidEQXFU2YFDHuf+A==
-
-"@monsonjeremy/react-leaflet@^3.2.2":
-  version "3.2.2"
-  resolved "https://registry.yarnpkg.com/@monsonjeremy/react-leaflet/-/react-leaflet-3.2.2.tgz#06dab9befb46105e945ed7a125a26e9743c99580"
-  integrity sha512-LZPm4nXpypqrTIqZzYfQorOtFbZ9osWWWmee831TA4/HAWPGkGgxXfh0W/qzsEP3ruIjmV2NaHnj+Uh/xMSKbA==
-  dependencies:
-    "@monsonjeremy/react-leaflet-core" "1.1.1"
-
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
   resolved "https://registry.yarnpkg.com/@nodelib/fs.scandir/-/fs.scandir-2.1.5.tgz#7619c2eb21b25483f6d167548b4cfd5a7488c3d5"
@@ -2204,6 +2192,11 @@
   version "2.9.2"
   resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.9.2.tgz#adea7b6953cbb34651766b0548468e743c6a2353"
   integrity sha512-VZMYa7+fXHdwIq1TDhSXoVmSPEGM/aa+6Aiq3nVVJ9bXr24zScr+NlKFKC3iPljA7ho/GAZr+d2jOf5GIRC30Q==
+
+"@react-leaflet/core@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@react-leaflet/core/-/core-1.1.1.tgz#827fd05bb542cf874116176d8ef48d5b12163f81"
+  integrity sha512-7PGLWa9MZ5x/cWy8EH2VzI4T8q5WpuHbixzCDXqixP/WyqwIrg5NDUPgYuFnB4IEIZF+6nA265mYzswFo/h1Pw==
 
 "@rollup/plugin-babel@^5.2.0":
   version "5.3.0"
@@ -8312,6 +8305,13 @@ react-is@^16.6.3, react-is@^16.8.1:
   version "17.0.2"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.2.tgz#e691d4a8e9c789365655539ab372762b0efb54f0"
   integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
+
+react-leaflet@^3.2.2:
+  version "3.2.2"
+  resolved "https://registry.yarnpkg.com/react-leaflet/-/react-leaflet-3.2.2.tgz#3d779662c32a1d8729e73d24e8ad96ee5b38beef"
+  integrity sha512-5W7iWjI9+CdTGVAICe8RUyK0n+uLshr+eLQa8eBCbmstPNpCHZJTUSbju4Ws5dkS/PUCr9t5VmoIE9CXuSBEhw==
+  dependencies:
+    "@react-leaflet/core" "^1.1.1"
 
 react-popper@^2.2.4:
   version "2.2.5"

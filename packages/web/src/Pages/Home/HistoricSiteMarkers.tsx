@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Marker, Popup, useMap} from '@monsonjeremy/react-leaflet';
+import {Marker, Popup, useMap} from 'react-leaflet';
 import {Link} from 'react-router-dom';
 import {Header, Image} from 'semantic-ui-react';
 import type {HistoricSiteEntity} from 'terrene-types';
