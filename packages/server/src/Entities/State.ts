@@ -1,7 +1,7 @@
 import {Entity, OneToOne, PrimaryKey, Property} from '@mikro-orm/core';
 import {v4} from 'uuid';
-import type {DesignationEntityConstructor} from 'terrene-types';
 import {Country} from './Country';
+import type {StateEntityConstructor} from 'terrene-types';
 
 @Entity()
 export class State {
@@ -14,10 +14,10 @@ export class State {
 	@Property({type: 'text'})
 	name: string;
 
-	@OneToOne({type: 'Contract', mappedBy: 'fee'})
+	@OneToOne({type: 'Country', mappedBy: 'state'})
 	country: Country;
 
-	constructor({name, country}: DesignationEntityConstructor) {
+	constructor({name, country}: StateEntityConstructor) {
 		this.name = name;
 		this.country = country;
 	}
