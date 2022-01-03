@@ -51,10 +51,12 @@ export function Content() {
 
 	useEffect(() => {
 		if (runMigration) {
-			server.fetch('migrations/run', {}, memberId).then(() => {
-				setRunMigration(false);
-				toast.success('Migration started!');
-			});
+			server
+				.fetch('migrations/run', {}, memberId)
+				.then(() => {
+					toast.success('Migration started!');
+				})
+				.finally(() => setRunMigration(false));
 		}
 	}, [runMigration, memberId]);
 
@@ -75,11 +77,13 @@ export function Content() {
 			});
 
 			if (badFields.length === 0) {
-				server.fetch('historic-site/add', historicSiteData, memberId).then(() => {
-					setSubmit(false);
-					setErrors(undefined);
-					toast.success('Historic site submitted!');
-				});
+				server
+					.fetch('historic-site/add', historicSiteData, memberId)
+					.then(() => {
+						setErrors(undefined);
+						toast.success('Historic site submitted!');
+					})
+					.finally(() => setSubmit(false));
 			} else {
 				setErrors(badFields);
 				setSubmit(false);

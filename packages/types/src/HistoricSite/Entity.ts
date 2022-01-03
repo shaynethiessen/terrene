@@ -1,4 +1,6 @@
 import type {DesignationEntity} from '../Designation';
+import type {CountryEntity} from '../Country';
+import type {StateEntity} from '../State';
 
 export type HistoricSiteEntityConstructor = {
 	latitude: number;
@@ -11,6 +13,8 @@ export type HistoricSiteEntityConstructor = {
 	activePeriodStart: number;
 	activePeriodEnd?: number | null;
 	designations: DesignationEntity[];
+	country: CountryEntity;
+	state: StateEntity;
 };
 
 export type HistoricSiteEntity = HistoricSiteEntityConstructor & {

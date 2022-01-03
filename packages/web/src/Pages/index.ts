@@ -1,5 +1,6 @@
 import type {ComponentType} from 'react';
-import {Error} from './Error';
+import {Country} from './Country';
+import {CountryHistoricSites} from './CountryHistoricSites';
 import {Home} from './Home';
 import {HistoricSite} from './HistoricSite';
 import {Login} from './Login';
@@ -11,6 +12,7 @@ import {About} from './About';
 import {Donate} from './Donate';
 import {Members} from './Members';
 import {Support} from './Support';
+import {Error} from './Error';
 
 export type Page = {
 	name: string;
@@ -19,4 +21,19 @@ export type Page = {
 };
 
 // Error page needs to always be last on this list. -STT
-export const Pages: Page[] = [About, Admin, Donate, HistoricSite, Home, Login, Members, PrivacyPolicy, Support, Team, TermsAndConditions, Error];
+export const Pages: Page[] = [
+	About,
+	Admin,
+	Country,
+	CountryHistoricSites,
+	Donate,
+	HistoricSite,
+	Home,
+	Login,
+	Members,
+	PrivacyPolicy,
+	Support,
+	Team,
+	TermsAndConditions,
+	Error,
+];

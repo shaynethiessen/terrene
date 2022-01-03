@@ -19,7 +19,7 @@ export function Content() {
 				.fetch('member/login', loginData)
 				.then(response => {
 					setLogin(false);
-					navigate(`admin/${response.data.id}`);
+					navigate(`/admin/${response.data.id}`);
 				})
 				.catch(() => setLogin(false));
 		}

@@ -1,7 +1,9 @@
-import {Collection, Entity, ManyToMany, PrimaryKey, Property, Unique} from '@mikro-orm/core';
+import {Collection, Entity, ManyToMany, ManyToOne, PrimaryKey, Property, Unique} from '@mikro-orm/core';
 import {v4} from 'uuid';
 import type {HistoricSiteEntityConstructor} from 'terrene-types';
 import {Designation} from './Designation';
+import {Country} from './Country';
+import {State} from './State';
 
 @Entity()
 export class HistoricSite {
@@ -42,6 +44,12 @@ export class HistoricSite {
 	@ManyToMany(() => Designation)
 	designations = new Collection<Designation>(this);
 
+	@ManyToOne('Country', {eager: true})
+	country: Country;
+
+	@ManyToOne('State', {eager: true})
+	state: State;
+
 	constructor({
 		latitude,
 		longitude,
@@ -53,7 +61,9 @@ export class HistoricSite {
 		activePeriodStart,
 		activePeriodEnd,
 		designations,
-	}: HistoricSiteEntityConstructor) {
+		country,
+		state,
+	}: HistoricSiteEntityConstructor & {country: Country; state: State}) {
 		this.latitude = latitude;
 		this.longitude = longitude;
 		this.name = name;
@@ -64,5 +74,7 @@ export class HistoricSite {
 		this.activePeriodStart = activePeriodStart;
 		this.activePeriodEnd = activePeriodEnd;
 		if (designations) this.designations?.set(designations);
+		this.country = country;
+		this.state = state;
 	}
 }
