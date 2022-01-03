@@ -6,6 +6,7 @@ export const Find = {
 	path: 'historic-site/find',
 	action: async (params: unknown, authorization: unknown, em: EntityManager): Promise<HistoricSiteFindReturn> => {
 		const historicSites = await em.find(HistoricSite, {});
+		// @ts-ignore
 		return Promise.all(
 			historicSites.map(async historicSite => {
 				return {

@@ -26,6 +26,8 @@ export function Content() {
 			sidebar={
 				historicSiteInfo?.latitude ? (
 					<InformationSidebar
+						country={historicSiteInfo?.country}
+						state={historicSiteInfo?.state}
 						latitude={historicSiteInfo?.latitude}
 						longitude={historicSiteInfo?.longitude}
 						activePeriodStart={historicSiteInfo?.activePeriodStart}

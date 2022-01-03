@@ -1,7 +1,6 @@
-import {Entity, OneToOne, PrimaryKey, Property} from '@mikro-orm/core';
+import {Entity, PrimaryKey, Property} from '@mikro-orm/core';
 import {v4} from 'uuid';
 import type {CountryEntityConstructor} from 'terrene-types';
-import type {State} from './State';
 
 @Entity()
 export class Country {
@@ -14,11 +13,7 @@ export class Country {
 	@Property({type: 'text'})
 	name: string;
 
-	@OneToOne({type: 'State', inversedBy: 'country'})
-	state: State;
-
-	constructor({name, state}: CountryEntityConstructor) {
+	constructor({name}: CountryEntityConstructor) {
 		this.name = name;
-		this.state = state;
 	}
 }

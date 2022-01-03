@@ -44,10 +44,10 @@ export class HistoricSite {
 	@ManyToMany(() => Designation)
 	designations = new Collection<Designation>(this);
 
-	@ManyToOne('Country')
+	@ManyToOne('Country', {eager: true})
 	country: Country;
 
-	@ManyToOne('State')
+	@ManyToOne('State', {eager: true})
 	state: State;
 
 	constructor({
@@ -63,7 +63,7 @@ export class HistoricSite {
 		designations,
 		country,
 		state,
-	}: HistoricSiteEntityConstructor) {
+	}: HistoricSiteEntityConstructor & {country: Country; state: State}) {
 		this.latitude = latitude;
 		this.longitude = longitude;
 		this.name = name;

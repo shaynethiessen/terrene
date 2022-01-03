@@ -1,8 +1,10 @@
 import React from 'react';
-import type {DesignationEntity} from 'terrene-types';
+import type {CountryEntity, DesignationEntity, StateEntity} from 'terrene-types';
 import {Card} from 'semantic-ui-react';
 
 interface Props {
+	country: CountryEntity;
+	state: StateEntity;
 	longitude: number;
 	latitude: number;
 	activePeriodStart: number;
@@ -28,6 +30,7 @@ export function InformationSidebar(props: Props) {
 				<Card.Content>
 					<Card.Header>Quick Facts</Card.Header>
 					<Card.Description>Active: {`${formatYear(props.activePeriodStart)} - ${formatYear(props.activePeriodEnd)}`}</Card.Description>
+					<Card.Description>Location: {`${props.state.name}, ${props.country.name}`}</Card.Description>
 					<Card.Description>Longitude: {props.longitude}</Card.Description>
 					<Card.Description>Latitude: {props.latitude}</Card.Description>
 				</Card.Content>
