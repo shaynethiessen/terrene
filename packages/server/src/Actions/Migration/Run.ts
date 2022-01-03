@@ -14,8 +14,8 @@ export const Run = {
 			Migrations.map(async (migration, index) => {
 				const duplicateMigration = await em.find(Migration, {name: migration.name});
 				if (duplicateMigration.length === 0) {
-					migration.action.map(action => {
-						sqlConnection.execute(action);
+					migration.action.map(async action => {
+						await sqlConnection.execute(action);
 
 						return true;
 					});
@@ -29,8 +29,6 @@ export const Run = {
 					em.persist(mig);
 				}
 			});
-
-			await em.flush();
 		}
 	},
 };
