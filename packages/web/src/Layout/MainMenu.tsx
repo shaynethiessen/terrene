@@ -14,6 +14,9 @@ export function MainMenu() {
 			<Menu.Item name="home" active={pathname === '/'}>
 				<Link to="/">Home</Link>
 			</Menu.Item>
+			<Menu.Item name="country" active={pathname === '/country'}>
+				<Link to="/country">Country</Link>
+			</Menu.Item>
 			<Menu.Menu position="right">
 				<Menu.Item name="login" active={pathname === '/login'}>
 					<Link to="/login">

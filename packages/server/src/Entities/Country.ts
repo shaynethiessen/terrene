@@ -1,4 +1,4 @@
-import {Entity, PrimaryKey, Property} from '@mikro-orm/core';
+import {Entity, PrimaryKey, Property, Unique} from '@mikro-orm/core';
 import {v4} from 'uuid';
 import type {CountryEntityConstructor} from 'terrene-types';
 
@@ -13,7 +13,12 @@ export class Country {
 	@Property({type: 'text'})
 	name: string;
 
-	constructor({name}: CountryEntityConstructor) {
+	@Property({type: 'text', unique: true})
+	@Unique()
+	slug: string;
+
+	constructor({name, slug}: CountryEntityConstructor) {
 		this.name = name;
+		this.slug = slug;
 	}
 }

@@ -1,4 +1,4 @@
-import {Entity, PrimaryKey, Property} from '@mikro-orm/core';
+import {Entity, PrimaryKey, Property, Unique} from '@mikro-orm/core';
 import {v4} from 'uuid';
 import type {StateEntityConstructor} from 'terrene-types';
 
@@ -13,7 +13,12 @@ export class State {
 	@Property({type: 'text'})
 	name: string;
 
-	constructor({name}: StateEntityConstructor) {
+	@Property({type: 'text', unique: true})
+	@Unique()
+	slug: string;
+
+	constructor({name, slug}: StateEntityConstructor) {
 		this.name = name;
+		this.slug = slug;
 	}
 }

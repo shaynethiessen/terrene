@@ -1,5 +1,6 @@
 export type StateEntityConstructor = {
 	name: string;
+	slug: string;
 };
 
 export type StateEntity = StateEntityConstructor & {
