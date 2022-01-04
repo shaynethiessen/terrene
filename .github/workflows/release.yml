@@ -28,6 +28,12 @@ jobs:
             */*/node_modules
           key: ${{ runner.os }}-nm-${{ hashFiles('**/yarn.lock') }}
 
+      # Docker Login
+      - name: Docker repo login
+        run: |
+          echo ${{ secrets.DOCKER_REGISTRY_PASSWORD }} | docker login registry.terrene.ca -u local --password-stdin
+
+      # Install dependencies
       - name: Install dependencies
         if: steps.cache.outputs.cache-hit != 'true'
         run: |
@@ -51,11 +57,6 @@ jobs:
       - name: Build Docker - Server
         run: |
           yarn docker:build:server
-
-      # Docker Login
-      - name: Docker repo login
-        run: |
-          echo ${{ secrets.DOCKER_REGISTRY_PASSWORD }} | docker login registry.terrene.ca -u local --password-stdin
 
       # Docker Push
       - name: Push Docker - Web
