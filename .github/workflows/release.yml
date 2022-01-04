@@ -43,7 +43,7 @@ jobs:
         run: |
           yarn --force
 
-      # Build
+      # Docker Build
       - name: Build Docker - Web
         run: |
           yarn docker:build:web
@@ -52,11 +52,16 @@ jobs:
         run: |
           yarn docker:build:server
 
-      # Push
+      # Docker Login
+      - name: Docker repo login
+        run: |
+          echo ${{ secrets.DOCKER_REGISTRY_PASSWORD }} | docker login registry.terrene.ca -u local --password-stdin
+
+      # Docker Push
       - name: Push Docker - Web
         run: |
-          yarn docker:push:web
+          docker tag terrene-web registry.terrene.ca/terrene-web && docker push registry.terrene.ca/terrene-web
       - name: Push Docker - Server
         run: |
-          yarn docker:push:server
+          docker tag terrene-server registry.terrene.ca/terrene-server && docker push registry.terrene.ca/terrene-server
 
