@@ -99,15 +99,11 @@ export function Content() {
 			});
 
 			if (badFields.length === 0) {
-				server
-					.fetch('historic-site/add', historicSiteData, memberId, 'PUT')
-					.then(() => {
-						setErrors(undefined);
-						toast.success('Historic site submitted!');
-					})
-					.finally(() => {
-						setSubmit(false);
-					});
+				server.fetch('historic-site/add', historicSiteData, memberId, 'PUT').then(() => {
+					setErrors(undefined);
+					toast.success('Historic site submitted!');
+					setSubmit(false);
+				});
 			} else {
 				setErrors(badFields);
 				setSubmit(false);
