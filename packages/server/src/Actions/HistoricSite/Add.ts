@@ -11,8 +11,8 @@ export const Add = {
 	path: 'historic-site/add',
 	action: async (params: HistoricSiteAddParams, authorization: string, em: EntityManager): Promise<void> => {
 		const member = await em.findOne(Member, {id: authorization});
-		const country = await em.findOne(Country, {id: params.country.id});
-		const state = await em.findOne(State, {id: params.state.id});
+		const country = await em.findOne(Country, {id: params.country});
+		const state = await em.findOne(State, {id: params.state});
 
 		if (member && country && state) {
 			const designations = params.designations.map(designation => {
