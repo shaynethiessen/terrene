@@ -19,6 +19,8 @@ type HistoricSiteForm = {
 	activePeriodStart?: number;
 	activePeriodEnd?: number | null;
 	designations?: DesignationForm[];
+	state?: string;
+	country?: string;
 };
 
 export type DesignationForm = {
@@ -37,6 +39,24 @@ export function Content() {
 	const [runMigration, setRunMigration] = useState(false);
 	const [historicSiteData, setHistoricSiteData] = useState<HistoricSiteForm>();
 	const [key, setKey] = useState(0);
+	const [countries, setCountries] = useState<{id: string; name: string}[]>();
+	const [states, setStates] = useState<{id: string; name: string}[]>();
+
+	useEffect(() => {
+		if (!countries) {
+			server.fetch('country/find').then(response => {
+				setCountries(response.data);
+			});
+		}
+	}, [countries, setCountries]);
+
+	useEffect(() => {
+		if (!states) {
+			server.fetch('state/find').then(response => {
+				setStates(response.data);
+			});
+		}
+	}, [states, setStates]);
 
 	useEffect(() => {
 		if (!memberInfo) {
@@ -70,6 +90,8 @@ export function Content() {
 			if (!historicSiteData?.latitude) badFields.push('Latitude');
 			if (!historicSiteData?.longitude) badFields.push('Longitude');
 			if (!historicSiteData?.designations) badFields.push('Designations');
+			if (!historicSiteData?.state) badFields.push('State');
+			if (!historicSiteData?.country) badFields.push('Country');
 			historicSiteData?.designations?.forEach(designation => {
 				if (!designation.type) badFields.push('Type');
 				if (!designation?.year) badFields.push('Year');
@@ -134,6 +156,32 @@ export function Content() {
 							onChange={event => {
 								setHistoricSiteData({...historicSiteData, longitude: parseFloat(event.currentTarget.value)});
 							}}
+						/>
+					</Form.Group>
+					<Form.Group widths="equal">
+						<Form.Dropdown
+							selection
+							label="Country"
+							placeholder="Canada"
+							type="number"
+							onChange={(e, p) => {
+								setHistoricSiteData({...historicSiteData, country: p.value?.toString()});
+							}}
+							options={countries?.map(country => {
+								return {value: country.id, text: country.name, flag: 'ca'};
+							})}
+						/>
+						<Form.Dropdown
+							selection
+							label="State/Province"
+							placeholder="Manitoba"
+							type="number"
+							onChange={(e, p) => {
+								setHistoricSiteData({...historicSiteData, state: p.value?.toString()});
+							}}
+							options={states?.map(state => {
+								return {value: state.id, text: state.name};
+							})}
 						/>
 					</Form.Group>
 					<Form.Group widths="equal">
