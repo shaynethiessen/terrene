@@ -26,7 +26,9 @@ MikroORM.init(mikroOrmConfig()).then(orm => {
 		express.post(`/${action.path}`, (req, res) => {
 			action
 				.action(req.body.params, req.body.authorization, orm.em)
-				.then(value => res.status(200).send(value))
+				.then(value => {
+					res.status(200).send(value);
+				})
 				.catch(() => res.status(500).send());
 		});
 

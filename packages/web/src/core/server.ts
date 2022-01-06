@@ -4,15 +4,20 @@ import {environment} from './environment';
 const d = debug('web.src.server');
 
 export const server = {
-	fetch: async (action: string, params?: Record<string, unknown>, authorization?: string) => {
+	fetch: async (action: string, params?: Record<string, unknown>, authorization?: string, method?: 'POST' | 'PUT') => {
 		const response = await fetch(`${environment.serverURL}/${action}`, {
-			method: 'POST',
+			method: method || 'POST',
 			headers: {
 				'Content-type': 'application/json',
 			},
 			body: JSON.stringify({params, authorization}),
 		});
-		const data = await response.json();
+
+		let data;
+		if (method !== 'PUT') {
+			data = await response.json();
+		}
+
 		return {data, status: response.status};
 	},
 };

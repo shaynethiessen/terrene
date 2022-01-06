@@ -65,7 +65,7 @@ export function Content() {
 					</Card.Group>
 					<Header as="h2">Volunteers</Header>
 					<Header as="h3">Code Contributors</Header>
-					<Card.Group itemsPerRow={10}>
+					<Card.Group>
 						{codeContributors?.map(coder => {
 							return (
 								<Card key={coder.id} link href={coder.html_url}>
