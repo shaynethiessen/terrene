@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {Marker, Popup, useMap} from 'react-leaflet';
-import {Link} from 'react-router-dom';
-import {Header, Image} from 'semantic-ui-react';
+import {Card, Header, Image} from 'semantic-ui-react';
 import type {HistoricSiteEntity} from 'terrene-types';
 import iconShadow from 'leaflet/dist/images/marker-shadow.png';
 import {icon as LIcon} from 'leaflet';
@@ -62,14 +61,19 @@ export function HistoricSiteMarkers() {
 					</Popup>
 				</Marker>
 			)}
-			{historicSites?.map(site => {
+			{historicSites?.map(historicSite => {
 				return (
-					<Marker position={{lat: site.latitude, lng: site.longitude}} key={site.id} icon={HistoricSiteIcon}>
+					<Marker position={{lat: historicSite.latitude, lng: historicSite.longitude}} key={historicSite.id} icon={HistoricSiteIcon}>
 						<Popup>
-							<Link to={`historic-site/${site.slug}`}>
-								<Header>{site.name}</Header>
-								{site.featuredImage && <Image src={getImage(site.featuredImage).thumb} />}
-							</Link>
+							<Card key={historicSite.id} link href={`/historic-site/${historicSite.slug}`}>
+								{historicSite.featuredImage && <Image src={getImage(historicSite.featuredImage).thumb} />}
+								<Card.Content>
+									<Card.Header>{historicSite.name}</Card.Header>
+									<Card.Description>
+										{historicSite.state.name}, {historicSite.country.name}
+									</Card.Description>
+								</Card.Content>
+							</Card>
 						</Popup>
 					</Marker>
 				);

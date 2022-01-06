@@ -17,8 +17,16 @@ export class Country {
 	@Unique()
 	slug: string;
 
-	constructor({name, slug}: CountryEntityConstructor) {
+	@Property({type: 'text'})
+	code: string;
+
+	@Property({type: 'text'})
+	description: string;
+
+	constructor({name, slug, code, description}: CountryEntityConstructor) {
 		this.name = name;
 		this.slug = slug;
+		this.code = code;
+		this.description = description;
 	}
 }
