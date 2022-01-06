@@ -19,7 +19,13 @@ export function Content() {
 		});
 	}, [slug]);
 
-	if (!countryHistoricSites) return null;
+	if (countryHistoricSites?.length === 0 || !countryHistoricSites)
+		return (
+			<ContentWrapper
+				title="No historic sites found for this country."
+				content={<p>New historic sites are added daily. Please check back later.</p>}
+			/>
+		);
 
 	return (
 		<ContentWrapper
