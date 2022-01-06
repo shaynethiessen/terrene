@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {Button, Form, List, Message} from 'semantic-ui-react';
 import {toast} from 'react-toastify';
 import debug from 'debug';
-import {DesignationTypeEnum} from 'terrene-types';
+import {CountryFindReturn, DesignationTypeEnum, StateFindReturn} from 'terrene-types';
 import {useNavigate, useParams} from 'react-router-dom';
 import {ContentWrapper} from '../../Layout';
 import {server} from '../../core/server';
@@ -39,8 +39,8 @@ export function Content() {
 	const [runMigration, setRunMigration] = useState(false);
 	const [historicSiteData, setHistoricSiteData] = useState<HistoricSiteForm>();
 	const [key, setKey] = useState(0);
-	const [countries, setCountries] = useState<{id: string; name: string}[]>();
-	const [states, setStates] = useState<{id: string; name: string}[]>();
+	const [countries, setCountries] = useState<CountryFindReturn>();
+	const [states, setStates] = useState<StateFindReturn>();
 
 	useEffect(() => {
 		if (!countries) {
@@ -166,7 +166,7 @@ export function Content() {
 								setHistoricSiteData({...historicSiteData, country: p.value?.toString()});
 							}}
 							options={countries?.map(country => {
-								return {value: country.id, text: country.name, flag: 'ca'};
+								return {value: country.id, text: country.name, flag: country.code};
 							})}
 						/>
 						<Form.Dropdown
