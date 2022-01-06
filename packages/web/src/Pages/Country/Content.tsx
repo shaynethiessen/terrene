@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react';
-import {Link, useParams} from 'react-router-dom';
+import {useParams} from 'react-router-dom';
 import type {CountryFindReturn} from 'terrene-types';
 import debug from 'debug';
 import {ContentWrapper} from '../../Layout';
 import {server} from '../../core/server';
-import {List} from 'semantic-ui-react';
+import {Card, Flag, FlagNameValues} from 'semantic-ui-react';
 
 const d = debug('web.src.app.countries');
 
@@ -22,13 +22,17 @@ export function Content() {
 		<ContentWrapper
 			title="Country List"
 			content={
-				<List bulleted>
+				<Card.Group>
 					{countriesList?.map(country => (
-						<List.Item key={country.id}>
-							<Link to={`/country/${country.slug}`}>{country.name}</Link>
-						</List.Item>
+						<Card key={country.id} link href={`/country/${country.slug}`}>
+							<Card.Content>
+								<Flag name={country.code as FlagNameValues} style={{float: 'right'}} />
+								<Card.Header>{country.name}</Card.Header>
+								<Card.Description>{country.description}</Card.Description>
+							</Card.Content>
+						</Card>
 					))}
-				</List>
+				</Card.Group>
 			}
 		/>
 	);

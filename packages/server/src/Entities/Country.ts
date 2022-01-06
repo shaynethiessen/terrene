@@ -20,9 +20,13 @@ export class Country {
 	@Property({type: 'text'})
 	code: string;
 
-	constructor({name, slug, code}: CountryEntityConstructor) {
+	@Property({type: 'text'})
+	description: string;
+
+	constructor({name, slug, code, description}: CountryEntityConstructor) {
 		this.name = name;
 		this.slug = slug;
 		this.code = code;
+		this.description = description;
 	}
 }
