@@ -65,3 +65,11 @@ jobs:
       - name: Push Docker - Server
         run: |
           docker tag terrene-server registry.terrene.ca/terrene-server && docker push registry.terrene.ca/terrene-server
+          
+       # Notify Watchtower
+      - name: Notify watchtower
+        env:
+          WATCHTOWER_TOKEN: ${{ secrets.WATCHTOWER_TOKEN }}
+          WATCHTOWER_URI: ${{ secrets.WATCHTOWER_URI }}
+        run: |
+          bash docker/watchtower.sh
