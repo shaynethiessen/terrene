@@ -2,9 +2,11 @@ import type {EntityManager} from '@mikro-orm/core';
 import {Migrations} from '../../Migrations';
 import {Migration} from '../../Entities/Migration';
 import {Member} from '../../Entities/Member';
+import {ActionTypeEnum} from 'terrene-types';
 
 export const Run = {
 	path: 'migrations/run',
+	type: ActionTypeEnum.post,
 	action: async (params: unknown, authorization: string, em: EntityManager): Promise<void> => {
 		const member = await em.findOne(Member, {id: authorization});
 

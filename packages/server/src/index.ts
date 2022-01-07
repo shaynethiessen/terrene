@@ -5,6 +5,8 @@ import {MikroORM} from '@mikro-orm/core';
 import {environment} from './core/environment';
 import {Actions} from './Actions';
 import {mikroOrmConfig} from './core/mikro-orm.config';
+import {ActionTypeEnum} from 'terrene-types';
+
 
 const d = debug('terrene.server');
 
@@ -23,14 +25,25 @@ MikroORM.init(mikroOrmConfig()).then(orm => {
 	express.get('/', (req, res) => res.send('Terrene Server'));
 
 	Actions.map(async action => {
-		express.post(`/${action.path}`, (req, res) => {
-			action
-				.action(req.body.params, req.body.authorization, orm.em)
-				.then(value => {
-					res.status(200).send(value);
-				})
-				.catch(() => res.status(500).send());
-		});
+		if (action.type === ActionTypeEnum.put) {
+			express.put(`/${action.path}`, (req, res) => {
+				action
+					.action(req.body.params, req.body.authorization, orm.em)
+					.then(value => {
+						res.status(200).send(value);
+					})
+					.catch(() => res.status(500).send());
+			});
+		} else {
+			express.post(`/${action.path}`, (req, res) => {
+				action
+					.action(req.body.params, req.body.authorization, orm.em)
+					.then(value => {
+						res.status(200).send(value);
+					})
+					.catch(() => res.status(500).send());
+			});
+		}
 
 		return true;
 	});
