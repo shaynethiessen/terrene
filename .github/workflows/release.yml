@@ -61,10 +61,10 @@ jobs:
       # Docker Push
       - name: Push Docker - Web
         run: |
-          docker tag terrene-web:${{ github.event.release.tag_name }} registry.terrene.ca/terrene-web && docker push registry.terrene.ca/terrene-web
+          docker tag terrene-web:${{ github.event.release.tag_name }} registry.terrene.ca/terrene-web && docker push registry.terrene.ca/terrene-web:${{ github.event.release.tag_name }}
       - name: Push Docker - Server
         run: |
-          docker tag terrene-server:${{ github.event.release.tag_name }} registry.terrene.ca/terrene-server && docker push registry.terrene.ca/terrene-server
+          docker tag terrene-server:${{ github.event.release.tag_name }} registry.terrene.ca/terrene-server && docker push registry.terrene.ca/terrene-server:${{ github.event.release.tag_name }}
 
        # Notify Watchtower
       - name: Notify watchtower
