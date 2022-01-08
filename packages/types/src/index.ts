@@ -1,3 +1,4 @@
+export * from './Common';
 export * from './Country';
 export * from './Designation';
 export * from './HistoricSite';

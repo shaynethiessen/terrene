@@ -6,13 +6,15 @@ import {Designation} from '../../Entities/Designation';
 import {Member} from '../../Entities/Member';
 import {Country} from '../../Entities/Country';
 import {State} from '../../Entities/State';
+import {ActionTypeEnum} from 'terrene-types';
 
 export const Add = {
 	path: 'historic-site/add',
+	type: ActionTypeEnum.put,
 	action: async (params: HistoricSiteAddParams, authorization: string, em: EntityManager): Promise<void> => {
 		const member = await em.findOne(Member, {id: authorization});
-		const country = await em.findOne(Country, {id: params.country});
-		const state = await em.findOne(State, {id: params.state});
+		const country = await em.findOne(Country, {id: params.country.id});
+		const state = await em.findOne(State, {id: params.state.id});
 
 		if (member && country && state) {
 			const designations = params.designations.map(designation => {

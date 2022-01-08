@@ -2,33 +2,12 @@ import React, {useEffect, useState} from 'react';
 import {Button, Form, List, Message} from 'semantic-ui-react';
 import {toast} from 'react-toastify';
 import debug from 'debug';
-import {CountryFindReturn, DesignationTypeEnum, StateFindReturn} from 'terrene-types';
+import {CountryFindReturn, DesignationTypeEnum, HistoricSiteEntityConstructor, StateFindReturn} from 'terrene-types';
 import {useNavigate, useParams} from 'react-router-dom';
 import {ContentWrapper} from '../../Layout';
 import {server} from '../../core/server';
 
 const d = debug('web.src.server');
-
-type HistoricSiteForm = {
-	latitude?: number;
-	longitude?: number;
-	name?: string;
-	slug?: string;
-	content?: string;
-	source?: string;
-	activePeriodStart?: number;
-	activePeriodEnd?: number | null;
-	designations?: DesignationForm[];
-	state?: string;
-	country?: string;
-};
-
-export type DesignationForm = {
-	key: number;
-	officialName?: string;
-	year?: number;
-	type?: DesignationTypeEnum;
-};
 
 export function Content() {
 	const navigate = useNavigate();
@@ -37,8 +16,8 @@ export function Content() {
 	const [submit, setSubmit] = useState(false);
 	const [errors, setErrors] = useState<string[]>();
 	const [runMigration, setRunMigration] = useState(false);
-	const [historicSiteData, setHistoricSiteData] = useState<HistoricSiteForm>();
-	const [key, setKey] = useState(0);
+	const [historicSiteData, setHistoricSiteData] = useState<Partial<HistoricSiteEntityConstructor>>();
+	const [id, setId] = useState('1');
 	const [countries, setCountries] = useState<CountryFindReturn>();
 	const [states, setStates] = useState<StateFindReturn>();
 
@@ -163,11 +142,13 @@ export function Content() {
 							placeholder="Canada"
 							type="number"
 							onChange={(e, p) => {
-								setHistoricSiteData({...historicSiteData, country: p.value?.toString()});
+								setHistoricSiteData({...historicSiteData, country: countries?.find(i => i.id === p.value)});
 							}}
-							options={countries?.map(country => {
-								return {value: country.id, text: country.name, flag: country.code};
-							})}
+							options={
+								countries?.map(country => {
+									return {value: country.id, text: country.name, flag: country.code};
+								}) || []
+							}
 						/>
 						<Form.Dropdown
 							selection
@@ -175,11 +156,13 @@ export function Content() {
 							placeholder="Manitoba"
 							type="number"
 							onChange={(e, p) => {
-								setHistoricSiteData({...historicSiteData, state: p.value?.toString()});
+								setHistoricSiteData({...historicSiteData, state: states?.find(i => i.id === p.value)});
 							}}
-							options={states?.map(state => {
-								return {value: state.id, text: state.name};
-							})}
+							options={
+								states?.map(state => {
+									return {value: state.id, text: state.name};
+								}) || []
+							}
 						/>
 					</Form.Group>
 					<Form.Group widths="equal">
@@ -220,7 +203,7 @@ export function Content() {
 					</Form.Group>
 					{historicSiteData?.designations?.map((designation, index) => {
 						return (
-							<Form.Group widths="equal" key={designation.key}>
+							<Form.Group widths="equal" key={designation.id}>
 								<Form.Input
 									label="Official Name"
 									placeholder="Writing-on-Stone / Áísínai’pi"
@@ -299,16 +282,19 @@ export function Content() {
 								if (historicSiteData?.designations) {
 									setHistoricSiteData({
 										...historicSiteData,
-										designations: [...historicSiteData.designations, {key}],
+										designations: [
+											...historicSiteData.designations,
+											{id, version: 0, type: DesignationTypeEnum.UnescoWorldHeritageSite, year: 0, officialName: ''},
+										],
 									});
 								} else {
 									setHistoricSiteData({
 										...historicSiteData,
-										designations: [{key}],
+										designations: [{id, version: 0, type: DesignationTypeEnum.UnescoWorldHeritageSite, year: 0, officialName: ''}],
 									});
 								}
 
-								setKey(key + 1);
+								setId(id + 1);
 								event.preventDefault();
 							}}
 						>
