@@ -52,11 +52,11 @@ jobs:
       # Docker Build
       - name: Build Docker - Web
         run: |
-          yarn docker:build:web
+          yarn build:web && docker build -t terrene-web:${{ github.event.release.tag_name }} -f docker/web/web.dockerfile .
 
       - name: Build Docker - Server
         run: |
-          yarn docker:build:server
+          yarn build:server && docker build -t terrene-server:${{ github.event.release.tag_name }} -f docker/server/server.dockerfile .
 
       # Docker Push
       - name: Push Docker - Web
