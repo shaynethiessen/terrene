@@ -52,19 +52,19 @@ jobs:
       # Docker Build
       - name: Build Docker - Web
         run: |
-          yarn build:web && docker build -t terrene-web:${{ github.event.release.tag_name }} -f docker/web/web.dockerfile .
+          yarn build:web && docker build -t terrene-web -f docker/web/web.dockerfile .
 
       - name: Build Docker - Server
         run: |
-          yarn build:server && docker build -t terrene-server:${{ github.event.release.tag_name }} -f docker/server/server.dockerfile .
+          yarn build:server && docker build -t terrene-server -f docker/server/server.dockerfile .
 
       # Docker Push
       - name: Push Docker - Web
         run: |
-          docker tag terrene-web:${{ github.event.release.tag_name }} registry.terrene.ca/terrene-web && docker push registry.terrene.ca/terrene-web:${{ github.event.release.tag_name }}
+          docker tag terrene-web registry.terrene.ca/terrene-web && docker push registry.terrene.ca/terrene-web
       - name: Push Docker - Server
         run: |
-          docker tag terrene-server:${{ github.event.release.tag_name }} registry.terrene.ca/terrene-server && docker push registry.terrene.ca/terrene-server:${{ github.event.release.tag_name }}
+          docker tag terrene-server registry.terrene.ca/terrene-server && docker push registry.terrene.ca/terrene-server
 
        # Notify Watchtower
       - name: Notify watchtower
