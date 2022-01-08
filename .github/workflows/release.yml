@@ -52,11 +52,11 @@ jobs:
       # Docker Build
       - name: Build Docker - Web
         run: |
-          yarn docker:build:web
+          yarn build:web && docker build -t terrene-web -f docker/web/web.dockerfile .
 
       - name: Build Docker - Server
         run: |
-          yarn docker:build:server
+          yarn build:server && docker build -t terrene-server -f docker/server/server.dockerfile .
 
       # Docker Push
       - name: Push Docker - Web
@@ -66,15 +66,10 @@ jobs:
         run: |
           docker tag terrene-server registry.terrene.ca/terrene-server && docker push registry.terrene.ca/terrene-server
 
-      # Release
-      - name: ls -a via ssh
-        uses: fifsky/ssh-action@master
-        with:
-          command: |
-            cd /srv/terrene-deploy/docker
-            sudo ./release.sh
-          host: ${{ secrets.SSH_HOST }}
-          user: ${{ secrets.SSH_USER }}
-          pass: ${{ secrets.SSH_PASS}}
-          args: '-tt'
-
+       # Notify Watchtower
+      - name: Notify watchtower
+        env:
+          WATCHTOWER_TOKEN: ${{ secrets.WATCHTOWER_TOKEN }}
+          WATCHTOWER_URI: ${{ secrets.WATCHTOWER_URI }}
+        run: |
+          bash docker/watchtower.sh

@@ -41,8 +41,6 @@
     "build:web": "yarn --cwd packages/web/ build",
     "db:changes": "yarn --cwd packages/server/ orm schema:update -d",
     "db:create": "yarn --cwd packages/server/ orm schema:update -r",
-    "docker:build:server": "yarn build:server && docker build -t terrene-server -f docker/server/server.dockerfile .",
-    "docker:build:web": "yarn build:web && docker build -t terrene-web -f docker/web/web.dockerfile .",
     "fix:lint:server": "yarn --cwd packages/server/ fix:lint",
     "fix:lint:types": "yarn --cwd packages/types/ fix:lint",
     "fix:lint:web": "yarn --cwd packages/web/ fix:lint",
