@@ -2,9 +2,11 @@ import type {EntityManager} from '@mikro-orm/core';
 import type {HistoricSiteFindParams, HistoricSiteFindReturn} from 'terrene-types';
 import {HistoricSite} from '../../Entities/HistoricSite';
 import {Country} from '../../Entities/Country';
+import {ActionTypeEnum} from 'terrene-types';
 
 export const Find = {
 	path: 'historic-site/find',
+	type: ActionTypeEnum.post,
 	action: async (params: HistoricSiteFindParams, authorization: unknown, em: EntityManager): Promise<HistoricSiteFindReturn> => {
 		let findParams;
 		if (params?.country) {

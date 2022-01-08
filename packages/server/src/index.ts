@@ -1,12 +1,23 @@
 import Express from 'express';
 import cors from 'cors';
 import debug from 'debug';
-import {MikroORM} from '@mikro-orm/core';
+import {EntityManager, MikroORM} from '@mikro-orm/core';
+import {ActionTypeEnum} from 'terrene-types';
 import {environment} from './core/environment';
 import {Actions} from './Actions';
+import type {ActionCall} from 'terrene-types';
 import {mikroOrmConfig} from './core/mikro-orm.config';
+import type {Request, Response} from 'express';
 
 const d = debug('terrene.server');
+
+function doAction(req: Request, res: Response, em: EntityManager, action: ActionCall) {
+	action(req.body.params, req.body.authorization, em)
+		.then(value => {
+			res.status(200).send(value);
+		})
+		.catch(() => res.status(500).send());
+}
 
 MikroORM.init(mikroOrmConfig()).then(orm => {
 	const express = Express();
@@ -21,16 +32,20 @@ MikroORM.init(mikroOrmConfig()).then(orm => {
 	});
 
 	express.get('/', (req, res) => res.send('Terrene Server'));
-
 	Actions.map(async action => {
-		express.post(`/${action.path}`, (req, res) => {
-			action
-				.action(req.body.params, req.body.authorization, orm.em)
-				.then(value => {
-					res.status(200).send(value);
-				})
-				.catch(() => res.status(500).send());
-		});
+		switch (action.type) {
+			case ActionTypeEnum.get:
+				express.get(`/${action.path}`, (req, res) => doAction(req, res, orm.em, action.action));
+				break;
+			case ActionTypeEnum.post:
+				express.post(`/${action.path}`, (req, res) => doAction(req, res, orm.em, action.action));
+				break;
+			case ActionTypeEnum.put:
+				express.put(`/${action.path}`, (req, res) => doAction(req, res, orm.em, action.action));
+				break;
+			default:
+				break;
+		}
 
 		return true;
 	});
