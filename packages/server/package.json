@@ -12,11 +12,6 @@
     "cors": "^2.8.5",
     "debug": "^4.3.3",
     "dotenv": "^10.0.0",
-    "eslint-config-airbnb-typescript": "^16.1.0",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-react": "^7.28.0",
-    "eslint-plugin-react-hooks": "^4.3.0",
     "express": "^4.17.2",
     "nodemon": "^2.0.15",
     "slugify": "^1.6.4",
@@ -33,9 +28,7 @@
     "test:types": "yarn tsc"
   },
   "devDependencies": {
-    "@mikro-orm/cli": "^4.5.10",
-    "@typescript-eslint/eslint-plugin": "^5.8.1",
-    "@typescript-eslint/parser": "^5.8.1"
+    "@mikro-orm/cli": "^4.5.10"
   },
   "engines": {
     "node": "16.13"
@@ -45,5 +38,10 @@
     "configPaths": [
       "./mikroorm.ts"
     ]
+  },
+  "eslintConfig": {
+    "parserOptions": {
+      "project": "./tsconfig-eslint.json"
+    }
   }
 }
