@@ -9,7 +9,6 @@ import {TermsAndConditions} from './TermsAndConditions';
 import {Admin} from './Admin';
 import {Team} from './Team';
 import {About} from './About';
-import {Donate} from './Donate';
 import {Members} from './Members';
 import {Support} from './Support';
 import {Error} from './Error';
@@ -26,7 +25,6 @@ export const Pages: Page[] = [
 	Admin,
 	Country,
 	CountryHistoricSites,
-	Donate,
 	HistoricSite,
 	Home,
 	Login,

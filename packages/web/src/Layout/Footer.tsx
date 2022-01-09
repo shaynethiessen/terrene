@@ -28,12 +28,6 @@ export function Footer() {
 						</Header>
 					</Link>
 					<br />
-					<Link to="/company/donate">
-						<Header as="h4" color="grey">
-							Donate
-						</Header>
-					</Link>
-					<br />
 					<Link to="/company/team">
 						<Header as="h4" color="grey">
 							Team
