@@ -16,10 +16,5 @@
   },
   "engines": {
     "node": "16.13"
-  },
-  "eslintConfig": {
-    "parserOptions": {
-      "project": "./tsconfig-eslint.json"
-    }
   }
 }

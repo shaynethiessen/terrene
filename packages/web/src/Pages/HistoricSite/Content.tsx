@@ -33,6 +33,7 @@ export function Content() {
 						activePeriodStart={historicSiteInfo?.activePeriodStart}
 						activePeriodEnd={historicSiteInfo?.activePeriodEnd}
 						designations={historicSiteInfo?.designations}
+						location={`https://www.google.com/maps/place/${historicSiteInfo?.latitude},${historicSiteInfo?.longitude}`}
 					/>
 				) : undefined
 			}
