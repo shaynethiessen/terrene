@@ -1,6 +1,6 @@
 import React from 'react';
 import type {CountryEntity, DesignationEntity, StateEntity} from 'terrene-types';
-import {Card} from 'semantic-ui-react';
+import {Card, Icon} from 'semantic-ui-react';
 
 interface Props {
 	country: CountryEntity;
@@ -10,6 +10,7 @@ interface Props {
 	activePeriodStart: number;
 	activePeriodEnd?: number | null;
 	designations: DesignationEntity[];
+	location: string;
 }
 
 function formatYear(date?: number | null) {
@@ -26,9 +27,29 @@ function formatYear(date?: number | null) {
 export function InformationSidebar(props: Props) {
 	return (
 		<Card.Group>
+			<Card color="green">
+				<Card.Content>
+					<Card.Header>Actions</Card.Header>
+				</Card.Content>
+				<Card.Content>
+					<a href={props.location} target="_blank" rel="noreferrer">
+						<Icon name="map" bordered inverted color="black" />
+					</a>
+					<Icon
+						style={{cursor: 'pointer'}}
+						name="linkify"
+						bordered
+						inverted
+						color="black"
+						onClick={() => navigator.clipboard.writeText(window.location.href)}
+					/>
+				</Card.Content>
+			</Card>
 			<Card color="yellow">
 				<Card.Content>
 					<Card.Header>Quick Facts</Card.Header>
+				</Card.Content>
+				<Card.Content>
 					<Card.Description>Active: {`${formatYear(props.activePeriodStart)} - ${formatYear(props.activePeriodEnd)}`}</Card.Description>
 					<Card.Description>Location: {`${props.state.name}, ${props.country.name}`}</Card.Description>
 					<Card.Description>Longitude: {props.longitude}</Card.Description>
@@ -37,9 +58,11 @@ export function InformationSidebar(props: Props) {
 			</Card>
 			{props.designations.map(designation => {
 				return (
-					<Card key={designation.type} color="green">
+					<Card key={designation.type} color="brown">
 						<Card.Content>
 							<Card.Header>{designation.type}</Card.Header>
+						</Card.Content>
+						<Card.Content>
 							<Card.Description>Official Name: {designation.officialName}</Card.Description>
 							<Card.Description>Designated: {designation.year}</Card.Description>
 						</Card.Content>
