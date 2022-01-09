@@ -11,9 +11,9 @@ export const Find = {
 		let findParams;
 		if (params?.country) {
 			const countryId = (await em.findOne(Country, {slug: params.country}))?.id;
-			findParams = {country: countryId};
+			findParams = {country: countryId, approved: true};
 		}
-		const historicSites = await em.find(HistoricSite, findParams ? findParams : {});
+		const historicSites = await em.find(HistoricSite, findParams ? findParams : {approved: true});
 
 		return Promise.all(
 			historicSites.map(async historicSite => {

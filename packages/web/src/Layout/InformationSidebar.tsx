@@ -33,16 +33,8 @@ export function InformationSidebar(props: Props) {
 				</Card.Content>
 				<Card.Content>
 					<a href={props.location} target="_blank" rel="noreferrer">
-						<Icon name="map" bordered inverted color="black" />
+						<Icon name="map" bordered inverted color="black" size="large" />
 					</a>
-					<Icon
-						style={{cursor: 'pointer'}}
-						name="linkify"
-						bordered
-						inverted
-						color="black"
-						onClick={() => navigator.clipboard.writeText(window.location.href)}
-					/>
 				</Card.Content>
 			</Card>
 			<Card color="yellow">
