@@ -1,7 +1,7 @@
 import React from 'react';
 import {MapContainer, TileLayer} from 'react-leaflet';
 import debug from 'debug';
-import {HistoricSiteMarkers} from './HistoricSiteMarkers';
+import {HistoricSiteMarkers} from './Components/HistoricSiteMarkers';
 
 const d = debug('web.src.app.home');
 

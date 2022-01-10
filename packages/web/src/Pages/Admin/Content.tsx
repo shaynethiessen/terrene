@@ -6,6 +6,7 @@ import {CountryFindReturn, DesignationTypeEnum, HistoricSiteEntityConstructor, S
 import {useNavigate, useParams} from 'react-router-dom';
 import {ContentWrapper} from '../../Layout';
 import {server} from '../../core/server';
+import {RunMigrationAction} from './Components/RunMigrationAction';
 
 const d = debug('web.src.server');
 
@@ -15,7 +16,6 @@ export function Content() {
 	const [memberInfo, setMemberInfo] = useState<string>();
 	const [submit, setSubmit] = useState(false);
 	const [errors, setErrors] = useState<string[]>();
-	const [runMigration, setRunMigration] = useState(false);
 	const [historicSiteData, setHistoricSiteData] = useState<Partial<HistoricSiteEntityConstructor>>();
 	const [id, setId] = useState('1');
 	const [countries, setCountries] = useState<CountryFindReturn>();
@@ -47,17 +47,6 @@ export function Content() {
 				.catch(() => navigate('/404'));
 		}
 	}, [memberInfo, memberId, navigate]);
-
-	useEffect(() => {
-		if (runMigration) {
-			server
-				.fetch('migrations/run', {}, memberId)
-				.then(() => {
-					toast.success('Migration started!');
-				})
-				.finally(() => setRunMigration(false));
-		}
-	}, [runMigration, memberId]);
 
 	useEffect(() => {
 		if (submit) {
@@ -309,9 +298,9 @@ export function Content() {
 				</Form>
 			}
 			sidebar={
-				<Button color="yellow" fluid onClick={() => setRunMigration(true)}>
-					Run Migration
-				</Button>
+				<>
+					<RunMigrationAction />
+				</>
 			}
 		/>
 	);

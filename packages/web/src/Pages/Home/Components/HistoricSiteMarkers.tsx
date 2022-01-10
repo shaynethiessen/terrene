@@ -6,8 +6,8 @@ import iconShadow from 'leaflet/dist/images/marker-shadow.png';
 import {icon as LIcon} from 'leaflet';
 import userIcon from './userIcon.png';
 import historicIcon from './historicIcon.png';
-import {server} from '../../core/server';
-import {getImage} from '../../lib/getImage';
+import {server} from '../../../core/server';
+import {getImage} from '../../../lib/getImage';
 
 export function HistoricSiteMarkers() {
 	const [historicSites, setHistoricSites] = useState<HistoricSiteEntity[]>();
