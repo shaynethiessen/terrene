@@ -16,7 +16,10 @@ export const Add = {
 		if (!member) throw new Error('bad authorization');
 
 		const country = await em.findOne(Country, {id: params.country.id});
+		if (!country) throw new Error('country not found');
+
 		const state = await em.findOne(State, {id: params.state.id});
+		if (!state) throw new Error('state not found');
 
 		if (member.role === MemberRoleEnum.President || member.role === MemberRoleEnum.Secretary) {
 			const designations = params.designations.map(designation => {
