@@ -6,17 +6,19 @@ import {Designation} from '../../Entities/Designation';
 import {Member} from '../../Entities/Member';
 import {Country} from '../../Entities/Country';
 import {State} from '../../Entities/State';
-import {ActionTypeEnum} from 'terrene-types';
+import {ActionTypeEnum, MemberRoleEnum} from 'terrene-types';
 
 export const Add = {
 	path: 'historic-site/add',
 	type: ActionTypeEnum.put,
 	action: async (params: HistoricSiteAddParams, authorization: string, em: EntityManager): Promise<void> => {
 		const member = await em.findOne(Member, {id: authorization});
+		if (!member) throw new Error('bad authorization');
+
 		const country = await em.findOne(Country, {id: params.country.id});
 		const state = await em.findOne(State, {id: params.state.id});
 
-		if (member && country && state) {
+		if (member.role === MemberRoleEnum.President || member.role === MemberRoleEnum.Secretary) {
 			const designations = params.designations.map(designation => {
 				const newDesignation = new Designation(designation);
 				em.persist(newDesignation);

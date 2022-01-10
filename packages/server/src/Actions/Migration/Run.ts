@@ -2,15 +2,16 @@ import type {EntityManager} from '@mikro-orm/core';
 import {Migrations} from '../../Migrations';
 import {Migration} from '../../Entities/Migration';
 import {Member} from '../../Entities/Member';
-import {ActionTypeEnum} from 'terrene-types';
+import {ActionTypeEnum, MemberRoleEnum} from 'terrene-types';
 
 export const Run = {
 	path: 'migrations/run',
 	type: ActionTypeEnum.put,
 	action: async (params: unknown, authorization: string, em: EntityManager): Promise<void> => {
 		const member = await em.findOne(Member, {id: authorization});
+		if (!member) throw new Error('bad authorization');
 
-		if (member) {
+		if (member.role === MemberRoleEnum.President || member.role === MemberRoleEnum.Secretary) {
 			const sqlConnection = em.getConnection();
 
 			Migrations.map(async (migration, index) => {
