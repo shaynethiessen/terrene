@@ -13,6 +13,7 @@ import {Support} from './Support';
 import {PendingHistoricSites} from './PendingHistoricSites';
 import {Team} from './Team';
 import {TermsAndConditions} from './TermsAndConditions';
+import {SubmitHistoricSite} from './SubmitHistoricSite';
 
 export type Page = {
 	name: string;
@@ -32,6 +33,7 @@ export const Pages: Page[] = [
 	Members,
 	PendingHistoricSites,
 	PrivacyPolicy,
+	SubmitHistoricSite,
 	Support,
 	Team,
 	TermsAndConditions,

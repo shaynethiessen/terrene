@@ -4,7 +4,7 @@ import {HistoricSite} from '../../Entities/HistoricSite';
 import {ActionTypeEnum, MemberRoleEnum} from 'terrene-types';
 import {Member} from '../../Entities/Member';
 
-export const Find = {
+export const FindPending = {
 	path: 'historic-site/find-pending',
 	type: ActionTypeEnum.post,
 	action: async (params: unknown, authorization: string, em: EntityManager): Promise<HistoricSiteFindPendingReturn> => {
@@ -12,7 +12,7 @@ export const Find = {
 		if (!member) throw new Error('bad authorization');
 
 		if (member.role === MemberRoleEnum.President) {
-			const historicSites = await em.find(HistoricSite, {approved: false});
+			const historicSites = await em.find(HistoricSite, {approved: null});
 
 			return Promise.all(
 				historicSites.map(async historicSite => {
@@ -23,6 +23,6 @@ export const Find = {
 				}),
 			);
 		}
-		if (!member) throw new Error('bad user role');
+		throw new Error('bad user role');
 	},
 };
