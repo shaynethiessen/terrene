@@ -1,13 +1,13 @@
+import {icon as LIcon} from 'leaflet';
+import iconShadow from 'leaflet/dist/images/marker-shadow.png';
 import React, {useEffect, useState} from 'react';
 import {Marker, Popup, useMap} from 'react-leaflet';
 import {Card, Header, Image} from 'semantic-ui-react';
 import type {HistoricSiteEntity} from 'terrene-types';
-import iconShadow from 'leaflet/dist/images/marker-shadow.png';
-import {icon as LIcon} from 'leaflet';
-import userIcon from './userIcon.png';
-import historicIcon from './historicIcon.png';
 import {server} from '../../../core/server';
 import {getImage} from '../../../lib/getImage';
+import historicIcon from './historicIcon.png';
+import userIcon from './userIcon.png';
 
 export function HistoricSiteMarkers() {
 	const [historicSites, setHistoricSites] = useState<HistoricSiteEntity[]>();

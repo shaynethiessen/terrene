@@ -1,8 +1,8 @@
 import type {EntityManager} from '@mikro-orm/core';
-import {Migrations} from '../../Migrations';
-import {Migration} from '../../Entities/Migration';
-import {Member} from '../../Entities/Member';
 import {ActionTypeEnum, MemberRoleEnum} from 'terrene-types';
+import {Member} from '../../Entities/Member';
+import {Migration} from '../../Entities/Migration';
+import {Migrations} from '../../Migrations';
 
 export const Run = {
 	path: 'migrations/run',
