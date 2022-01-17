@@ -12,7 +12,6 @@ const d = debug('web.src.app.home');
 export function Content() {
 	const navigate = useNavigate();
 	const {memberId} = useParams<{memberId: string}>();
-	const [submit, setSubmit] = useState(false);
 	const [errors, setErrors] = useState<string[]>();
 	const [countries, setCountries] = useState<CountryFindReturn>();
 	const [historicSiteData, setHistoricSiteData] = useState<Partial<HistoricSiteEntityConstructor>>();
@@ -35,37 +34,33 @@ export function Content() {
 		}
 	}, [countries, setCountries]);
 
-	useEffect(() => {
-		if (submit) {
-			const badFields: string[] = [];
-			if (!historicSiteData?.content) badFields.push('Content');
-			if (!historicSiteData?.name) badFields.push('Name');
-			if (!historicSiteData?.source) badFields.push('Source');
-			if (!historicSiteData?.activePeriodStart) badFields.push('Active Period Start');
-			if (!historicSiteData?.latitude) badFields.push('Latitude');
-			if (!historicSiteData?.longitude) badFields.push('Longitude');
-			if (!historicSiteData?.designations) badFields.push('Designations');
-			if (!historicSiteData?.state) badFields.push('State');
-			if (!historicSiteData?.country) badFields.push('Country');
-			historicSiteData?.designations?.forEach(designation => {
-				if (!designation.type) badFields.push('Type');
-				if (!designation?.year) badFields.push('Year');
-				if (!designation?.officialName) badFields.push('Official Name');
-			});
+	function submitHistoricSite() {
+		const badFields: string[] = [];
+		if (!historicSiteData?.content) badFields.push('Content');
+		if (!historicSiteData?.name) badFields.push('Name');
+		if (!historicSiteData?.source) badFields.push('Source');
+		if (!historicSiteData?.activePeriodStart) badFields.push('Active Period Start');
+		if (!historicSiteData?.latitude) badFields.push('Latitude');
+		if (!historicSiteData?.longitude) badFields.push('Longitude');
+		if (!historicSiteData?.designations) badFields.push('Designations');
+		if (!historicSiteData?.state) badFields.push('State');
+		if (!historicSiteData?.country) badFields.push('Country');
+		historicSiteData?.designations?.forEach(designation => {
+			if (!designation.type) badFields.push('Type');
+			if (!designation?.year) badFields.push('Year');
+			if (!designation?.officialName) badFields.push('Official Name');
+		});
 
-			if (badFields.length === 0) {
-				server.fetch('historic-site/add', historicSiteData, memberId, 'PUT').then(() => {
-					setErrors(undefined);
-					toast.success('Historic site submitted!');
-					setSubmit(false);
-					navigate(`/admin/${memberId}`);
-				});
-			} else {
-				setErrors(badFields);
-				setSubmit(false);
-			}
+		if (badFields.length === 0) {
+			server.fetch('historic-site/add', historicSiteData, memberId, 'PUT').then(() => {
+				setErrors(undefined);
+				toast.success('Historic site submitted!');
+				navigate(`/admin/${memberId}`);
+			});
+		} else {
+			setErrors(badFields);
 		}
-	}, [submit, historicSiteData, memberId]);
+	}
 
 	return (
 		<ContentWrapper
@@ -279,7 +274,7 @@ export function Content() {
 						</Button>
 					</Form.Group>
 					<Form.Group widths="equal">
-						<Button positive onClick={() => setSubmit(true)}>
+						<Button positive onClick={() => submitHistoricSite()}>
 							Submit
 						</Button>
 					</Form.Group>
