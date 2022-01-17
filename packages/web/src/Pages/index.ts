@@ -12,6 +12,7 @@ import {About} from './About';
 import {Members} from './Members';
 import {Support} from './Support';
 import {Error} from './Error';
+import {PendingHistoricSites} from './PendingHistoricSites';
 
 export type Page = {
 	name: string;
@@ -29,6 +30,7 @@ export const Pages: Page[] = [
 	Home,
 	Login,
 	Members,
+	PendingHistoricSites,
 	PrivacyPolicy,
 	Support,
 	Team,
