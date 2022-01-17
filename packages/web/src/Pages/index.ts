@@ -10,6 +10,7 @@ import {Login} from './Login';
 import {Members} from './Members';
 import {PrivacyPolicy} from './PrivacyPolicy';
 import {Support} from './Support';
+import {PendingHistoricSites} from './PendingHistoricSites';
 import {Team} from './Team';
 import {TermsAndConditions} from './TermsAndConditions';
 
@@ -29,6 +30,7 @@ export const Pages: Page[] = [
 	Home,
 	Login,
 	Members,
+	PendingHistoricSites,
 	PrivacyPolicy,
 	Support,
 	Team,
