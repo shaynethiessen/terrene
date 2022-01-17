@@ -1,13 +1,13 @@
+import debug from 'debug';
 import React, {useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom';
+import {Card, Image} from 'semantic-ui-react';
 import type {HistoricSiteFindReturn} from 'terrene-types';
-import debug from 'debug';
 import {ContentWrapper} from '../../Layout';
 import {server} from '../../core/server';
-import {Card, Image} from 'semantic-ui-react';
 import {getImage} from '../../lib/getImage';
 
-const d = debug('web.src.app.historicSite');
+const d = debug('terrene.web.Pages.CountryHistoricSites.Content');
 
 export function Content() {
 	const {slug} = useParams<{slug: string}>();

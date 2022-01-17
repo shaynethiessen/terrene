@@ -1,12 +1,12 @@
+import debug from 'debug';
 import React, {useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom';
+import {Card, Flag, FlagNameValues} from 'semantic-ui-react';
 import type {CountryFindReturn} from 'terrene-types';
-import debug from 'debug';
 import {ContentWrapper} from '../../Layout';
 import {server} from '../../core/server';
-import {Card, Flag, FlagNameValues} from 'semantic-ui-react';
 
-const d = debug('web.src.app.countries');
+const d = debug('terrene.web.Pages.Country.Content');
 
 export function Content() {
 	const {slug} = useParams<{slug: string}>();

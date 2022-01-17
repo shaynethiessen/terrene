@@ -1,5 +1,5 @@
-import type {DesignationEntity} from '../Designation';
 import type {CountryEntity} from '../Country';
+import type {DesignationEntity} from '../Designation';
 import type {StateEntity} from '../State';
 
 export type HistoricSiteEntityConstructor = {

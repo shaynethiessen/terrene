@@ -1,9 +1,9 @@
+import debug from 'debug';
 import React from 'react';
 import {Header, List} from 'semantic-ui-react';
-import debug from 'debug';
 import {ContentWrapper} from '../../Layout';
 
-const d = debug('web.src.server');
+const d = debug('terrene.web.Pages.PrivacyPolicy.Content');
 
 export function Content() {
 	return (

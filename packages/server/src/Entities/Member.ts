@@ -1,9 +1,9 @@
 import {Entity, Enum, PrimaryKey, Property} from '@mikro-orm/core';
 import debug from 'debug';
-import {v4} from 'uuid';
 import {MemberEntityConstructor, MemberRoleEnum} from 'terrene-types';
+import {v4} from 'uuid';
 
-const d = debug('terrene.server.users.entities.User');
+const d = debug('terrene.server.Entities.Member');
 
 @Entity()
 export class Member {

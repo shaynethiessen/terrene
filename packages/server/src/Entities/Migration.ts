@@ -1,9 +1,9 @@
 import {Entity, PrimaryKey, Property, Unique} from '@mikro-orm/core';
 import debug from 'debug';
-import {v4} from 'uuid';
 import type {MigrationEntityConstructor} from 'terrene-types';
+import {v4} from 'uuid';
 
-const d = debug('tacs.domain.system.entities.Migration');
+const d = debug('terrene.server.Entities.Migration');
 
 @Entity()
 @Unique({properties: ['index']})
