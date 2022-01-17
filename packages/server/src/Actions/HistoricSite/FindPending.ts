@@ -12,7 +12,7 @@ export const FindPending = {
 		if (!member) throw new Error('bad authorization');
 
 		if (member.role === MemberRoleEnum.President) {
-			const historicSites = await em.find(HistoricSite, {approved: null});
+			const historicSites = await em.find(HistoricSite, {approved: false});
 
 			return Promise.all(
 				historicSites.map(async historicSite => {

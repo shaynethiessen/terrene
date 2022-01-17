@@ -1,6 +1,6 @@
 import type {EntityManager} from '@mikro-orm/core';
 import slugify from 'slugify';
-import type {HistoricSiteAddParams} from 'terrene-types';
+import type {HistoricSiteSubmitParams} from 'terrene-types';
 import {ActionTypeEnum, MemberRoleEnum} from 'terrene-types';
 import {Country} from '../../Entities/Country';
 import {Designation} from '../../Entities/Designation';
@@ -8,10 +8,10 @@ import {HistoricSite} from '../../Entities/HistoricSite';
 import {Member} from '../../Entities/Member';
 import {State} from '../../Entities/State';
 
-export const Add = {
-	path: 'historic-site/add',
+export const Submit = {
+	path: 'historic-site/submit',
 	type: ActionTypeEnum.put,
-	action: async (params: HistoricSiteAddParams, authorization: string, em: EntityManager): Promise<void> => {
+	action: async (params: HistoricSiteSubmitParams, authorization: string, em: EntityManager): Promise<void> => {
 		const member = await em.findOne(Member, {id: authorization});
 		if (!member) throw new Error('bad authorization');
 

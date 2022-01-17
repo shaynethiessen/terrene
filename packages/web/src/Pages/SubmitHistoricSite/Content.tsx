@@ -52,7 +52,7 @@ export function Content() {
 		});
 
 		if (badFields.length === 0) {
-			server.fetch('historic-site/add', historicSiteData, memberId, 'PUT').then(() => {
+			server.fetch('historic-site/submit', historicSiteData, memberId, 'PUT').then(() => {
 				setErrors(undefined);
 				toast.success('Historic site submitted!');
 				navigate(`/admin/${memberId}`);
