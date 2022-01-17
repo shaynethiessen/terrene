@@ -1,12 +1,12 @@
-import React, {useEffect, useState} from 'react';
-import {Button, Form, Icon} from 'semantic-ui-react';
 import debug from 'debug';
-import type {MemberLoginParams} from 'terrene-types';
+import React, {useEffect, useState} from 'react';
 import {useNavigate} from 'react-router-dom';
+import {Button, Form, Icon} from 'semantic-ui-react';
+import type {MemberLoginParams} from 'terrene-types';
 import {ContentWrapper} from '../../Layout';
 import {server} from '../../core/server';
 
-const d = debug('web.src.server');
+const d = debug('terrene.web.Pages.Login.Content');
 
 export function Content() {
 	const navigate = useNavigate();

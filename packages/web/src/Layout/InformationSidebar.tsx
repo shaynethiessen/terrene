@@ -1,6 +1,6 @@
 import React from 'react';
-import type {CountryEntity, DesignationEntity, StateEntity} from 'terrene-types';
 import {Card, Icon} from 'semantic-ui-react';
+import type {CountryEntity, DesignationEntity, StateEntity} from 'terrene-types';
 
 interface Props {
 	country: CountryEntity;

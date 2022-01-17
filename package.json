@@ -47,7 +47,7 @@
     "fix:lint:server": "yarn --cwd packages/server/ fix:lint",
     "fix:lint:types": "yarn --cwd packages/types/ fix:lint",
     "fix:lint:web": "yarn --cwd packages/web/ fix:lint",
-    "organize": "./tools/organize.sh",
+    "organize": "node node_modules/jscodeshift/bin/jscodeshift.js packages  --extensions=tsx,ts --parser=tsx -t tools/organize.ts",
     "test:dependencies:server": "yarn --cwd packages/server/ test:dependencies",
     "test:dependencies:types": "yarn --cwd packages/types/ test:dependencies",
     "test:dependencies:web": "yarn --cwd packages/web/ test:dependencies",

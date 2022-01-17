@@ -1,14 +1,14 @@
-import React, {useEffect, useState} from 'react';
-import {Button, Form, List, Message} from 'semantic-ui-react';
-import {toast} from 'react-toastify';
 import debug from 'debug';
-import {CountryFindReturn, DesignationTypeEnum, HistoricSiteEntityConstructor, StateFindReturn} from 'terrene-types';
+import React, {useEffect, useState} from 'react';
 import {useNavigate, useParams} from 'react-router-dom';
+import {toast} from 'react-toastify';
+import {Button, Form, List, Message} from 'semantic-ui-react';
+import {CountryFindReturn, DesignationTypeEnum, HistoricSiteEntityConstructor, StateFindReturn} from 'terrene-types';
 import {ContentWrapper} from '../../Layout';
 import {server} from '../../core/server';
 import {RunMigrationAction} from './Components/RunMigrationAction';
 
-const d = debug('web.src.server');
+const d = debug('terrene.web.Pages.Admin.Content');
 
 export function Content() {
 	const navigate = useNavigate();

@@ -1,11 +1,11 @@
+import debug from 'debug';
+import 'leaflet/dist/leaflet.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import debug from 'debug';
+
+import 'react-toastify/dist/ReactToastify.css';
 import App from './App';
 
-import 'leaflet/dist/leaflet.css';
-import 'react-toastify/dist/ReactToastify.css';
-
-const d = debug('app.web');
+const d = debug('terrene.web');
 
 ReactDOM.render(<App />, document.getElementById('root'));

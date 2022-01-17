@@ -1,7 +1,7 @@
 import debug from 'debug';
 import {environment} from './environment';
 
-const d = debug('web.src.server');
+const d = debug('terrene.web.core.server');
 
 export const server = {
 	fetch: async (action: string, params?: Record<string, unknown>, authorization?: string, method?: 'POST' | 'PUT') => {
