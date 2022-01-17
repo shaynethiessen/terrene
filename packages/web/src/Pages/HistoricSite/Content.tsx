@@ -1,11 +1,11 @@
+import debug from 'debug';
 import React, {useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom';
 import type {HistoricSiteFindOneReturn} from 'terrene-types';
-import debug from 'debug';
 import {ContentWrapper, InformationSidebar} from '../../Layout';
 import {server} from '../../core/server';
 
-const d = debug('web.src.app.historicSite');
+const d = debug('terrene.web.Pages.HistoricSite.Content');
 
 export function Content() {
 	const {slug} = useParams<{slug: string}>();

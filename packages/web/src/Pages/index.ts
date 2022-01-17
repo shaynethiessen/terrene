@@ -1,17 +1,17 @@
 import type {ComponentType} from 'react';
+import {About} from './About';
+import {Admin} from './Admin';
 import {Country} from './Country';
 import {CountryHistoricSites} from './CountryHistoricSites';
-import {Home} from './Home';
-import {HistoricSite} from './HistoricSite';
-import {Login} from './Login';
-import {PrivacyPolicy} from './PrivacyPolicy';
-import {TermsAndConditions} from './TermsAndConditions';
-import {Admin} from './Admin';
-import {Team} from './Team';
-import {About} from './About';
-import {Members} from './Members';
-import {Support} from './Support';
 import {Error} from './Error';
+import {HistoricSite} from './HistoricSite';
+import {Home} from './Home';
+import {Login} from './Login';
+import {Members} from './Members';
+import {PrivacyPolicy} from './PrivacyPolicy';
+import {Support} from './Support';
+import {Team} from './Team';
+import {TermsAndConditions} from './TermsAndConditions';
 
 export type Page = {
 	name: string;

@@ -55,6 +55,10 @@ Your app is ready to be deployed!
 
 Attempts to automatically fix all linting issues.
 
+### `yarn organize`
+
+Sorts imports, updates debug statements, renames alias imports.
+
 ### `yarn test:%package%`
 
 Uses depcheck to see if we have any unused dependencies.

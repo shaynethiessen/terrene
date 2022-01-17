@@ -1,6 +1,6 @@
 import {Entity, PrimaryKey, Property, Unique} from '@mikro-orm/core';
-import {v4} from 'uuid';
 import type {StateEntityConstructor} from 'terrene-types';
+import {v4} from 'uuid';
 
 @Entity()
 export class State {

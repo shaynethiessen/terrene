@@ -1,10 +1,10 @@
+import debug from 'debug';
 import React from 'react';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
-import debug from 'debug';
 import {Footer, MainMenu, ScrollToTop} from './Layout';
 import {Pages} from './Pages';
 
-const d = debug('web.src.app.historicSite');
+const d = debug('terrene.web.App');
 function App() {
 	return (
 		<BrowserRouter>

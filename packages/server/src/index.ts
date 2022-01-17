@@ -1,13 +1,13 @@
-import Express from 'express';
+import {EntityManager, MikroORM} from '@mikro-orm/core';
 import cors from 'cors';
 import debug from 'debug';
-import {EntityManager, MikroORM} from '@mikro-orm/core';
-import {ActionTypeEnum} from 'terrene-types';
-import {environment} from './core/environment';
-import {Actions} from './Actions';
-import type {ActionCall} from 'terrene-types';
-import {mikroOrmConfig} from './core/mikro-orm.config';
+import Express from 'express';
 import type {Request, Response} from 'express';
+import {ActionTypeEnum} from 'terrene-types';
+import type {ActionCall} from 'terrene-types';
+import {Actions} from './Actions';
+import {environment} from './core/environment';
+import {mikroOrmConfig} from './core/mikro-orm.config';
 
 const d = debug('terrene.server');
 

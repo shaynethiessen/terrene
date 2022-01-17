@@ -1,7 +1,7 @@
 import type {EntityManager} from '@mikro-orm/core';
 import {MemberGetTeamReturn, MemberRoleEnum} from 'terrene-types';
-import {Member} from '../../Entities/Member';
 import {ActionTypeEnum} from 'terrene-types';
+import {Member} from '../../Entities/Member';
 
 export const GetTeam = {
 	path: 'member/get-team',

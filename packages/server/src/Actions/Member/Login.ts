@@ -1,8 +1,8 @@
 import type {EntityManager} from '@mikro-orm/core';
-import type {MemberLoginParams, MemberLoginReturn} from 'terrene-types';
 import {compare} from 'bcryptjs';
-import {Member} from '../../Entities/Member';
+import type {MemberLoginParams, MemberLoginReturn} from 'terrene-types';
 import {ActionTypeEnum} from 'terrene-types';
+import {Member} from '../../Entities/Member';
 
 export const Login = {
 	path: 'member/login',
