@@ -1,7 +1,7 @@
 import debug from 'debug';
 import React from 'react';
 import {MapContainer, TileLayer} from 'react-leaflet';
-import {HistoricSiteMarkers} from './HistoricSiteMarkers';
+import {HistoricSiteMarkers} from './Components/HistoricSiteMarkers';
 
 const d = debug('terrene.web.Pages.Home.Content');
 

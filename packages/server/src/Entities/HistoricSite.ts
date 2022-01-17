@@ -50,6 +50,9 @@ export class HistoricSite {
 	@ManyToOne('State', {eager: true})
 	state: State;
 
+	@Property({type: 'boolean'})
+	approved: boolean;
+
 	constructor({
 		latitude,
 		longitude,
@@ -76,5 +79,6 @@ export class HistoricSite {
 		if (designations) this.designations?.set(designations);
 		this.country = country;
 		this.state = state;
+		this.approved = false;
 	}
 }

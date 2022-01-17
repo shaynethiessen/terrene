@@ -4,8 +4,8 @@ import React, {useEffect, useState} from 'react';
 import {Marker, Popup, useMap} from 'react-leaflet';
 import {Card, Header, Image} from 'semantic-ui-react';
 import type {HistoricSiteEntity} from 'terrene-types';
-import {server} from '../../core/server';
-import {getImage} from '../../lib/getImage';
+import {server} from '../../../core/server';
+import {getImage} from '../../../lib/getImage';
 import historicIcon from './historicIcon.png';
 import userIcon from './userIcon.png';
 
