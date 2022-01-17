@@ -1,14 +1,14 @@
-import React, {useEffect, useState} from 'react';
 import debug from 'debug';
-import type {HistoricSiteFindPendingReturn} from 'terrene-types';
-import {server} from '../../core/server';
-import {Button, Card, Image} from 'semantic-ui-react';
-import {getImage} from '../../lib/getImage';
+import React, {useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom';
-import {ContentWrapper} from '../../Layout';
 import {toast} from 'react-toastify';
+import {Button, Card, Image} from 'semantic-ui-react';
+import type {HistoricSiteFindPendingReturn} from 'terrene-types';
+import {ContentWrapper} from '../../Layout';
+import {server} from '../../core/server';
+import {getImage} from '../../lib/getImage';
 
-const d = debug('web.src.app.home');
+const d = debug('terrene.web.Pages.PendingHistoricSites.Content');
 
 export function Content() {
 	const {memberId} = useParams<{memberId: string}>();

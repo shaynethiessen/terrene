@@ -1,13 +1,13 @@
-import React, {useEffect, useState} from 'react';
 import debug from 'debug';
-import {server} from '../../core/server';
-import {Button, Form, List, Message} from 'semantic-ui-react';
+import React, {useEffect, useState} from 'react';
 import {useNavigate, useParams} from 'react-router-dom';
-import {ContentWrapper} from '../../Layout';
-import {CountryFindReturn, DesignationTypeEnum, HistoricSiteEntityConstructor, StateFindReturn} from 'terrene-types';
 import {toast} from 'react-toastify';
+import {Button, Form, List, Message} from 'semantic-ui-react';
+import {CountryFindReturn, DesignationTypeEnum, HistoricSiteEntityConstructor, StateFindReturn} from 'terrene-types';
+import {ContentWrapper} from '../../Layout';
+import {server} from '../../core/server';
 
-const d = debug('web.src.app.home');
+const d = debug('terrene.web.Pages.SubmitHistoricSite.Content');
 
 export function Content() {
 	const navigate = useNavigate();

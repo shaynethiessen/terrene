@@ -8,12 +8,12 @@ import {HistoricSite} from './HistoricSite';
 import {Home} from './Home';
 import {Login} from './Login';
 import {Members} from './Members';
-import {PrivacyPolicy} from './PrivacyPolicy';
-import {Support} from './Support';
 import {PendingHistoricSites} from './PendingHistoricSites';
+import {PrivacyPolicy} from './PrivacyPolicy';
+import {SubmitHistoricSite} from './SubmitHistoricSite';
+import {Support} from './Support';
 import {Team} from './Team';
 import {TermsAndConditions} from './TermsAndConditions';
-import {SubmitHistoricSite} from './SubmitHistoricSite';
 
 export type Page = {
 	name: string;

@@ -1,10 +1,10 @@
 import debug from 'debug';
 import React, {useEffect, useState} from 'react';
 import {useNavigate, useParams} from 'react-router-dom';
+import {Button} from 'semantic-ui-react';
 import {ContentWrapper} from '../../Layout';
 import {server} from '../../core/server';
 import {RunMigrationAction} from './Components/RunMigrationAction';
-import {Button} from 'semantic-ui-react';
 
 const d = debug('terrene.web.Pages.Admin.Content');
 
