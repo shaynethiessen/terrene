@@ -11,7 +11,7 @@
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "debug": "^4.3.3",
-    "dotenv": "^10.0.0",
+    "dotenv": "^14.2.0",
     "eslint-config-airbnb-typescript": "^16.1.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
