@@ -18,3 +18,6 @@ yarn-error.log*
 
 # production
 build
+
+# Server
+packages/server/assets
