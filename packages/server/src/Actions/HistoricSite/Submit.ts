@@ -7,8 +7,7 @@ import {Designation} from '../../Entities/Designation';
 import {HistoricSite} from '../../Entities/HistoricSite';
 import {Member} from '../../Entities/Member';
 import {State} from '../../Entities/State';
-import {existsSync, mkdirSync, readdir, readdirSync} from 'fs';
-import wget from 'node-wget-promise';
+import {existsSync, mkdirSync, readdirSync} from 'fs';
 import {exec} from 'child_process';
 
 export const Submit = {
@@ -41,6 +40,7 @@ export const Submit = {
 			const date = new Date();
 			const workingDirectory = `./assets/${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`;
 			const mountedDirectory = `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`;
+
 			if (!existsSync(workingDirectory)) {
 				mkdirSync(workingDirectory, {recursive: true});
 				imageCount = 1;
@@ -53,8 +53,8 @@ export const Submit = {
 			const imagePathThumb = workingDirectory + '/' + imageCount + '.thumb.jpg';
 			const imagePathLarge = workingDirectory + '/' + imageCount + '.large.jpg';
 
-			await wget(params.featuredImage, {output: imagePathThumb});
-			await wget(params.featuredImage, {output: imagePathLarge});
+			exec(`wget ${params.featuredImage} -O ${imagePathThumb}`);
+			exec(`wget ${params.featuredImage} -O ${imagePathLarge}`);
 
 			exec(`convert ${imagePathThumb} -resize 500x ${imagePathThumb}`);
 			exec(`convert ${imagePathLarge} -resize 1280x ${imagePathLarge}`);
