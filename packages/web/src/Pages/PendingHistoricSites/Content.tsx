@@ -20,7 +20,7 @@ export function Content() {
 				setHistoricSites(response.data);
 			});
 		}
-	}, [historicSites]);
+	}, [historicSites, memberId]);
 
 	function approve(id: string) {
 		server.fetch('historic-site/approve', {id}, memberId, 'PUT').then(() => {

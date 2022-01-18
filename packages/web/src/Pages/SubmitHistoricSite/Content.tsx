@@ -50,6 +50,7 @@ export function Content() {
 			if (!designation?.year) badFields.push('Year');
 			if (!designation?.officialName) badFields.push('Official Name');
 		});
+		if (!historicSiteData?.featuredImage) badFields.push('Featured Image');
 
 		if (badFields.length === 0) {
 			server.fetch('historic-site/submit', historicSiteData, memberId, 'PUT').then(() => {
@@ -112,6 +113,7 @@ export function Content() {
 							selection
 							label="Country"
 							placeholder="Canada"
+							required
 							type="number"
 							onChange={(e, p) => {
 								setHistoricSiteData({...historicSiteData, country: countries?.find(i => i.id === p.value)});
@@ -125,6 +127,7 @@ export function Content() {
 						<Form.Dropdown
 							selection
 							label="State/Province"
+							required
 							placeholder="Manitoba"
 							type="number"
 							onChange={(e, p) => {
@@ -272,6 +275,16 @@ export function Content() {
 						>
 							Add Designation
 						</Button>
+					</Form.Group>
+					<Form.Group>
+						<Form.Input
+							label="Featured Image"
+							placeholder="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Head-Smashed-In_Buffalo_Jump-27527-2.jpg/1280px-Head-Smashed-In_Buffalo_Jump-27527-2.jpg"
+							required
+							onChange={event => {
+								setHistoricSiteData({...historicSiteData, featuredImage: event.currentTarget.value});
+							}}
+						/>
 					</Form.Group>
 					<Form.Group widths="equal">
 						<Button positive onClick={() => submitHistoricSite()}>
