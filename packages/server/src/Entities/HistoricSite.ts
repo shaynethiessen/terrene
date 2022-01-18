@@ -32,8 +32,8 @@ export class HistoricSite {
 	@Property({type: 'text'})
 	source: string;
 
-	@Property({type: 'text', nullable: true})
-	featuredImage?: string | null;
+	@Property({type: 'text'})
+	featuredImage: string;
 
 	@Property({type: 'number'})
 	activePeriodStart: number;

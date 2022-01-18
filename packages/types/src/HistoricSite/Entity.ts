@@ -9,7 +9,7 @@ export type HistoricSiteEntityConstructor = {
 	slug: string;
 	content: string;
 	source: string;
-	featuredImage?: string | null;
+	featuredImage: string;
 	activePeriodStart: number;
 	activePeriodEnd?: number | null;
 	designations: DesignationEntity[];
