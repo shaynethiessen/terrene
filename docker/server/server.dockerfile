@@ -3,7 +3,7 @@ MAINTAINER Shayne Thiessen <shayne@shaynethiessen.com>
 
 # Get third-party applications
 RUN apt-get update && \
-    apt-get install -yq imagemagick && \
+    apt-get install -yq imagemagick wget && \
     rm -rf /var/lib/apt/lists/*
 
 # Create folders
