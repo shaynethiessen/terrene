@@ -1,6 +1,11 @@
 FROM node:16.13.0-buster-slim
 MAINTAINER Shayne Thiessen <shayne@shaynethiessen.com>
 
+# Get third-party applications
+RUN apt-get update && \
+    apt-get install -yq imagemagick && \
+    rm -rf /var/lib/apt/lists/* \
+
 # Create folders
 RUN mkdir -p /app/packages/server && \
     mkdir -p /app/packages/types
