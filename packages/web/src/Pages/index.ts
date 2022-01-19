@@ -14,10 +14,16 @@ import {SubmitHistoricSite} from './SubmitHistoricSite';
 import {Support} from './Support';
 import {Team} from './Team';
 import {TermsAndConditions} from './TermsAndConditions';
+import type {SemanticICONS} from 'semantic-ui-react';
 
 export type Page = {
 	name: string;
 	route: string;
+	mainMenu?: {
+		order: number;
+		icon?: SemanticICONS;
+		position: 'left' | 'right';
+	};
 	Content: ComponentType;
 };
 

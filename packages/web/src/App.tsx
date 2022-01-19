@@ -10,7 +10,9 @@ function App() {
 		<BrowserRouter>
 			<ScrollToTop />
 			<div style={{height: 'calc(100% - 40px)'}}>
-				<MainMenu />
+				<MainMenu
+					pages={Pages.filter(page => page.mainMenu).sort((pageOne, PageTwo) => (pageOne.mainMenu?.order || 0) - (PageTwo.mainMenu?.order || 0))}
+				/>
 				<Routes>
 					{Pages.map(page => {
 						const {route, name, Content} = page;
