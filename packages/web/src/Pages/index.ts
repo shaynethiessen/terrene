@@ -24,6 +24,9 @@ export type Page = {
 		icon?: SemanticICONS;
 		position: 'left' | 'right';
 	};
+	footerMenu?: {
+		position: 'company' | 'community' | 'bottom';
+	};
 	Content: ComponentType;
 };
 

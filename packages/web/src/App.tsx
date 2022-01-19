@@ -19,7 +19,7 @@ function App() {
 						return <Route path={`/${route}`} key={name} element={<Content />} />;
 					})}
 				</Routes>
-				<Footer />
+				<Footer pages={Pages.filter(page => page.footerMenu)} />
 			</div>
 		</BrowserRouter>
 	);

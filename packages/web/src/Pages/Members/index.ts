@@ -4,5 +4,8 @@ import {Content} from './Content';
 export const Members: Page = {
 	name: 'Members',
 	route: 'community/members',
+	footerMenu: {
+		position: 'community',
+	},
 	Content,
 };
