@@ -11,7 +11,7 @@ export function Content() {
 			center={{lat: 46, lng: -70}}
 			zoom={3}
 			style={{height: '100%'}}
-			minZoom={3}
+			minZoom={2}
 			maxBounds={[
 				[-90, -Infinity],
 				[90, Infinity],

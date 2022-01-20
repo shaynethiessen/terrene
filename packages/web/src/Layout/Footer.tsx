@@ -30,14 +30,11 @@ export function Footer(props: Props) {
 					{props.pages.map(page => {
 						if (page.footerMenu?.position === 'company')
 							return (
-								<>
-									<Link to={page.route}>
-										<Header as="h4" color="grey">
-											{page.name}
-										</Header>
-									</Link>
-									<br />
-								</>
+								<Link to={page.route} key={page.route}>
+									<Header as="h4" color="grey">
+										{page.name}
+									</Header>
+								</Link>
 							);
 					})}
 				</Grid.Column>
@@ -46,14 +43,11 @@ export function Footer(props: Props) {
 					{props.pages.map(page => {
 						if (page.footerMenu?.position === 'community')
 							return (
-								<>
-									<Link to={page.route}>
-										<Header as="h4" color="grey">
-											{page.name}
-										</Header>
-									</Link>
-									<br />
-								</>
+								<Link to={page.route} key={page.route}>
+									<Header as="h4" color="grey">
+										{page.name}
+									</Header>
+								</Link>
 							);
 					})}
 				</Grid.Column>
@@ -68,7 +62,7 @@ export function Footer(props: Props) {
 				{props.pages.map(page => {
 					if (page.footerMenu?.position === 'bottom')
 						return (
-							<Grid.Column>
+							<Grid.Column key={page.route}>
 								<Link to={page.route}>
 									<Header as="h5" color="grey">
 										{page.name}
