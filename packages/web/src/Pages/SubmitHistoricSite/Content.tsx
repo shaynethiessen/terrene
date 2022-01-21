@@ -194,20 +194,12 @@ export function Content() {
 								<Form.Dropdown
 									label="Type"
 									selection
-									options={[
-										{
-											text: DesignationTypeEnum.UnescoWorldHeritageSite,
-											value: DesignationTypeEnum.UnescoWorldHeritageSite,
-										},
-										{
-											text: DesignationTypeEnum.NationalHistoricSiteOfCanada,
-											value: DesignationTypeEnum.NationalHistoricSiteOfCanada,
-										},
-										{
-											text: DesignationTypeEnum.ProvincialHistoricSiteOfAlberta,
-											value: DesignationTypeEnum.ProvincialHistoricSiteOfAlberta,
-										},
-									]}
+									options={Object.values(DesignationTypeEnum).map(item => {
+										return {
+											value: item,
+											text: item,
+										};
+									})}
 									required
 									onChange={(event, props) => {
 										const {designations} = historicSiteData;

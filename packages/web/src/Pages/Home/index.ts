@@ -3,6 +3,10 @@ import {Content} from './Content';
 
 export const Home: Page = {
 	name: 'Home',
-	route: '',
+	route: '/',
+	mainMenu: {
+		order: 1,
+		position: 'left',
+	},
 	Content,
 };

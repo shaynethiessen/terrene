@@ -4,5 +4,8 @@ import {Content} from './Content';
 export const PrivacyPolicy: Page = {
 	name: 'Privacy Policy',
 	route: 'privacy-policy',
+	footerMenu: {
+		position: 'bottom',
+	},
 	Content,
 };
