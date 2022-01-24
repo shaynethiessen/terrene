@@ -1,5 +1,4 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
 import {ToastContainer} from 'react-toastify';
 import {Grid, Header, Image, Modal} from 'semantic-ui-react';
 import {getImage} from '../lib/getImage';
@@ -44,13 +43,13 @@ export function ContentWrapper(props: Props) {
 							<Grid.Row>
 								<Grid.Column style={{fontStyle: 'italic'}}>
 									This work is licensed under{' '}
-									<Link to={{pathname: 'https://creativecommons.org/licenses/by-sa/3.0/'}} target="_blank">
+									<a href={'https://creativecommons.org/licenses/by-sa/3.0/'} target="_blank" rel="noreferrer">
 										Creative Commons Attribution-ShareAlike 3.0 Unported
-									</Link>{' '}
+									</a>{' '}
 									license and is a derivative from{' '}
-									<Link to={{pathname: props.source}} target="_blank">
+									<a href={props.source} target="_blank" rel="noreferrer">
 										wikipedia.org
-									</Link>
+									</a>
 									.
 								</Grid.Column>
 							</Grid.Row>
