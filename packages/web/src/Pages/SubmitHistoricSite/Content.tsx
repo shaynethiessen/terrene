@@ -111,6 +111,7 @@ export function Content() {
 					<Form.Group widths="equal">
 						<Form.Dropdown
 							selection
+							search
 							label="Country"
 							placeholder="Canada"
 							required
@@ -126,6 +127,7 @@ export function Content() {
 						/>
 						<Form.Dropdown
 							selection
+							search
 							label="State/Province"
 							required
 							placeholder="Manitoba"

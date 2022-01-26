@@ -1,3 +1,4 @@
+import debug from 'debug';
 import {icon as LIcon} from 'leaflet';
 import iconShadow from 'leaflet/dist/images/marker-shadow.png';
 import React, {useEffect, useState} from 'react';
@@ -8,6 +9,9 @@ import {server} from '../../../core/server';
 import {getImage} from '../../../lib/getImage';
 import historicIcon from './historicIcon.png';
 import userIcon from './userIcon.png';
+import MarkerClusterGroup from 'react-leaflet-markercluster';
+
+const d = debug('terrene.web.Pages.Home.Components.HistoricSiteMarkers');
 
 export function HistoricSiteMarkers() {
 	const [historicSites, setHistoricSites] = useState<HistoricSiteEntity[]>();
@@ -61,23 +65,25 @@ export function HistoricSiteMarkers() {
 					</Popup>
 				</Marker>
 			)}
-			{historicSites?.map(historicSite => {
-				return (
-					<Marker position={{lat: historicSite.latitude, lng: historicSite.longitude}} key={historicSite.id} icon={HistoricSiteIcon}>
-						<Popup>
-							<Card key={historicSite.id} link href={`/historic-site/${historicSite.slug}`}>
-								{historicSite.featuredImage && <Image src={getImage(historicSite.featuredImage).thumb} />}
-								<Card.Content>
-									<Card.Header>{historicSite.name}</Card.Header>
-									<Card.Description>
-										{historicSite.state.name}, {historicSite.country.name}
-									</Card.Description>
-								</Card.Content>
-							</Card>
-						</Popup>
-					</Marker>
-				);
-			})}
+			<MarkerClusterGroup>
+				{historicSites?.map(historicSite => {
+					return (
+						<Marker position={{lat: historicSite.latitude, lng: historicSite.longitude}} key={historicSite.id} icon={HistoricSiteIcon}>
+							<Popup>
+								<Card key={historicSite.id} link href={`/historic-site/${historicSite.slug}`}>
+									{historicSite.featuredImage && <Image src={getImage(historicSite.featuredImage).thumb} />}
+									<Card.Content>
+										<Card.Header>{historicSite.name}</Card.Header>
+										<Card.Description>
+											{historicSite.state.name}, {historicSite.country.name}
+										</Card.Description>
+									</Card.Content>
+								</Card>
+							</Popup>
+						</Marker>
+					);
+				})}
+			</MarkerClusterGroup>
 		</>
 	);
 }
