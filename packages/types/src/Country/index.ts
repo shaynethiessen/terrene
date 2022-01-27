@@ -1,2 +1,2 @@
 export type {CountryEntity, CountryEntityConstructor} from './Entity';
-export type {CountryFindReturn} from './Find';
+export type {CountryFindParams, CountryFindReturn} from './Find';

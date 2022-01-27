@@ -13,7 +13,7 @@ export function Content() {
 	const [countriesList, setCountriesList] = useState<CountryFindReturn>();
 
 	useEffect(() => {
-		server.fetch('country/find').then(response => {
+		server.fetch('country/find', {withHistoricSites: true}).then(response => {
 			setCountriesList(response.data);
 		});
 	}, [slug]);
