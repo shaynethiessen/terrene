@@ -11,7 +11,7 @@
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "debug": "^4.3.3",
-    "dotenv": "^14.2.0",
+    "dotenv": "^15.0.0",
     "eslint-config-airbnb-typescript": "^16.1.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
@@ -34,8 +34,8 @@
   },
   "devDependencies": {
     "@mikro-orm/cli": "^4.5.10",
-    "@typescript-eslint/eslint-plugin": "^5.8.1",
-    "@typescript-eslint/parser": "^5.8.1"
+    "@typescript-eslint/eslint-plugin": "^5.10.2",
+    "@typescript-eslint/parser": "^5.10.2"
   },
   "engines": {
     "node": "16.13"
