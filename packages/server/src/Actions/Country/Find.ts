@@ -2,7 +2,6 @@ import type {EntityManager} from '@mikro-orm/core';
 import type {CountryFindParams, CountryFindReturn} from 'terrene-types';
 import {ActionTypeEnum} from 'terrene-types';
 import {Country} from '../../Entities/Country';
-import {LoadStrategy} from '@mikro-orm/core';
 
 export const Find = {
 	path: 'country/find',

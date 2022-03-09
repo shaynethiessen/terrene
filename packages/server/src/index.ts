@@ -31,17 +31,19 @@ MikroORM.init(mikroOrmConfig()).then(orm => {
 		d(`⚡️[server]: Server is running at ${environment.dbDomain}:${environment.serverPort}`);
 	});
 
+	const em = orm.em.fork();
+
 	express.get('/', (req, res) => res.send('Terrene Server'));
 	Actions.map(async action => {
 		switch (action.type) {
 			case ActionTypeEnum.get:
-				express.get(`/${action.path}`, (req, res) => doAction(req, res, orm.em, action.action));
+				express.get(`/${action.path}`, (req, res) => doAction(req, res, em, action.action));
 				break;
 			case ActionTypeEnum.post:
-				express.post(`/${action.path}`, (req, res) => doAction(req, res, orm.em, action.action));
+				express.post(`/${action.path}`, (req, res) => doAction(req, res, em, action.action));
 				break;
 			case ActionTypeEnum.put:
-				express.put(`/${action.path}`, (req, res) => doAction(req, res, orm.em, action.action));
+				express.put(`/${action.path}`, (req, res) => doAction(req, res, em, action.action));
 				break;
 			default:
 				break;
