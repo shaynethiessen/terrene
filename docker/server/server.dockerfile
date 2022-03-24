@@ -1,4 +1,4 @@
-FROM node:16.13.0-buster-slim
+FROM node:16.14.0-buster-slim
 MAINTAINER Shayne Thiessen <shayne@shaynethiessen.com>
 
 # Get third-party applications

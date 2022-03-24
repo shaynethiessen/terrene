@@ -3,7 +3,7 @@
   "license": "GPL-3.0-or-later",
   "version": "0.1.0",
   "dependencies": {
-    "@babel/core": "7.17.5",
+    "@babel/core": "7.17.8",
     "@babel/runtime": "^7.17.2",
     "@pmmmwh/react-refresh-webpack-plugin": "0.5.4",
     "@svgr/webpack": "^6.2.1",
@@ -64,6 +64,6 @@
     "test:types": "yarn tsc"
   },
   "engines": {
-    "node": "16.13"
+    "node": "16.14"
   }
 }
